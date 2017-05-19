@@ -30,7 +30,6 @@
 - (instancetype)initWithAlphabets:(NSArray *)alphabets {
     self = [super init];
     self.alphabets = alphabets;
-    [super initWithCount:[self count]];
 
     return self;
 }

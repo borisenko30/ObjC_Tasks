@@ -30,7 +30,6 @@
 - (instancetype)initWithStrings:(NSArray *)strings {
     self = [super init];
     self.strings = strings;
-    [super initWithCount:[self count]];
 
     return self;
 }

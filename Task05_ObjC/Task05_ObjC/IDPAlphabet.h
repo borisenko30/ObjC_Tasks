@@ -27,9 +27,6 @@
 - (instancetype)initWithStrings:(NSArray *)strings;
 - (instancetype)initWithSymbols:(NSString *)string;
 
-- (void)initWithCount:(NSUInteger)count;
-
-- (NSUInteger)count;
 - (NSString *)stringAtIndex:(NSUInteger)index;
 
 - (NSString *)objectAtIndexedSubscript:(NSUInteger)index;

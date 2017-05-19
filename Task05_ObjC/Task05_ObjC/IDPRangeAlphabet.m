@@ -24,7 +24,6 @@
 - (instancetype)initWithRange:(NSRange)range {
     self = [super init];
     self.range = range;
-    [super initWithCount:[self count]];
     
     return self;
 }

@@ -21,6 +21,8 @@
 
 @implementation IDPAlphabet
 
+@dynamic count;
+
 #pragma mark -
 #pragma mark Class methods
 
@@ -87,10 +89,6 @@
 
 #pragma mark -
 #pragma mark Public
-
-- (void)initWithCount:(NSUInteger)count {
-    _count = count;
-}
 
 // should be overriden in subclasses
 - (NSUInteger)count {
