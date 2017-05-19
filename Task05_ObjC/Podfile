@@ -1,0 +1,3 @@
+target ‘KiwiTests’ do
+	pod 'Kiwi'
+end

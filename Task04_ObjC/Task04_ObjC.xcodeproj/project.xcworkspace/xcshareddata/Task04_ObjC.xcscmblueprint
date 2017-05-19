@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "63AFD29848BB828F93D6E892D9877DFC552F0219",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "63AFD29848BB828F93D6E892D9877DFC552F0219" : 9223372036854775807,
+    "7E60EB94CE1912EA6D7123AA3F6B9C4D3B006732" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2F84046E-8D26-49B2-829A-E7BBF62D37AA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "63AFD29848BB828F93D6E892D9877DFC552F0219" : "Task04_ObjC\/",
+    "7E60EB94CE1912EA6D7123AA3F6B9C4D3B006732" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Task04_ObjC",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Task04_ObjC.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/borisenko30\/Task04_ObjC.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "63AFD29848BB828F93D6E892D9877DFC552F0219"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/borisenko30\/Obj_C_Tasks.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7E60EB94CE1912EA6D7123AA3F6B9C4D3B006732"
+    }
+  ]
+}
