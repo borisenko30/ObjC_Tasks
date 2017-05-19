@@ -50,7 +50,7 @@ IDPStaticConstantRange(IDPCarWashersQuantityRange, 1, 5)
 - (instancetype)init {
     self = [super init];
     self.carWashers = [NSArray array];
-    [self initWorkers];
+    [self assignWorkers];
     
     return self;
 }
@@ -60,7 +60,7 @@ IDPStaticConstantRange(IDPCarWashersQuantityRange, 1, 5)
 
 - (void)processCar:(IDPCar *)car {
     IDPCarWasher *carWasher = [self freeCarWasher];
-    id <IDPWorkerDelegate> delegate = car.delegate;
+    id<IDPWorkerDelegate> delegate = car.delegate;
     delegate = carWasher;
     [delegate processObject:car];
 
@@ -78,7 +78,7 @@ IDPStaticConstantRange(IDPCarWashersQuantityRange, 1, 5)
 #pragma mark -
 #pragma Private
 
-- (void)initWorkers {
+- (void)assignWorkers {
     self.carWashers = [NSArray objectsWithCount:IDPRandomWithRange(IDPCarWashersQuantityRange) factoryBlock:^{
         return [IDPCarWasher object];
     }];

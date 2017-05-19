@@ -20,6 +20,6 @@ typedef NS_ENUM(NSUInteger, IDPCarState) {
 @property (nonatomic, assign)   IDPCarState     state;
 @property (nonatomic, readonly) NSUInteger      cash;
 
-@property (nonatomic, assign) id <IDPWorkerDelegate> delegate;
+@property (nonatomic, assign) id<IDPWorkerDelegate> delegate;
 
 @end

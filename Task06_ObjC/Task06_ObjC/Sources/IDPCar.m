@@ -54,7 +54,7 @@ IDPStaticConstantRange(IDPCashRange, 100, 200)
     [self takeMoney:[object giveMoney]];
 }
 
-- (void)delegatingObject:(id <IDPWorkerDelegate>)object didGiveMoney:(BOOL)moneyGiven {
+- (void)delegatingObject:(id<IDPWorkerDelegate>)object didGiveMoney:(BOOL)moneyGiven {
     if (moneyGiven) {
         [object.delegate processObject:object];
     }

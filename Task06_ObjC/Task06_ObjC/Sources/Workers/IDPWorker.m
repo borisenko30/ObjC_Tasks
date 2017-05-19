@@ -44,26 +44,26 @@
     self.cash += money;
 }
 
-- (void)takeMoneyFromObject:(id <IDPMoneyFlow>)object {
+- (void)takeMoneyFromObject:(id<IDPMoneyFlow>)object {
     [self takeMoney:[object giveMoney]];
 }
 
 // should be overriden in subclasses
-- (void)performWorkWithObject:(id <IDPMoneyFlow>)object {
+- (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
     
 }
 
 #pragma mark -
 #pragma IDPWorkerDelegate methods
 
-- (void)processObject:(id <IDPMoneyFlow>)object {
+- (void)processObject:(id<IDPMoneyFlow>)object {
     self.state = IDPWorkerBusy;
     [self takeMoneyFromObject:object];
     [self performWorkWithObject:object];
     self.state = IDPWorkerFree;
 }
 
-- (void)delegatingObject:(id <IDPWorkerDelegate>)object didGiveMoney:(BOOL)moneyGiven {
+- (void)delegatingObject:(id<IDPWorkerDelegate>)object didGiveMoney:(BOOL)moneyGiven {
     if (moneyGiven) {
         [object.delegate processObject:object];
     }
