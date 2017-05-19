@@ -38,7 +38,7 @@ NSRange IDPMakeAlphabetRange(unichar lower, unichar upper) {
 
 + (instancetype)randomStringWithLength:(NSUInteger)length alphabet:(IDPAlphabet *)alphabet {
     NSMutableString *result = [NSMutableString stringWithCapacity:length];
-    NSUInteger alphabetLength =  [alphabet count];
+    NSUInteger alphabetLength =  alphabet.count;
     for (int i = 0; i < length; i++) {
         NSString *character = [alphabet stringAtIndex:IDPRandom(alphabetLength)];
         [result appendFormat:@"%@", character];

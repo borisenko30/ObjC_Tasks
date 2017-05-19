@@ -48,7 +48,7 @@
     NSAssert(index < count, NSRangeException);
     
     for (IDPAlphabet *alphabet in self.alphabets) {
-        count = [alphabet count];
+        count = alphabet.count;
         if (iteratedIndex < count) {
             return alphabet[iteratedIndex];
         }
@@ -60,7 +60,7 @@
 }
 
 - (NSString *)string {
-    NSMutableString *string = [NSMutableString stringWithCapacity:[self count]];
+    NSMutableString *string = [NSMutableString stringWithCapacity:self.count];
     for (IDPAlphabet *alphabet in self.alphabets) {
         [string appendString:[alphabet string]];
     }
@@ -74,7 +74,7 @@
 - (NSUInteger)countWithAlphabets:(NSArray *)alphabets {
     NSUInteger count = 0;
     for (IDPAlphabet *alphabet in alphabets) {
-        count += [alphabet count];
+        count += alphabet.count;
     }
     
     return count;
