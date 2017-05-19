@@ -54,6 +54,7 @@
     self.state = IDPWorkerFree;
 }
 
+// should be overriden in subclasses
 - (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
     
 }
