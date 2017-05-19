@@ -17,7 +17,7 @@
     NSLog(@"Counted money: %lu", self.cash);
 }
 
-- (void)performWorkWithObject:(id <IDPMoneyFlow>)object {
+- (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
     [self countMoney];
 }
 

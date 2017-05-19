@@ -36,7 +36,7 @@
     car.state = IDPCarClean;
 }
 
-- (void)performWorkWithObject:(id <IDPMoneyFlow>)car {
+- (void)performWorkWithObject:(id<IDPMoneyFlow>)car {
         self.car = car;
         [self washCar:car];
         self.car = nil;

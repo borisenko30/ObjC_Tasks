@@ -54,7 +54,7 @@
     self.state = IDPWorkerFree;
 }
 
-- (void)performWorkWithObject:(id <IDPMoneyFlow>)object {
+- (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
     
 }
 
