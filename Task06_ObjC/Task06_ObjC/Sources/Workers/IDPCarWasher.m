@@ -10,7 +10,7 @@
 #import "IDPCar.h"
 
 #pragma mark -
-#pragma Private declarations
+#pragma mark Private declarations
 
 @interface IDPCarWasher ()
 @property (nonatomic, retain) IDPCar *car;
@@ -19,8 +19,10 @@
 
 @implementation IDPCarWasher
 
+@synthesize cash = _cash;
+
 #pragma mark -
-#pragma Initializations and deallocations
+#pragma mark Initializations and deallocations
 
 -(void)dealloc {
     self.car = nil;
@@ -31,17 +33,33 @@
 #pragma mark -
 #pragma Public
 
+- (void)setCash:(NSUInteger)cash {
+    _cash = cash;
+    if (cash) {
+        [self delegatingObjectDidGetMoney:self];
+    }
+}
+
 - (void)washCar:(IDPCar *)car {
     NSLog(@"Car is clean!");
     car.state = IDPCarClean;
 }
 
 - (void)performWorkWithObject:(id)car {
-    if ([car isKindOfClass:[IDPCar class]]) {
         self.car = car;
         [self washCar:car];
         self.car = nil;
-    }
+}
+
+#pragma mark -
+#pragma mark IDPWorkerDelegate methods
+
+// carWasher overrides parent method to perform work before taking money
+- (void)processObject:(id<IDPMoneyFlow>)object {
+    self.state = IDPWorkerBusy;
+    [self performWorkWithObject:object];
+    [self takeMoneyFromObject:object];
+    self.state = IDPWorkerFree;
 }
 
 @end

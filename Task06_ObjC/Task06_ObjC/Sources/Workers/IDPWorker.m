@@ -10,7 +10,7 @@
 #import "IDPCar.h"
 
 #pragma mark -
-#pragma Private declarations
+#pragma mark Private declarations
 
 @interface IDPWorker ()
 @property (nonatomic, assign) NSUInteger cash;
@@ -20,7 +20,7 @@
 @implementation IDPWorker
 
 #pragma mark -
-#pragma Initializations
+#pragma mark Initializations
 
 - (instancetype)init {
     self = [super init];
@@ -30,12 +30,11 @@
 }
 
 #pragma mark -
-#pragma Public
+#pragma mark Public
 
 - (NSUInteger)giveMoney {
     NSUInteger money = self.cash;
     self.cash = 0;
-    [self delegatingObject:self didGiveMoney:YES];
     
     return money;
 }
@@ -54,19 +53,18 @@
 }
 
 #pragma mark -
-#pragma IDPWorkerDelegate methods
+#pragma mark IDPWorkerDelegate methods
 
 - (void)processObject:(id<IDPMoneyFlow>)object {
     self.state = IDPWorkerBusy;
     [self takeMoneyFromObject:object];
     [self performWorkWithObject:object];
+    [self delegatingObjectDidGetMoney:self];
     self.state = IDPWorkerFree;
 }
 
-- (void)delegatingObject:(id<IDPWorkerDelegate>)object didGiveMoney:(BOOL)moneyGiven {
-    if (moneyGiven) {
+- (void)delegatingObjectDidGetMoney:(id<IDPWorkerDelegate>)object; {
         [object.delegate processObject:object];
-    }
 }
 
 @end
