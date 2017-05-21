@@ -22,8 +22,8 @@ typedef NS_ENUM(NSUInteger, IDPWorkerState) {
 @property (nonatomic, assign)     IDPWorkerState    state;
 @property (nonatomic, readonly)   NSUInteger        cash;
 
-@property (nonatomic, assign) id <IDPWorkerDelegate> delegate;
+@property (nonatomic, assign) id<IDPWorkerDelegate> delegate;
 
-- (void)performWorkWithObject:(id <IDPMoneyFlow>)object;
+- (void)performWorkWithObject:(id<IDPMoneyFlow>)object;
 
 @end

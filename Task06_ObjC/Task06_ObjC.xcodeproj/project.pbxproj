@@ -106,9 +106,9 @@
 		565DFF421ECDDDC800FD1E2A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				565DFF551ECDDDC800FD1E2A /* Workers */,
-				565DFF4E1ECDDDC800FD1E2A /* Library */,
 				565DFF431ECDDDC800FD1E2A /* Extensions */,
+				565DFF4E1ECDDDC800FD1E2A /* Library */,
+				565DFF551ECDDDC800FD1E2A /* Workers */,
 				565DFF4A1ECDDDC800FD1E2A /* IDPCar.h */,
 				565DFF4B1ECDDDC800FD1E2A /* IDPCar.m */,
 				565DFF4C1ECDDDC800FD1E2A /* IDPEnterprise.h */,
@@ -491,6 +491,7 @@
 		56FFC2811ECC656F00F16410 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -498,6 +499,7 @@
 		56FFC2821ECC656F00F16410 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

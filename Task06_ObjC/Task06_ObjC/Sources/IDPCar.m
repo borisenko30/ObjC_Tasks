@@ -12,7 +12,7 @@
 #import "IDPMacros.h"
 #import "IDPRandom.h"
 
-IDPStaticConstantRange(IDPCashRange, 100, 200)
+IDPStaticConstantRange(IDPCashAmountRange, 100, 200)
 
 #pragma mark -
 #pragma Private declarations
@@ -25,23 +25,32 @@ IDPStaticConstantRange(IDPCashRange, 100, 200)
 @implementation IDPCar
 
 #pragma mark -
-#pragma Initializations
+#pragma mark Initializations
 
 - (instancetype)init {
     self = [super init];
     self.state = IDPCarDirty;
-    self.cash = IDPRandomWithRange(IDPCashRange);
     
     return self;
 }
 
 #pragma mark -
-#pragma Public
+#pragma mark Public
+
+- (void)setCash:(NSUInteger)cash {
+    _cash = cash;
+    if (cash) {
+        [self delegatingObjectDidGetMoney:self];
+    }
+}
+
+- (void)payForCarWash {
+    self.cash = IDPRandomWithRange(IDPCashAmountRange);
+}
 
 - (NSUInteger)giveMoney {
     NSUInteger money = self.cash;
     self.cash = 0;
-    [self delegatingObject:self didGiveMoney:YES];
     
     return money;
 }
@@ -54,10 +63,11 @@ IDPStaticConstantRange(IDPCashRange, 100, 200)
     [self takeMoney:[object giveMoney]];
 }
 
-- (void)delegatingObject:(id <IDPWorkerDelegate>)object didGiveMoney:(BOOL)moneyGiven {
-    if (moneyGiven) {
-        [object.delegate processObject:object];
-    }
+#pragma mark -
+#pragma mark IDPWorkerDelegate methods
+
+- (void)delegatingObjectDidGetMoney:(id<IDPWorkerDelegate>)object; {
+    [object.delegate processObject:object];
 }
 
 @end

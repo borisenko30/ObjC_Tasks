@@ -9,7 +9,7 @@
 #import "IDPDirector.h"
 
 #pragma mark -
-#pragma Private declarations
+#pragma mark Private declarations
 
 @interface IDPDirector ()
 @property (nonatomic, assign) NSUInteger cash;
@@ -21,13 +21,13 @@
 @dynamic cash;
 
 #pragma mark -
-#pragma Public
+#pragma mark Public
 
 - (void)makeProfit {
     NSLog(@"Boss has got some profit: %lu", self.cash);
 }
 
-- (void)performWorkWithObject:(id <IDPMoneyFlow>)object {
+- (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
     [self makeProfit];
 }
 

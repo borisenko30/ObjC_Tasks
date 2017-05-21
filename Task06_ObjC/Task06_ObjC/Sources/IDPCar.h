@@ -12,14 +12,16 @@
 #import "IDPWorkerDelegate.h"
 
 typedef NS_ENUM(NSUInteger, IDPCarState) {
-        IDPCarClean,
-        IDPCarDirty
+    IDPCarClean,
+    IDPCarDirty
 };
 
 @interface IDPCar : NSObject <IDPMoneyFlow, IDPWorkerDelegate>
 @property (nonatomic, assign)   IDPCarState     state;
 @property (nonatomic, readonly) NSUInteger      cash;
 
-@property (nonatomic, assign) id <IDPWorkerDelegate> delegate;
+@property (nonatomic, assign) id<IDPWorkerDelegate> delegate;
+
+- (void)payForCarWash;
 
 @end
