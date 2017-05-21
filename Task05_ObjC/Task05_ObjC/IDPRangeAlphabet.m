@@ -9,7 +9,7 @@
 #import "IDPRangeAlphabet.h"
 
 #pragma mark -
-#pragma Private declarations
+#pragma mark Private declarations
 
 @interface IDPRangeAlphabet ()
 @property (nonatomic, assign) NSRange range;

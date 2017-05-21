@@ -25,7 +25,7 @@
 IDPStaticConstantRange(IDPCarWashersQuantityRange, 1, 5)
 
 #pragma mark -
-#pragma Private declarations
+#pragma mark Private declarations
 
 @interface IDPEnterprise ()
 @property (nonatomic, retain) NSArray           *carWashers;
@@ -37,7 +37,7 @@ IDPStaticConstantRange(IDPCarWashersQuantityRange, 1, 5)
 @implementation IDPEnterprise
 
 #pragma mark -
-#pragma Deallocations and initializations
+#pragma mark Deallocations and initializations
 
 - (void)dealloc {
     self.carWashers = nil;
@@ -56,7 +56,7 @@ IDPStaticConstantRange(IDPCarWashersQuantityRange, 1, 5)
 }
 
 #pragma mark -
-#pragma Public
+#pragma mark Public
 
 - (void)processCar:(IDPCar *)car {
     IDPCarWasher *carWasher = [self freeCarWasher];
@@ -70,7 +70,7 @@ IDPStaticConstantRange(IDPCarWashersQuantityRange, 1, 5)
 }
 
 #pragma mark -
-#pragma Private
+#pragma mark Private
 
 - (void)assignWorkers {
     self.carWashers = [NSArray objectsWithCount:IDPRandomWithRange(IDPCarWashersQuantityRange) factoryBlock:^{

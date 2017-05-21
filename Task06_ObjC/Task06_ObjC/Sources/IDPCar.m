@@ -15,7 +15,7 @@
 IDPStaticConstantRange(IDPCashAmountRange, 100, 200)
 
 #pragma mark -
-#pragma Private declarations
+#pragma mark Private declarations
 
 @interface IDPCar ()
 @property (nonatomic, assign) NSUInteger cash;

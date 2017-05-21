@@ -11,7 +11,7 @@
 @implementation IDPAccountant
 
 #pragma mark -
-#pragma Public
+#pragma mark Public
 
 - (void)countMoney {
     NSLog(@"Counted money: %lu", self.cash);

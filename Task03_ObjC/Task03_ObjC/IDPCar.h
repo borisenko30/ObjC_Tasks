@@ -11,8 +11,8 @@
 #import "IDPMoneyFlow.h"
 
 typedef NS_ENUM(NSUInteger, IDPCarState) {
-        IDPCarClean,
-        IDPCarDirty
+    IDPCarClean,
+    IDPCarDirty
 };
 
 @interface IDPCar : NSObject <IDPMoneyFlow>

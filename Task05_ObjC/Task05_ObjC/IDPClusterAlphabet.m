@@ -9,7 +9,7 @@
 #import "IDPClusterAlphabet.h"
 
 #pragma mark -
-#pragma Private declarations
+#pragma mark Private declarations
 
 @interface IDPClusterAlphabet ()
 @property (nonatomic, retain) NSArray *alphabets;
@@ -19,7 +19,7 @@
 @implementation IDPClusterAlphabet
 
 #pragma mark -
-#pragma Initializations and deallocations
+#pragma mark Initializations and deallocations
 
 - (void)dealloc {
     self.alphabets = nil;
@@ -35,7 +35,7 @@
 }
 
 #pragma mark -
-#pragma Public
+#pragma mark Public
 
 - (NSUInteger)count {
     return [self countWithAlphabets:self.alphabets];
@@ -69,7 +69,7 @@
 }
 
 #pragma mark -
-#pragma Private
+#pragma mark Private
 
 - (NSUInteger)countWithAlphabets:(NSArray *)alphabets {
     NSUInteger count = 0;

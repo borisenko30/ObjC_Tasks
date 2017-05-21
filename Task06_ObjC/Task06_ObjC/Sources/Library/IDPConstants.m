@@ -9,4 +9,4 @@
 #import "IDPConstants.h"
 
 IDPGenerateConstant(NSUInteger, IDPMaxArrayLength, 5)
-IDPGanerateConstantRange(IDPCashRange, 100, 200)
+IDPGenerateConstantRange(IDPCashRange, 100, 200)
