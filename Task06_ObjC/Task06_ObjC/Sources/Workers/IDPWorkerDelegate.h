@@ -9,12 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol IDPWorkerDelegate <NSObject>
-@property (nonatomic, assign) id<IDPWorkerDelegate> delegate;
 
-@optional
-- (void)processObject:(id)object;
-
-@required
-- (void)delegatingObjectDidGetMoney:(id)object;
+- (void)delegatingObjectDidFinishWork:(id)object;
 
 @end

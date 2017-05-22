@@ -19,14 +19,13 @@ SPEC_BEGIN(Task06_Test)
 
 describe(@"IDPWorkerDelegate", ^{
     
-    context(@"when carWasher received money", ^{
+    context(@"when carWasher did finish work", ^{
         __block IDPCarWasher *carWasher;
         __block IDPCar *car;
         
         beforeAll(^{ // Occurs once
             car = [IDPCar object];
             carWasher = [IDPCarWasher object];
-            car.delegate = carWasher;
         });
         
         afterAll(^{ // Occurs once
@@ -34,9 +33,9 @@ describe(@"IDPWorkerDelegate", ^{
             car = nil;
         });
         
-        it(@"delegate should receive -delegatingObjectDidGetMoney", ^{
-            [[carWasher should] receive:@selector(delegatingObjectDidGetMoney:)];
-            [car payForCarWash];
+        it(@"carWaher should receive -delegatingObjectDidGetMoney", ^{
+            [[carWasher should] receive:@selector(delegatingObjectDidFinishWork:)];
+            [carWasher processObject:car];
         });
         
         context(@"when accountant did his work", ^{
@@ -54,8 +53,8 @@ describe(@"IDPWorkerDelegate", ^{
                 accountant = nil;
             });
             
-            it(@"delegate should receive -delegatingObjectDidGetMoney", ^{
-                [[director should] receive:@selector(delegatingObjectDidGetMoney:)];
+            it(@"accountant should receive -delegatingObjectDidGetMoney", ^{
+                [[director should] receive:@selector(delegatingObjectDidFinishWork:)];
                 [accountant processObject:carWasher];
             });
         });

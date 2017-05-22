@@ -16,12 +16,8 @@ typedef NS_ENUM(NSUInteger, IDPCarState) {
     IDPCarDirty
 };
 
-@interface IDPCar : NSObject <IDPMoneyFlow, IDPWorkerDelegate>
+@interface IDPCar : NSObject <IDPMoneyFlow>
 @property (nonatomic, assign)   IDPCarState     state;
 @property (nonatomic, readonly) NSUInteger      cash;
-
-@property (nonatomic, assign) id<IDPWorkerDelegate> delegate;
-
-- (void)payForCarWash;
 
 @end

@@ -30,23 +30,13 @@ IDPStaticConstantRange(IDPCashAmountRange, 100, 200)
 - (instancetype)init {
     self = [super init];
     self.state = IDPCarDirty;
+    self.cash = IDPRandomWithRange(IDPCashAmountRange);
     
     return self;
 }
 
 #pragma mark -
 #pragma mark Public
-
-- (void)setCash:(NSUInteger)cash {
-    _cash = cash;
-    if (cash) {
-        [self delegatingObjectDidGetMoney:self];
-    }
-}
-
-- (void)payForCarWash {
-    self.cash = IDPRandomWithRange(IDPCashAmountRange);
-}
 
 - (NSUInteger)giveMoney {
     NSUInteger money = self.cash;
@@ -61,13 +51,6 @@ IDPStaticConstantRange(IDPCashAmountRange, 100, 200)
 
 - (void)takeMoneyFromObject:(id<IDPMoneyFlow>)object {
     [self takeMoney:[object giveMoney]];
-}
-
-#pragma mark -
-#pragma mark IDPWorkerDelegate methods
-
-- (void)delegatingObjectDidGetMoney:(id<IDPWorkerDelegate>)object; {
-    [object.delegate processObject:object];
 }
 
 @end

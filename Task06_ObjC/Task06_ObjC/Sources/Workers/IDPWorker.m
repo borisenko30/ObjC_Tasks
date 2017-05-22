@@ -13,7 +13,8 @@
 #pragma mark Private declarations
 
 @interface IDPWorker ()
-@property (nonatomic, assign) NSUInteger cash;
+@property (nonatomic, assign) NSUInteger        cash;
+@property (nonatomic, assign) IDPWorkerState    state;
 
 @end
 
@@ -27,6 +28,18 @@
     self.state = IDPWorkerFree;
     
     return self;
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setState:(IDPWorkerState)state {
+    if (_state != state) {
+        _state = state;
+        if (state == IDPWorkerDidFinishWork) {
+            [self delegatingObjectDidFinishWork:self];
+        }
+    }
 }
 
 #pragma mark -
@@ -52,19 +65,21 @@
     
 }
 
-#pragma mark -
-#pragma mark IDPWorkerDelegate methods
-
 - (void)processObject:(id<IDPMoneyFlow>)object {
     self.state = IDPWorkerBusy;
     [self takeMoneyFromObject:object];
     [self performWorkWithObject:object];
-    [self delegatingObjectDidGetMoney:self];
+    self.state = IDPWorkerDidFinishWork;
     self.state = IDPWorkerFree;
 }
 
-- (void)delegatingObjectDidGetMoney:(id<IDPWorkerDelegate>)object; {
-        [object.delegate processObject:object];
+#pragma mark -
+#pragma mark IDPWorkerDelegate methods
+
+- (void)delegatingObjectDidFinishWork:(IDPWorker *)worker; {
+    if (worker.state == IDPWorkerDidFinishWork) {
+        [(IDPWorker *)worker.delegate processObject:worker];
+    }
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "IDPEnterprise.h"
 
+#import "IDPWorker.h"
 #import "IDPCarWasher.h"
 #import "IDPAccountant.h"
 #import "IDPDirector.h"
@@ -60,13 +61,13 @@ IDPStaticConstantRange(IDPCarWashersQuantityRange, 1, 5)
 
 - (void)processCar:(IDPCar *)car {
     IDPCarWasher *carWasher = [self freeCarWasher];
-    car.delegate = carWasher;
     IDPAccountant *accountant = self.accountant;
-    carWasher.delegate = accountant;
     IDPDirector *director = self.director;
+    
+    carWasher.delegate = accountant;
     accountant.delegate = director;
   
-    [car payForCarWash];
+    [carWasher processObject:car];
 }
 
 #pragma mark -

@@ -163,6 +163,7 @@
 		56FFC2701ECC656F00F16410 = {
 			isa = PBXGroup;
 			children = (
+				56FFC2C41ECC7C6000F16410 /* Task06_Tests */,
 				56FFC28F1ECC696F00F16410 /* Task06_ObjC */,
 				56FFC27A1ECC656F00F16410 /* Products */,
 				F7D453F91BCA694024978175 /* Pods */,
@@ -183,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				565DFF421ECDDDC800FD1E2A /* Sources */,
-				56FFC2C41ECC7C6000F16410 /* Task06_Tests */,
 			);
 			path = Task06_ObjC;
 			sourceTree = "<group>";
