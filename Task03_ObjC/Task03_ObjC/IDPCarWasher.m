@@ -22,7 +22,7 @@
 #pragma mark -
 #pragma mark Initializations and deallocations
 
--(void)dealloc {
+- (void)dealloc {
     self.car = nil;
     
     [super dealloc];

@@ -52,12 +52,11 @@
 
 - (void)processCar:(IDPCar *)car {
     IDPCarWasher *carWasher = [self freeWorkerWithClass:[IDPCarWasher class]];
-    [carWasher processObject:car];
-        
     IDPAccountant *accountant = [self freeWorkerWithClass:[IDPAccountant class]];
-    [accountant processObject:carWasher];
-        
     IDPDirector *director = [self freeWorkerWithClass:[IDPDirector class]];
+    
+    [carWasher processObject:car];
+    [accountant processObject:carWasher];
     [director processObject:accountant];
 }
 
