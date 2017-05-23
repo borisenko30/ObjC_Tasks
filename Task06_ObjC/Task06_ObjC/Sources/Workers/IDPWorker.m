@@ -23,6 +23,12 @@
 #pragma mark -
 #pragma mark Initializations
 
+- (void)dealloc {
+    self.delegate = nil;
+    
+    [super dealloc];
+}
+
 - (instancetype)init {
     self = [super init];
     self.state = IDPWorkerFree;
@@ -37,7 +43,7 @@
     if (_state != state) {
         _state = state;
         if (state == IDPWorkerDidFinishWork) {
-            [self delegatingObjectDidFinishWork:self];
+            [self.delegate delegatingObjectDidFinishWork:self];
         }
     }
 }
@@ -70,16 +76,14 @@
     [self takeMoneyFromObject:object];
     [self performWorkWithObject:object];
     self.state = IDPWorkerDidFinishWork;
-    self.state = IDPWorkerFree;
 }
 
 #pragma mark -
 #pragma mark IDPWorkerDelegate methods
 
 - (void)delegatingObjectDidFinishWork:(IDPWorker *)worker; {
-    if (worker.state == IDPWorkerDidFinishWork) {
-        [(IDPWorker *)worker.delegate processObject:worker];
-    }
+    [self processObject:worker];
+    worker.state = IDPWorkerFree;
 }
 
 @end

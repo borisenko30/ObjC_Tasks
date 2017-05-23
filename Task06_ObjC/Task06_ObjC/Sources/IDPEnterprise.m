@@ -82,12 +82,11 @@ IDPStaticConstantRange(IDPCarWashersQuantityRange, 1, 5)
 }
 
 - (IDPCarWasher *)freeCarWasher {
-    NSArray *carWashers = self.carWashers;
-    carWashers = [carWashers filteredArrayWithBlock:^BOOL(IDPCarWasher *carWasher) {
-        return carWasher.state == IDPWorkerFree;
+    NSArray *washers = [self.carWashers filteredArrayWithBlock:^BOOL(IDPCarWasher *washer) {
+        return washer.state == IDPWorkerFree;
     }];
     
-    return [carWashers firstObject];
+    return [washers firstObject];
 }
 
 @end
