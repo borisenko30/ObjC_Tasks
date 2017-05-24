@@ -19,16 +19,6 @@
 
 - (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
     [self makeProfit];
-    self.state = IDPWorkerReadyForProcessing;
 }
-
-#pragma mark -
-#pragma mark IDPObserver methods
-
-//- (void)objectIsReadyForProcessing:(IDPWorker *)worker {
-//    //[self performSelectorInBackground:@selector(processObject:) withObject:worker];
-//    [self processObject:worker];
-//    worker.state = IDPWorkerReadyForProcessing;
-//}
 
 @end

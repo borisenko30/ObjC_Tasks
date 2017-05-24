@@ -65,8 +65,7 @@
 
 - (void)startWorking {
     // the kostil, epta!
-    ((IDPCarWasher *)self.carWashers[0]).state = IDPWorkerBusy;
-    ((IDPCarWasher *)self.carWashers[0]).state = IDPWorkerReadyForWork;
+    [self.carWashers[0] processObject:self.cars[0]];
 }
 
 #pragma mark -

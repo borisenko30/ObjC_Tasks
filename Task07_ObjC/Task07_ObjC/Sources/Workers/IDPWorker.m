@@ -120,8 +120,10 @@
 
 - (void)objectIsReadyForProcessing:(IDPWorker *)worker {
     //[self performSelectorInBackground:@selector(processObject:) withObject:worker];
-    [self processObject:worker];
-    worker.state = IDPWorkerReadyForWork;
+    if (worker.cash) {
+        [self processObject:worker];
+        worker.state = IDPWorkerReadyForWork;
+    }
 }
 
 @end
