@@ -74,13 +74,13 @@
 }
 
 - (void)processObject:(id<IDPMoneyFlow>)object {
-    //@synchronized (self) {
+    @synchronized (self) {
         self.state = IDPWorkerBusy;
         [self takeMoneyFromObject:object];
         [self performWorkWithObject:object];
-        //sleep(IDPWorkTime);
+        sleep(IDPWorkTime);
         self.state = IDPWorkerReadyForProcessing;
-    //}
+    }
 }
 
 #pragma mark -
@@ -119,10 +119,12 @@
 #pragma mark IDPObserver methods
 
 - (void)objectIsReadyForProcessing:(IDPWorker *)worker {
-    //[self performSelectorInBackground:@selector(processObject:) withObject:worker];
-    if (worker.cash) {
-        [self processObject:worker];
-        worker.state = IDPWorkerReadyForWork;
+    @synchronized (self) {
+        if (worker.cash) {
+            [self performSelectorInBackground:@selector(processObject:) withObject:worker];
+            //[self processObject:worker];
+            worker.state = IDPWorkerReadyForWork;
+        }
     }
 }
 

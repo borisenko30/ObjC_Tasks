@@ -32,7 +32,7 @@
 #pragma Public
 
 - (void)washCar:(IDPCar *)car {
-    NSLog(@"Car is clean!, %@", self);
+    NSLog(@"Car is clean!, washer %@, car %@", self, car);
     car.state = IDPCarClean;
 }
 
