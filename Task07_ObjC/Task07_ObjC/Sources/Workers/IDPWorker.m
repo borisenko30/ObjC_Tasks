@@ -1,0 +1,119 @@
+//
+//  Worker.m
+//  Task03_ObjC
+//
+//  Created by Student003 on 5/4/17.
+//  Copyright © 2017 Student003. All rights reserved.
+//
+
+#import "IDPWorker.h"
+#import "IDPCar.h"
+#import "IDPConstants.h"
+
+#pragma mark -
+#pragma mark Private declarations
+
+@interface IDPWorker ()
+@property (nonatomic, assign) NSUInteger        cash;
+@property (nonatomic, assign) IDPWorkerState    state;
+@property (nonatomic, retain) NSHashTable       *observers;
+
+
+@end
+
+@implementation IDPWorker
+
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (void)dealloc {
+    self.observers = nil;
+    
+    [super dealloc];
+}
+
+- (instancetype)init {
+    self = [super init];
+    self.state = IDPWorkerFree;
+    self.observers = [NSHashTable weakObjectsHashTable];
+    
+    return self;
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setState:(IDPWorkerState)state {
+    if (_state != state) {
+        _state = state;
+        if (state == IDPWorkerReadyToProcess) {
+            [self notifyObservers];
+        }
+    }
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (NSUInteger)giveMoney {
+    NSUInteger money = self.cash;
+    self.cash = 0;
+    
+    return money;
+}
+
+- (void)takeMoney:(NSUInteger)money {
+    self.cash += money;
+}
+
+- (void)takeMoneyFromObject:(id<IDPMoneyFlow>)object {
+    [self takeMoney:[object giveMoney]];
+}
+
+// should be overriden in subclasses
+- (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
+    
+}
+
+- (void)processObject:(id<IDPMoneyFlow>)object {
+    @synchronized (self) {
+        self.state = IDPWorkerBusy;
+        [self takeMoneyFromObject:object];
+        [self performWorkWithObject:object];
+        sleep(IDPWorkTime);
+        self.state = IDPWorkerReadyToProcess;
+        self.state = IDPWorkerFree;
+    }
+}
+
+#pragma mark -
+#pragma mark IDPObservable methods
+
+- (void)addObserver:(id)observer {
+    if (observer) {
+        [self.observers addObject:observer];
+    }
+}
+
+- (void)removeObserver:(id)observer {
+    [self.observers removeObject:observer];
+}
+
+- (void)notifyObservers {
+    for (id<IDPObserver> observer in self.observers) {
+        //[observer performSelectorOnMainThread:@selector(objectDidFinishWork:) withObject:self];
+        [observer objectDidFinishWork:self];
+    }
+}
+
+#pragma mark -
+#pragma mark IDPObserver methods
+
+- (void)objectDidFinishWork:(IDPWorker *)worker {
+    //NSThread *thread = [[NSThread new] autorelease];
+    [self performSelectorInBackground:@selector(processObject:) withObject:worker];
+    //[self processObject:worker];
+    //[NSThread detachNewThreadSelector:@selector(processObject:) toTarget:self withObject:worker];
+}
+
+@end
