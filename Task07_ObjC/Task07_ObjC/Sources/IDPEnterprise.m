@@ -29,6 +29,7 @@
 
 @interface IDPEnterprise ()
 @property (nonatomic, retain) NSArray           *carWashers;
+@property (nonatomic, retain) NSArray           *cars;
 @property (nonatomic, retain) IDPAccountant     *accountant;
 @property (nonatomic, retain) IDPDirector       *director;
 
@@ -41,6 +42,7 @@
 
 - (void)dealloc {
     self.carWashers = nil;
+    self.cars = nil;
     self.accountant = nil;
     self.director = nil;
     
@@ -50,6 +52,9 @@
 - (instancetype)init {
     self = [super init];
     self.carWashers = [NSArray array];
+    self.cars = [IDPCar objectsWithCount:IDPMaxArrayLength];
+    self.accountant = [IDPAccountant object];
+    self.director = [IDPDirector object];
     [self assignWorkers];
     
     return self;
@@ -58,43 +63,44 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)processCar:(IDPCar *)car {
-    IDPCarWasher *carWasher = [self freeCarWasher];
-    IDPAccountant *accountant = self.accountant;
-    IDPDirector *director = self.director;
-    
-    [carWasher addObserver:accountant];
-    [accountant addObserver:director];
-  
-    [carWasher processObject:car];
+- (void)startWorking {
+    // the kostil, epta!
+    ((IDPCarWasher *)self.carWashers[0]).state = IDPWorkerBusy;
+    ((IDPCarWasher *)self.carWashers[0]).state = IDPWorkerReadyForWork;
+}
+
+#pragma mark -
+#pragma mark Observer
+
+- (void)objectIsReadyForWork:(IDPCarWasher *)washer {
+    //@synchronized (self) {
+    IDPCar *car = [self dirtyCar];
+    if (!car) {
+        return;
+    }
+    [washer processObject:car];
+    washer.state = IDPWorkerReadyForProcessing;
+    //}
 }
 
 #pragma mark -
 #pragma mark Private
 
 - (void)assignWorkers {
-    //self.carWashers = [NSArray objectsWithCount:IDPRandomWithRange(IDPCarWashersQuantityRange) factoryBlock:^{
-    self.carWashers = [NSArray objectsWithCount:IDPRandom(IDPMaxArrayLength) factoryBlock:^{
-        return [IDPCarWasher object];
-    }];
-    self.accountant = [IDPAccountant object];
-    self.director = [IDPDirector object];
-}
-
-- (IDPCarWasher *)freeCarWasher {
-    NSArray *carWashers = self.carWashers;
-    carWashers = [carWashers filteredArrayWithBlock:^BOOL(IDPCarWasher *carWasher) {
-        return carWasher.state == IDPWorkerFree;
+    self.carWashers = [NSArray objectsWithCount:IDPMaxArrayLength factoryBlock:^{
+        IDPCarWasher *washer = [IDPCarWasher object];
+        [washer addObserver:self];
+        [washer addObserver:self.accountant];
+        return washer;
     }];
     
-    return [carWashers firstObject];
+    [self.accountant addObserver:self.director];
 }
 
-#pragma mark -
-#pragma mark Observer
-
-- (void)objectIsReadyForWork:(id)object {
-    
+- (IDPCar *)dirtyCar {
+    return [[self.cars filteredArrayWithBlock:^BOOL(IDPCar *car) {
+        return car.state == IDPCarDirty;
+    }] firstObject];
 }
 
 @end

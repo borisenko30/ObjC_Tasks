@@ -10,4 +10,4 @@
 
 IDPGenerateConstant(NSUInteger, IDPMaxArrayLength, 5)
 IDPGenerateConstantRange(IDPCashRange, 100, 200)
-IDPGenerateConstant(NSUInteger, IDPWorkTime, 2)
+IDPGenerateConstant(unsigned int, IDPWorkTime, 2)

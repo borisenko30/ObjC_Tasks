@@ -17,12 +17,8 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSArray *cars = [IDPCar objectsWithCount:IDPMaxArrayLength];
         IDPEnterprise *enterprise = [IDPEnterprise object];
-        for (IDPCar *car in cars ) {
-            [enterprise processCar:car];
-            NSLog(@"-----------------------");
-        }
+        [enterprise startWorking];
     }
     
     return 0;

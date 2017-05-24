@@ -15,6 +15,6 @@
 
 @interface IDPEnterprise : NSObject <IDPObserver>
 
-- (void)processCar:(IDPCar *)car;
+- (void)startWorking;
 
 @end

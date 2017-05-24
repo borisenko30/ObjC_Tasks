@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, IDPWorkerState) {
-    IDPWorkerFree,
+    IDPWorkerReadyForWork,
     IDPWorkerBusy,
-    IDPWorkerReadyToProcess
+    IDPWorkerReadyForProcessing
 };
 
 @protocol IDPObservable <NSObject>
-@property (nonatomic, readonly)     IDPWorkerState  state;
+@property (nonatomic, assign)       IDPWorkerState  state;
 @property (nonatomic, readonly)     NSHashTable     *observers;
 
 - (void)addObserver:(id)observer;

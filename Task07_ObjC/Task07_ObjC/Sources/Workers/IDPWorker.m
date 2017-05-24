@@ -7,17 +7,15 @@
 //
 
 #import "IDPWorker.h"
-#import "IDPCar.h"
 #import "IDPConstants.h"
+#import "IDPEnterprise.h"
 
 #pragma mark -
 #pragma mark Private declarations
 
 @interface IDPWorker ()
 @property (nonatomic, assign) NSUInteger        cash;
-@property (nonatomic, assign) IDPWorkerState    state;
 @property (nonatomic, retain) NSHashTable       *observers;
-
 
 @end
 
@@ -34,7 +32,7 @@
 
 - (instancetype)init {
     self = [super init];
-    self.state = IDPWorkerFree;
+    self.state = IDPWorkerReadyForWork;
     self.observers = [NSHashTable weakObjectsHashTable];
     
     return self;
@@ -46,7 +44,7 @@
 - (void)setState:(IDPWorkerState)state {
     if (_state != state) {
         _state = state;
-        if (state == IDPWorkerReadyToProcess) {
+        if (state != IDPWorkerBusy) {
             [self notifyObservers];
         }
     }
@@ -76,14 +74,13 @@
 }
 
 - (void)processObject:(id<IDPMoneyFlow>)object {
-    @synchronized (self) {
+    //@synchronized (self) {
         self.state = IDPWorkerBusy;
         [self takeMoneyFromObject:object];
         [self performWorkWithObject:object];
-        sleep(IDPWorkTime);
-        self.state = IDPWorkerReadyToProcess;
-        self.state = IDPWorkerFree;
-    }
+        //sleep(IDPWorkTime);
+        self.state = IDPWorkerReadyForProcessing;
+    //}
 }
 
 #pragma mark -
@@ -101,19 +98,30 @@
 
 - (void)notifyObservers {
     for (id<IDPObserver> observer in self.observers) {
-        //[observer performSelectorOnMainThread:@selector(objectDidFinishWork:) withObject:self];
-        [observer objectDidFinishWork:self];
+        switch (self.state) {
+            case IDPWorkerReadyForWork:
+                if ([observer isKindOfClass:[IDPEnterprise class]]) {
+                    [observer objectIsReadyForWork:self];
+                }
+                break;
+            case IDPWorkerReadyForProcessing:
+                if ([observer isKindOfClass:[IDPWorker class]]) {
+                    [observer objectIsReadyForProcessing:self];
+                }
+                break;
+            default:
+                break;
+        }
     }
 }
 
 #pragma mark -
 #pragma mark IDPObserver methods
 
-- (void)objectDidFinishWork:(IDPWorker *)worker {
-    //NSThread *thread = [[NSThread new] autorelease];
-    [self performSelectorInBackground:@selector(processObject:) withObject:worker];
-    //[self processObject:worker];
-    //[NSThread detachNewThreadSelector:@selector(processObject:) toTarget:self withObject:worker];
+- (void)objectIsReadyForProcessing:(IDPWorker *)worker {
+    //[self performSelectorInBackground:@selector(processObject:) withObject:worker];
+    [self processObject:worker];
+    worker.state = IDPWorkerReadyForWork;
 }
 
 @end

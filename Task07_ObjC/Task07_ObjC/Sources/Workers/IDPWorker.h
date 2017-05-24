@@ -15,9 +15,8 @@
 @interface IDPWorker : NSObject <IDPMoneyFlow, IDPObserver, IDPObservable>
 @property (nonatomic, readonly)   NSUInteger        salary;
 @property (nonatomic, readonly)   NSUInteger        experience;
-@property (nonatomic, readonly)   IDPWorkerState    state;
-@property (nonatomic, readonly)   NSUInteger        cash;
+@property (nonatomic, assign)   IDPWorkerState    state;
 
-- (void)performWorkWithObject:(id<IDPMoneyFlow>)object;
+- (void)processObject:(id<IDPMoneyFlow>)object;
 
 @end

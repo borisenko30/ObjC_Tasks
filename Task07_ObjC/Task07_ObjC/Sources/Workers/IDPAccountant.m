@@ -18,9 +18,7 @@
 }
 
 - (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
-    @synchronized (self) {
-        [self countMoney];
-    }
+    [self countMoney];
 }
 
 @end

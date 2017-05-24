@@ -8,17 +8,7 @@
 
 #import "IDPDirector.h"
 
-#pragma mark -
-#pragma mark Private declarations
-
-@interface IDPDirector ()
-@property (nonatomic, assign) NSUInteger cash;
-
-@end
-
 @implementation IDPDirector
-
-@dynamic cash;
 
 #pragma mark -
 #pragma mark Public
@@ -28,7 +18,17 @@
 }
 
 - (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
-        [self makeProfit];
+    [self makeProfit];
+    self.state = IDPWorkerReadyForProcessing;
 }
+
+#pragma mark -
+#pragma mark IDPObserver methods
+
+//- (void)objectIsReadyForProcessing:(IDPWorker *)worker {
+//    //[self performSelectorInBackground:@selector(processObject:) withObject:worker];
+//    [self processObject:worker];
+//    worker.state = IDPWorkerReadyForProcessing;
+//}
 
 @end

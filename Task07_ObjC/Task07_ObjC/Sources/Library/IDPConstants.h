@@ -12,4 +12,4 @@
 
 IDPDeclareConstant(NSUInteger, IDPMaxArrayLength)
 IDPDeclareConstant(NSRange, IDPCashRange)
-IDPDeclareConstant(NSUInteger, IDPWorkTime)
+IDPDeclareConstant(unsigned int, IDPWorkTime)
