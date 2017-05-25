@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		56DEA1041ED71E2D00331383 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DEA1031ED71E2D00331383 /* main.m */; };
 		56DEA1281ED71E5600331383 /* NSArray+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DEA10D1ED71E5600331383 /* NSArray+IDPExtensions.m */; };
 		56DEA1291ED71E5600331383 /* NSMutableArray+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DEA10F1ED71E5600331383 /* NSMutableArray+IDPExtensions.m */; };
 		56DEA12A1ED71E5600331383 /* NSObject+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DEA1111ED71E5600331383 /* NSObject+IDPExtensions.m */; };
@@ -36,7 +35,6 @@
 
 /* Begin PBXFileReference section */
 		56DEA1001ED71E2D00331383 /* Task06_Observer_Objc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Task06_Observer_Objc; sourceTree = BUILT_PRODUCTS_DIR; };
-		56DEA1031ED71E2D00331383 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		56DEA10C1ED71E5600331383 /* NSArray+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+IDPExtensions.h"; sourceTree = "<group>"; };
 		56DEA10D1ED71E5600331383 /* NSArray+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+IDPExtensions.m"; sourceTree = "<group>"; };
 		56DEA10E1ED71E5600331383 /* NSMutableArray+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+IDPExtensions.h"; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				56DEA10A1ED71E5600331383 /* Sources */,
-				56DEA1031ED71E2D00331383 /* main.m */,
 			);
 			path = Task06_Observer_Objc;
 			sourceTree = "<group>";
@@ -104,14 +101,14 @@
 		56DEA10A1ED71E5600331383 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				56DEA1161ED71E5600331383 /* Library */,
+				56DEA11D1ED71E5600331383 /* Workers */,
 				56DEA10B1ED71E5600331383 /* Extensions */,
 				56DEA1121ED71E5600331383 /* IDPCar.h */,
 				56DEA1131ED71E5600331383 /* IDPCar.m */,
 				56DEA1141ED71E5600331383 /* IDPEnterprise.h */,
 				56DEA1151ED71E5600331383 /* IDPEnterprise.m */,
-				56DEA1161ED71E5600331383 /* Library */,
 				56DEA11C1ED71E5600331383 /* main.m */,
-				56DEA11D1ED71E5600331383 /* Workers */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -224,7 +221,6 @@
 				56DEA12E1ED71E5600331383 /* IDPRandom.m in Sources */,
 				56DEA12D1ED71E5600331383 /* IDPConstants.m in Sources */,
 				56DEA1331ED71E5600331383 /* IDPWorker.m in Sources */,
-				56DEA1041ED71E2D00331383 /* main.m in Sources */,
 				56DEA1301ED71E5600331383 /* IDPAccountant.m in Sources */,
 				56DEA12F1ED71E5600331383 /* main.m in Sources */,
 				56DEA12A1ED71E5600331383 /* NSObject+IDPExtensions.m in Sources */,
@@ -242,7 +238,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -289,7 +285,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
