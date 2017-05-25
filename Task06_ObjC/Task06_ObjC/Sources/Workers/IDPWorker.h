@@ -12,9 +12,9 @@
 #import "IDPWorkerDelegate.h"
 
 typedef NS_ENUM(NSUInteger, IDPWorkerState) {
-    IDPWorkerFree,
+    IDPWorkerReadyForWork,
     IDPWorkerBusy,
-    IDPWorkerDidFinishWork
+    IDPWorkerReadyForProcessing
 };
 
 @interface IDPWorker : NSObject <IDPMoneyFlow, IDPWorkerDelegate>

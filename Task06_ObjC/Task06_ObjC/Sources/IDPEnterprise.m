@@ -9,7 +9,7 @@
 #import "IDPEnterprise.h"
 
 #import "IDPWorker.h"
-#import "IDPCarWasher.h"
+#import "IDPWasher.h"
 #import "IDPAccountant.h"
 #import "IDPDirector.h"
 #import "IDPCar.h"
@@ -23,13 +23,13 @@
 #import "NSMutableArray+IDPExtensions.h"
 #import "NSArray+IDPExtensions.h"
 
-IDPStaticConstantRange(IDPCarWashersQuantityRange, 1, 5)
+IDPStaticConstantRange(IDPWashersQuantityRange, 1, 5)
 
 #pragma mark -
 #pragma mark Private declarations
 
 @interface IDPEnterprise ()
-@property (nonatomic, retain) NSArray           *carWashers;
+@property (nonatomic, retain) NSArray           *washers;
 @property (nonatomic, retain) IDPAccountant     *accountant;
 @property (nonatomic, retain) IDPDirector       *director;
 
@@ -41,7 +41,7 @@ IDPStaticConstantRange(IDPCarWashersQuantityRange, 1, 5)
 #pragma mark Deallocations and initializations
 
 - (void)dealloc {
-    self.carWashers = nil;
+    self.washers = nil;
     self.accountant = nil;
     self.director = nil;
     
@@ -50,7 +50,9 @@ IDPStaticConstantRange(IDPCarWashersQuantityRange, 1, 5)
 
 - (instancetype)init {
     self = [super init];
-    self.carWashers = [NSArray array];
+    self.washers = [NSArray array];
+    self.accountant = [IDPAccountant object];
+    self.director = [IDPDirector object];
     [self assignWorkers];
     
     return self;
@@ -60,30 +62,28 @@ IDPStaticConstantRange(IDPCarWashersQuantityRange, 1, 5)
 #pragma mark Public
 
 - (void)processCar:(IDPCar *)car {
-    IDPCarWasher *carWasher = [self freeCarWasher];
-    IDPAccountant *accountant = self.accountant;
-    IDPDirector *director = self.director;
-    
-    carWasher.delegate = accountant;
-    accountant.delegate = director;
+    IDPWasher *washer = [self freeWasher];
   
-    [carWasher processObject:car];
+    [washer processObject:car];
 }
 
 #pragma mark -
 #pragma mark Private
 
 - (void)assignWorkers {
-    self.carWashers = [NSArray objectsWithCount:IDPRandomWithRange(IDPCarWashersQuantityRange) factoryBlock:^{
-        return [IDPCarWasher object];
+    IDPAccountant *accountant = self.accountant;
+    self.washers = [NSArray objectsWithCount:IDPRandomWithRange(IDPWashersQuantityRange) factoryBlock:^{
+        IDPWasher *washer = [IDPWasher object];
+        washer.delegate = accountant;
+        
+        return washer;
     }];
-    self.accountant = [IDPAccountant object];
-    self.director = [IDPDirector object];
+    accountant.delegate = self.director;
 }
 
-- (IDPCarWasher *)freeCarWasher {
-    NSArray *washers = [self.carWashers filteredArrayWithBlock:^BOOL(IDPCarWasher *washer) {
-        return washer.state == IDPWorkerFree;
+- (IDPWasher *)freeWasher {
+    NSArray *washers = [self.washers filteredArrayWithBlock:^BOOL(IDPWasher *washer) {
+        return washer.state == IDPWorkerReadyForWork;
     }];
     
     return [washers firstObject];

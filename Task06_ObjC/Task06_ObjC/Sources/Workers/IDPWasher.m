@@ -6,18 +6,18 @@
 //  Copyright © 2017 Student003. All rights reserved.
 //
 
-#import "IDPCarWasher.h"
+#import "IDPWasher.h"
 #import "IDPCar.h"
 
 #pragma mark -
 #pragma mark Private declarations
 
-@interface IDPCarWasher ()
+@interface IDPWasher ()
 @property (nonatomic, retain) IDPCar *car;
 
 @end
 
-@implementation IDPCarWasher
+@implementation IDPWasher
 
 #pragma mark -
 #pragma mark Initializations and deallocations
@@ -40,6 +40,10 @@
     self.car = car;
     [self washCar:car];
     self.car = nil;
+}
+// method is overriden to prevent setting state property for IDPCar object
+- (void)workerIsReadyForWork:(IDPWorker *)worker {
+    
 }
 
 @end

@@ -10,7 +10,7 @@
 
 @class IDPCar;
 
-@interface IDPCarWasher : IDPWorker
+@interface IDPWasher : IDPWorker
 
 - (void)washCar:(IDPCar *)car;
 
