@@ -63,10 +63,10 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)startWorking {
+- (void)startWorking { 
     for (IDPCarWasher *washer in self.carWashers) {
-        //[washer performSelectorInBackground:@selector(notifyObservers) withObject:nil];
-        [washer notifyObservers];
+        [washer performSelectorInBackground:@selector(notifyObservers) withObject:nil];
+        //[washer notifyObservers];
     }
 }
 
@@ -74,14 +74,14 @@
 #pragma mark Observer
 
 - (void)objectIsReadyForWork:(IDPCarWasher *)washer {
-    @synchronized (self) {
+    //@synchronized (self) {
     IDPCar *car = [self dirtyCar];
     if (!car) {
         return;
     }
     [washer processObject:car];
     washer.state = IDPWorkerReadyForProcessing;
-    }
+    //}
 }
 
 #pragma mark -

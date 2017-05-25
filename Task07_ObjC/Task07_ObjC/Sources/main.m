@@ -19,6 +19,7 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         IDPEnterprise *enterprise = [IDPEnterprise object];
         [enterprise startWorking];
+        sleep(200);
     }
     
     return 0;

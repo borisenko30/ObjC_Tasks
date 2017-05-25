@@ -45,6 +45,7 @@
     if (_state != state) {
         _state = state;
         if (state != IDPWorkerBusy) {
+//            [self performSelectorOnMainThread:@selector(notifyObservers) withObject:nil waitUntilDone:NO];
             [self notifyObservers];
         }
     }
@@ -76,9 +77,16 @@
 - (void)processObject:(id<IDPMoneyFlow>)object {
     @synchronized (self) {
         self.state = IDPWorkerBusy;
+        
+        NSLog(@"%@ is busy", self);
+        NSThread *t = [NSThread currentThread];
+        //BOOL b = [NSThread isMainThread];
+        NSLog(@"%@ current thread", t);
+        
         [self takeMoneyFromObject:object];
         [self performWorkWithObject:object];
         sleep(IDPWorkTime);
+        NSLog(@"--------------------------");
         self.state = IDPWorkerReadyForProcessing;
     }
 }
@@ -119,13 +127,13 @@
 #pragma mark IDPObserver methods
 
 - (void)objectIsReadyForProcessing:(IDPWorker *)worker {
-    @synchronized (self) {
+    //@synchronized (self) {
         if (worker.cash) {
-            [self performSelectorInBackground:@selector(processObject:) withObject:worker];
-            //[self processObject:worker];
+            //[self performSelectorInBackground:@selector(processObject:) withObject:worker];
+            [self processObject:worker];
             worker.state = IDPWorkerReadyForWork;
         }
-    }
+    //}
 }
 
 @end
