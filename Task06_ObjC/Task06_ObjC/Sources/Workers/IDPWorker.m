@@ -31,7 +31,7 @@
 
 - (instancetype)init {
     self = [super init];
-    self.state = IDPWorkerFree;
+    self.state = IDPWorkerReadyForWork;
     
     return self;
 }
@@ -42,8 +42,8 @@
 - (void)setState:(IDPWorkerState)state {
     if (_state != state) {
         _state = state;
-        if (state == IDPWorkerDidFinishWork) {
-            [self.delegate delegatingObjectDidFinishWork:self];
+        if (state == IDPWorkerReadyForProcessing) {
+            [self.delegate workerDidBecomeReadyForProcessing:self];
         }
     }
 }
@@ -71,19 +71,27 @@
     
 }
 
-- (void)processObject:(id<IDPMoneyFlow>)object {
+- (void)processObject:(id)object {
     self.state = IDPWorkerBusy;
     [self takeMoneyFromObject:object];
     [self performWorkWithObject:object];
-    self.state = IDPWorkerDidFinishWork;
+    [self workerDidFinishWork];
+    [self workerIsReadyForWork:object];
+}
+
+- (void)workerDidFinishWork {
+    self.state = IDPWorkerReadyForProcessing;
+}
+
+- (void)workerIsReadyForWork:(IDPWorker *)worker {
+    worker.state = IDPWorkerReadyForWork;
 }
 
 #pragma mark -
 #pragma mark IDPWorkerDelegate methods
 
-- (void)delegatingObjectDidFinishWork:(IDPWorker *)worker; {
+- (void)workerDidBecomeReadyForProcessing:(IDPWorker *)worker; {
     [self processObject:worker];
-    worker.state = IDPWorkerFree;
 }
 
 @end

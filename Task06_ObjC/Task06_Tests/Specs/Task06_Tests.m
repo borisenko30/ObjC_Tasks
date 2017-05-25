@@ -9,7 +9,7 @@
 #import "Kiwi.h"
 
 #import "IDPCar.h"
-#import "IDPCarWasher.h"
+#import "IDPWasher.h"
 #import "IDPAccountant.h"
 #import "IDPDirector.h"
 
@@ -19,28 +19,28 @@ SPEC_BEGIN(Task06_Test)
 
 describe(@"IDPWorkerDelegate", ^{
     
-    context(@"when carWasher did finish work", ^{
-        __block IDPCarWasher *carWasher;
+    context(@"when washer did finish work", ^{
+        __block IDPWasher *washer;
         __block IDPCar *car;
         
         beforeAll(^{ // Occurs once
             car = [IDPCar object];
-            carWasher = [IDPCarWasher object];
+            washer = [IDPWasher object];
         });
         
         afterAll(^{ // Occurs once
-            carWasher = nil;
+            washer = nil;
             car = nil;
         });
         
         it(@"carWaher should receive -delegatingObjectDidGetMoney", ^{
-            [[carWasher should] receive:@selector(delegatingObjectDidFinishWork:)];
-            [carWasher processObject:car];
+            [[washer shouldNot] receive:@selector(workerDidBecomeReadyForProcessing:)];
+            [washer processObject:car];
         });
         
         context(@"when accountant did his work", ^{
-            __block IDPAccountant *accountant;
             __block IDPDirector *director;
+            __block IDPAccountant *accountant;
             
             beforeAll(^{ // Occurs once
                 accountant = [IDPAccountant object];
@@ -54,8 +54,8 @@ describe(@"IDPWorkerDelegate", ^{
             });
             
             it(@"accountant should receive -delegatingObjectDidGetMoney", ^{
-                [[director should] receive:@selector(delegatingObjectDidFinishWork:)];
-                [accountant processObject:carWasher];
+                [[director should] receive:@selector(workerDidBecomeReadyForProcessing:)];
+                [accountant processObject:washer];
             });
         });
     });
