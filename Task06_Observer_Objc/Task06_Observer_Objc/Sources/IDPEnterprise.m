@@ -14,8 +14,6 @@
 #import "IDPDirector.h"
 #import "IDPCar.h"
 
-#import "IDPWorkerDelegate.h"
-
 #import "IDPMacros.h"
 #import "IDPRandom.h"
 
@@ -74,11 +72,11 @@ IDPStaticConstantRange(IDPWashersQuantityRange, 1, 5)
     IDPAccountant *accountant = self.accountant;
     self.washers = [NSArray objectsWithCount:IDPRandomWithRange(IDPWashersQuantityRange) factoryBlock:^{
         IDPWasher *washer = [IDPWasher object];
-        washer.delegate = accountant;
+        [washer addObserver:accountant];
         
         return washer;
     }];
-    accountant.delegate = self.director;
+    [accountant addObserver:self.director];
 }
 
 - (IDPWasher *)freeWasher {

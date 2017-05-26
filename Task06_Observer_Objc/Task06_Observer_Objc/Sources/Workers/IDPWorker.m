@@ -13,43 +13,52 @@
 #pragma mark Private declarations
 
 @interface IDPWorker ()
-@property (nonatomic, assign) NSUInteger        cash;
-@property (nonatomic, assign) IDPWorkerState    state;
+@property (nonatomic, assign) NSUInteger  salary;
+@property (nonatomic, assign) NSUInteger  experience;
+@property (nonatomic, assign) NSUInteger  cash;
 
 @end
 
 @implementation IDPWorker
 
-#pragma mark -
-#pragma mark Initializations
-
-- (void)dealloc {
-    self.delegate = nil;
-    
-    [super dealloc];
-}
-
-- (instancetype)init {
-    self = [super init];
-    self.state = IDPWorkerReadyForWork;
-    
-    return self;
-}
+@synthesize state = _state;
 
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setState:(IDPWorkerState)state {
+- (void)setState:(NSUInteger)state {
     if (_state != state) {
         _state = state;
-        if (state == IDPWorkerReadyForProcessing) {
-            [self.delegate workerDidBecomeReadyForProcessing:self];
-        }
+        [self notifyOfStateChangeWithState:state];
     }
 }
 
 #pragma mark -
 #pragma mark Public
+
+// should be overriden in subclasses
+- (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
+    
+}
+
+- (void)processObject:(id)object {
+    self.state = IDPWorkerBusy;
+    [self takeMoneyFromObject:object];
+    [self performWorkWithObject:object];
+    [self didFinishWork];
+    [self isReadyForWorkWithObject:object];
+}
+
+- (void)didFinishWork {
+    self.state = IDPWorkerReadyForProcessing;
+}
+
+- (void)isReadyForWorkWithObject:(IDPWorker *)worker {
+    worker.state = IDPWorkerReadyForWork;
+}
+
+#pragma mark -
+#pragma mark IDPMoneyFlow methods
 
 - (NSUInteger)giveMoney {
     NSUInteger money = self.cash;
@@ -66,32 +75,41 @@
     [self takeMoney:[object giveMoney]];
 }
 
-// should be overriden in subclasses
-- (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
-    
-}
-
-- (void)processObject:(id)object {
-    self.state = IDPWorkerBusy;
-    [self takeMoneyFromObject:object];
-    [self performWorkWithObject:object];
-    [self workerDidFinishWork];
-    [self workerIsReadyForWork:object];
-}
-
-- (void)workerDidFinishWork {
-    self.state = IDPWorkerReadyForProcessing;
-}
-
-- (void)workerIsReadyForWork:(IDPWorker *)worker {
-    worker.state = IDPWorkerReadyForWork;
-}
-
 #pragma mark -
-#pragma mark IDPWorkerDelegate methods
+#pragma mark IDPWorkerObserver methods
 
 - (void)workerDidBecomeReadyForProcessing:(IDPWorker *)worker; {
     [self processObject:worker];
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (SEL)selectorForState:(NSUInteger)state {
+    switch (state) {
+        case IDPWorkerReadyForWork:
+            return @selector(workerDidBecomeReadyForWork:);
+        case IDPWorkerBusy:
+            return @selector(workerDidBecomeBusy:);
+        case IDPWorkerReadyForProcessing:
+            return @selector(workerDidBecomeReadyForProcessing:);
+            
+        default:
+            return Nil;
+    }
+}
+
+- (void)notifyOfStateChangeWithSelector:(SEL)selector {
+    NSSet *observers = self.observers;
+    for (id observer in observers) {
+        if ([observer respondsToSelector:selector]) {
+            [observer performSelector:selector withObject:self];
+        }
+    }
+}
+
+- (void)notifyOfStateChangeWithState:(NSUInteger)state {
+    [self notifyOfStateChangeWithSelector:[self selectorForState:state]];
 }
 
 @end
