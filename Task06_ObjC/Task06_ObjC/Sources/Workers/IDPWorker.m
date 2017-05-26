@@ -83,7 +83,7 @@
     self.state = IDPWorkerReadyForProcessing;
 }
 
-- (void)workerIsReadyForWork:(IDPWorker *)worker {
+- (void)workerIsReadyForWork:(IDPWorker *)worker { //rename ---------------------
     worker.state = IDPWorkerReadyForWork;
 }
 
