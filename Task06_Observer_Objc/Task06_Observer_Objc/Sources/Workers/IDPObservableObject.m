@@ -58,7 +58,7 @@
 
 // should be overriden in subclasses
 - (SEL)selectorForState:(NSUInteger)state {
-    return Nil;
+    return nil;
 }
 
 @end

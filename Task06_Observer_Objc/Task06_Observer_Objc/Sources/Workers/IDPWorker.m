@@ -67,7 +67,7 @@
             return @selector(workerDidBecomeReadyForProcessing:);
             
         default:
-            return Nil;
+            return nil;
     }
 }
 
