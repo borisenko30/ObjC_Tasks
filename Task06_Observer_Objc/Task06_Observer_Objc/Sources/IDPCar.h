@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 #import "IDPMoneyFlow.h"
-#import "IDPWorkerDelegate.h"
 
 typedef NS_ENUM(NSUInteger, IDPCarState) {
     IDPCarClean,

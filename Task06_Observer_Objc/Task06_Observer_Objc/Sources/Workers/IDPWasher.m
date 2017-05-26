@@ -41,9 +41,5 @@
     [self washCar:car];
     self.car = nil;
 }
-// method is overriden to prevent setting state property for IDPCar object
-- (void)workerIsReadyForWork:(IDPWorker *)worker {
-    
-}
 
 @end
