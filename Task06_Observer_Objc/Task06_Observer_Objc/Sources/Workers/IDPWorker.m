@@ -57,6 +57,20 @@
     worker.state = IDPWorkerReadyForWork;
 }
 
+- (SEL)selectorForState:(NSUInteger)state {
+    switch (state) {
+        case IDPWorkerReadyForWork:
+            return @selector(workerDidBecomeReadyForWork:);
+        case IDPWorkerBusy:
+            return @selector(workerDidBecomeBusy:);
+        case IDPWorkerReadyForProcessing:
+            return @selector(workerDidBecomeReadyForProcessing:);
+            
+        default:
+            return Nil;
+    }
+}
+
 #pragma mark -
 #pragma mark IDPMoneyFlow methods
 
@@ -84,20 +98,6 @@
 
 #pragma mark -
 #pragma mark Private
-
-- (SEL)selectorForState:(NSUInteger)state {
-    switch (state) {
-        case IDPWorkerReadyForWork:
-            return @selector(workerDidBecomeReadyForWork:);
-        case IDPWorkerBusy:
-            return @selector(workerDidBecomeBusy:);
-        case IDPWorkerReadyForProcessing:
-            return @selector(workerDidBecomeReadyForProcessing:);
-            
-        default:
-            return Nil;
-    }
-}
 
 - (void)notifyOfStateChangeWithSelector:(SEL)selector {
     NSSet *observers = self.observers;
