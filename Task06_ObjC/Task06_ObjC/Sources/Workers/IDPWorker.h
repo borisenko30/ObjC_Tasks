@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, IDPWorkerState) {
 @interface IDPWorker : NSObject <IDPMoneyFlow, IDPWorkerDelegate>
 @property (nonatomic, readonly)   NSUInteger        salary;
 @property (nonatomic, readonly)   NSUInteger        experience;
-@property (nonatomic, readonly)   IDPWorkerState    state;
+@property (nonatomic, assign)     IDPWorkerState    state;
 @property (nonatomic, readonly)   NSUInteger        cash;
 
 @property (nonatomic, assign) id<IDPWorkerDelegate> delegate;

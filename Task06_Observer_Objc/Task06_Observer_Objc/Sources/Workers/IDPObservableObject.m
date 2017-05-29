@@ -58,7 +58,23 @@
 
 // should be overriden in subclasses
 - (SEL)selectorForState:(NSUInteger)state {
-    return nil;
+    return NULL;
+}
+
+- (void)notifyOfState:(NSUInteger)state {
+    [self notifyOfStateWithSelector:[self selectorForState:state]];
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)notifyOfStateWithSelector:(SEL)selector {
+    NSSet *observers = self.observers;
+    for (id observer in observers) {
+        if ([observer respondsToSelector:selector]) {
+            [observer performSelector:selector withObject:self];
+        }
+    }
 }
 
 @end

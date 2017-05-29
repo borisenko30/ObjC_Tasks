@@ -31,4 +31,8 @@
     [self makeProfit];
 }
 
+- (void)didFinishWork {
+    self.state = IDPWorkerReadyForWork;
+}
+
 @end

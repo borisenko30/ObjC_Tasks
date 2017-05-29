@@ -17,4 +17,6 @@
 
 - (SEL)selectorForState:(NSUInteger)state;
 
+- (void)notifyOfState:(NSUInteger)state;
+
 @end

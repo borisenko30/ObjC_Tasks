@@ -29,7 +29,7 @@
 - (void)setState:(NSUInteger)state {
     if (_state != state) {
         _state = state;
-        [self notifyOfStateChangeWithState:state];
+        [self notifyOfState:state];
     }
 }
 
@@ -45,15 +45,15 @@
     self.state = IDPWorkerBusy;
     [self takeMoneyFromObject:object];
     [self performWorkWithObject:object];
+    [self didFinishProcessingObject:object];
     [self didFinishWork];
-    [self isReadyForWorkWithObject:object];
 }
 
 - (void)didFinishWork {
     self.state = IDPWorkerReadyForProcessing;
 }
 
-- (void)isReadyForWorkWithObject:(IDPWorker *)worker {
+- (void)didFinishProcessingObject:(IDPWorker *)worker {
     worker.state = IDPWorkerReadyForWork;
 }
 
@@ -67,7 +67,7 @@
             return @selector(workerDidBecomeReadyForProcessing:);
             
         default:
-            return nil;
+            return [super selectorForState:state];
     }
 }
 
@@ -96,20 +96,6 @@
     [self processObject:worker];
 }
 
-#pragma mark -
-#pragma mark Private
 
-- (void)notifyOfStateChangeWithSelector:(SEL)selector {
-    NSSet *observers = self.observers;
-    for (id observer in observers) {
-        if ([observer respondsToSelector:selector]) {
-            [observer performSelector:selector withObject:self];
-        }
-    }
-}
-
-- (void)notifyOfStateChangeWithState:(NSUInteger)state {
-    [self notifyOfStateChangeWithSelector:[self selectorForState:state]];
-}
 
 @end

@@ -15,13 +15,12 @@
 #import "IDPCar.h"
 
 #import "IDPMacros.h"
-#import "IDPRandom.h"
 
 #import "NSObject+IDPExtensions.h"
 #import "NSMutableArray+IDPExtensions.h"
 #import "NSArray+IDPExtensions.h"
 
-IDPStaticConstantRange(IDPWashersQuantityRange, 1, 5)
+IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
 
 #pragma mark -
 #pragma mark Private declarations
@@ -57,12 +56,23 @@ IDPStaticConstantRange(IDPWashersQuantityRange, 1, 5)
 }
 
 #pragma mark -
+#pragma mark Accessors
+
+- (void)setWashers:(NSArray *)washers {
+    if (_washers) {
+        for (IDPWasher *washer in _washers) {
+            [washer removeObserver:self.accountant];
+        }
+    }
+    
+    _washers = washers;
+}
+
+#pragma mark -
 #pragma mark Public
 
 - (void)processCar:(IDPCar *)car {
-    IDPWasher *washer = [self freeWasher];
-  
-    [washer processObject:car];
+    [[self freeWasher] processObject:car];
 }
 
 #pragma mark -
@@ -70,12 +80,13 @@ IDPStaticConstantRange(IDPWashersQuantityRange, 1, 5)
 
 - (void)assignWorkers {
     IDPAccountant *accountant = self.accountant;
-    self.washers = [NSArray objectsWithCount:IDPRandomWithRange(IDPWashersQuantityRange) factoryBlock:^{
+    self.washers = [NSArray objectsWithCount:IDPWashersQuantity factoryBlock:^{
         IDPWasher *washer = [IDPWasher object];
         [washer addObserver:accountant];
         
         return washer;
     }];
+    
     [accountant addObserver:self.director];
 }
 

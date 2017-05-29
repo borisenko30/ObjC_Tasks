@@ -33,7 +33,6 @@
 
 - (void)washCar:(IDPCar *)car {
     NSLog(@"Car is clean!");
-    car.state = IDPCarClean;
 }
 
 - (void)performWorkWithObject:(id)car {
@@ -41,9 +40,9 @@
     [self washCar:car];
     self.car = nil;
 }
-// method is overriden to prevent setting state property for IDPCar object
-- (void)workerIsReadyForWork:(IDPWorker *)worker {
-    
+
+- (void)didFinishProcessingObject:(IDPCar *)car {
+    car.state = IDPCarClean;
 }
 
 @end

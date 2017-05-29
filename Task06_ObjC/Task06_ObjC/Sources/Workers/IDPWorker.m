@@ -13,15 +13,14 @@
 #pragma mark Private declarations
 
 @interface IDPWorker ()
-@property (nonatomic, assign) NSUInteger        cash;
-@property (nonatomic, assign) IDPWorkerState    state;
+@property (nonatomic, assign) NSUInteger cash;
 
 @end
 
 @implementation IDPWorker
 
 #pragma mark -
-#pragma mark Initializations
+#pragma mark Deallocations and Initializations
 
 - (void)dealloc {
     self.delegate = nil;
@@ -75,15 +74,15 @@
     self.state = IDPWorkerBusy;
     [self takeMoneyFromObject:object];
     [self performWorkWithObject:object];
-    [self workerDidFinishWork];
-    [self workerIsReadyForWork:object];
+    [self didFinishProcessingObject:object];
+    [self didFinishWork];
 }
 
-- (void)workerDidFinishWork {
+- (void)didFinishWork {
     self.state = IDPWorkerReadyForProcessing;
 }
 
-- (void)workerIsReadyForWork:(IDPWorker *)worker { //rename ---------------------
+- (void)didFinishProcessingObject:(IDPWorker *)worker {
     worker.state = IDPWorkerReadyForWork;
 }
 
