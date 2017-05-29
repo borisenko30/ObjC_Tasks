@@ -96,6 +96,4 @@
     [self processObject:worker];
 }
 
-
-
 @end
