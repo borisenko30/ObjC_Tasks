@@ -41,7 +41,7 @@
     self.car = nil;
 }
 
-- (void)didFinishProcessingObject:(IDPCar *)car {
+- (void)finishedProcessingObject:(IDPCar *)car {
     car.state = IDPCarClean;
 }
 
