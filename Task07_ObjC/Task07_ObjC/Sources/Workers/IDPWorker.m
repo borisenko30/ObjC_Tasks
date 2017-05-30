@@ -49,9 +49,9 @@
 - (void)setState:(NSUInteger)state {
     if (_state != state) {
         _state = state;
-        //[self notifyOfState:state];
-        NSLog(@"state changed: %lu", state);
-        [self performSelectorOnMainThread:@selector(notifyOfState:) withObject:(id)state waitUntilDone:NO];
+        //NSLog(@"state changed: %lu", state);
+        [self notifyOfState:state];
+        //[self performSelectorOnMainThread:@selector(notifyOfState:) withObject:(id)state waitUntilDone:NO];
     }
 }
 
@@ -70,7 +70,8 @@
         [self performWorkWithObject:object];
         sleep(1);
         [self finishedProcessingObject:object];
-        [self finishedWork];
+        //[self finishedWork];
+        [self performSelectorOnMainThread:@selector(finishedWork) withObject:nil waitUntilDone:NO];
     }
 }
 
@@ -118,7 +119,9 @@
 #pragma mark IDPWorkerObserver methods
 
 - (void)workerDidBecomeReadyForProcessing:(IDPWorker *)worker; {
-    [self processObject:worker];
+    if (worker.cash) {
+        [self performSelectorInBackground:@selector(processObject:) withObject:worker];
+    }
 }
 
 @end

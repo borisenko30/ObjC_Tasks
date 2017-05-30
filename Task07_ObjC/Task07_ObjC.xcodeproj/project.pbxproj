@@ -89,9 +89,9 @@
 		56495A7B1EDDB8F800265874 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				56495A7C1EDDB8F800265874 /* Enterprise */,
 				56495A851EDDB8F800265874 /* Extensions */,
 				56495A8C1EDDB8F800265874 /* Library */,
+				56495A7C1EDDB8F800265874 /* Enterprise */,
 				56495A921EDDB8F800265874 /* main.m */,
 				56495A931EDDB8F800265874 /* Tests */,
 				56495A961EDDB8F800265874 /* Workers */,
