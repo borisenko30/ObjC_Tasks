@@ -60,12 +60,12 @@ IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
 #pragma mark Accessors
 
 - (void)setWashers:(NSArray *)washers {
-    if (_washers) {
-        for (IDPWasher *washer in _washers) {
-            washer.delegate = nil;
-        }
+    for (IDPWasher *washer in _washers) {
+        washer.delegate = nil;
     }
     
+    [washers retain];
+    [_washers release];
     _washers = washers;
 }
 

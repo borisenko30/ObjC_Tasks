@@ -74,15 +74,15 @@
     self.state = IDPWorkerBusy;
     [self takeMoneyFromObject:object];
     [self performWorkWithObject:object];
-    [self didFinishProcessingObject:object];
-    [self didFinishWork];
+    [self finishedProcessingObject:object];
+    [self finishedWork];
 }
 
-- (void)didFinishWork {
+- (void)finishedWork {
     self.state = IDPWorkerReadyForProcessing;
 }
 
-- (void)didFinishProcessingObject:(IDPWorker *)worker {
+- (void)finishedProcessingObject:(IDPWorker *)worker {
     worker.state = IDPWorkerReadyForWork;
 }
 
