@@ -6,18 +6,18 @@
 //  Copyright © 2017 Student003. All rights reserved.
 //
 
-#import "IDPCarWasher.h"
+#import "IDPWasher.h"
 #import "IDPCar.h"
 
 #pragma mark -
 #pragma mark Private declarations
 
-@interface IDPCarWasher ()
+@interface IDPWasher ()
 @property (nonatomic, retain) IDPCar *car;
 
 @end
 
-@implementation IDPCarWasher
+@implementation IDPWasher
 
 #pragma mark -
 #pragma mark Initializations and deallocations
@@ -32,14 +32,17 @@
 #pragma Public
 
 - (void)washCar:(IDPCar *)car {
-    NSLog(@"Car is clean!, washer %@, car %@", self, car);
-    car.state = IDPCarClean;
+    NSLog(@"Car is clean! %@ -> %@", car, self);
 }
 
 - (void)performWorkWithObject:(id)car {
     self.car = car;
     [self washCar:car];
     self.car = nil;
+}
+
+- (void)finishedProcessingObject:(IDPCar *)car {
+    car.state = IDPCarClean;
 }
 
 @end

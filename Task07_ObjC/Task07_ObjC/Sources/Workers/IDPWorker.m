@@ -7,33 +7,38 @@
 //
 
 #import "IDPWorker.h"
-#import "IDPConstants.h"
-#import "IDPEnterprise.h"
+#import "IDPCar.h"
+#import "IDPQueue.h"
+
+#import "NSObject+IDPExtensions.h"
 
 #pragma mark -
 #pragma mark Private declarations
 
 @interface IDPWorker ()
-@property (nonatomic, assign) NSUInteger        cash;
-@property (nonatomic, retain) NSHashTable       *observers;
+@property (nonatomic, assign) NSUInteger  salary;
+@property (nonatomic, assign) NSUInteger  experience;
+@property (nonatomic, assign) NSUInteger  cash;
+@property (nonatomic, retain) IDPQueue    *workers;
 
 @end
 
 @implementation IDPWorker
 
+@synthesize state = _state;
+
 #pragma mark -
-#pragma mark Initializations and Deallocations
+#pragma mark Deallocations and Initializations
 
 - (void)dealloc {
-    self.observers = nil;
+    self.workers = nil;
     
     [super dealloc];
 }
 
 - (instancetype)init {
     self = [super init];
-    self.state = IDPWorkerReadyForWork;
-    self.observers = [NSHashTable weakObjectsHashTable];
+    self.workers = [IDPQueue object];
     
     return self;
 }
@@ -41,18 +46,58 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setState:(IDPWorkerState)state {
+- (void)setState:(NSUInteger)state {
     if (_state != state) {
         _state = state;
-        if (state != IDPWorkerBusy) {
-//            [self performSelectorOnMainThread:@selector(notifyObservers) withObject:nil waitUntilDone:NO];
-            [self notifyObservers];
-        }
+        //[self notifyOfState:state];
+        NSLog(@"state changed: %lu", state);
+        [self performSelectorOnMainThread:@selector(notifyOfState:) withObject:(id)state waitUntilDone:NO];
     }
 }
 
 #pragma mark -
 #pragma mark Public
+
+// should be overriden in subclasses
+- (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
+    
+}
+
+- (void)processObject:(id)object {
+    @synchronized (self) {
+        self.state = IDPWorkerBusy;
+        [self takeMoneyFromObject:object];
+        [self performWorkWithObject:object];
+        sleep(1);
+        [self finishedProcessingObject:object];
+        [self finishedWork];
+    }
+}
+
+- (void)finishedWork {
+    self.state = IDPWorkerReadyForProcessing;
+}
+
+- (void)finishedProcessingObject:(IDPWorker *)worker {
+    worker.state = IDPWorkerReadyForWork;
+}
+
+- (SEL)selectorForState:(NSUInteger)state {
+    switch (state) {
+        case IDPWorkerReadyForWork:
+            return @selector(workerDidBecomeReadyForWork:);
+        case IDPWorkerBusy:
+            return @selector(workerDidBecomeBusy:);
+        case IDPWorkerReadyForProcessing:
+            return @selector(workerDidBecomeReadyForProcessing:);
+            
+        default:
+            return [super selectorForState:state];
+    }
+}
+
+#pragma mark -
+#pragma mark IDPMoneyFlow methods
 
 - (NSUInteger)giveMoney {
     NSUInteger money = self.cash;
@@ -69,71 +114,11 @@
     [self takeMoney:[object giveMoney]];
 }
 
-// should be overriden in subclasses
-- (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
-    
-}
-
-- (void)processObject:(id<IDPMoneyFlow>)object {
-    @synchronized (self) {
-        self.state = IDPWorkerBusy;
-        
-        NSLog(@"%@ is busy", self);
-        NSThread *t = [NSThread currentThread];
-        //BOOL b = [NSThread isMainThread];
-        NSLog(@"%@ current thread", t);
-        
-        [self takeMoneyFromObject:object];
-        [self performWorkWithObject:object];
-        sleep(IDPWorkTime);
-        NSLog(@"--------------------------");
-        self.state = IDPWorkerReadyForProcessing;
-    }
-}
-
 #pragma mark -
-#pragma mark IDPObservable methods
+#pragma mark IDPWorkerObserver methods
 
-- (void)addObserver:(id)observer {
-    if (observer) {
-        [self.observers addObject:observer];
-    }
-}
-
-- (void)removeObserver:(id)observer {
-    [self.observers removeObject:observer];
-}
-
-- (void)notifyObservers {
-    for (id<IDPObserver> observer in self.observers) {
-        switch (self.state) {
-            case IDPWorkerReadyForWork:
-                if ([observer isKindOfClass:[IDPEnterprise class]]) {
-                    [observer objectIsReadyForWork:self];
-                }
-                break;
-            case IDPWorkerReadyForProcessing:
-                if ([observer isKindOfClass:[IDPWorker class]]) {
-                    [observer objectIsReadyForProcessing:self];
-                }
-                break;
-            default:
-                break;
-        }
-    }
-}
-
-#pragma mark -
-#pragma mark IDPObserver methods
-
-- (void)objectIsReadyForProcessing:(IDPWorker *)worker {
-    //@synchronized (self) {
-        if (worker.cash) {
-            //[self performSelectorInBackground:@selector(processObject:) withObject:worker];
-            [self processObject:worker];
-            worker.state = IDPWorkerReadyForWork;
-        }
-    //}
+- (void)workerDidBecomeReadyForProcessing:(IDPWorker *)worker; {
+    [self processObject:worker];
 }
 
 @end
