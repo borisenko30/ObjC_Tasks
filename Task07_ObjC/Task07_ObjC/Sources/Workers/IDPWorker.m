@@ -19,7 +19,6 @@
 @property (nonatomic, assign) NSUInteger  salary;
 @property (nonatomic, assign) NSUInteger  experience;
 @property (nonatomic, assign) NSUInteger  cash;
-@property (nonatomic, retain) IDPQueue    *workers;
 
 @end
 
@@ -28,30 +27,12 @@
 @synthesize state = _state;
 
 #pragma mark -
-#pragma mark Deallocations and Initializations
-
-- (void)dealloc {
-    self.workers = nil;
-    
-    [super dealloc];
-}
-
-- (instancetype)init {
-    self = [super init];
-    self.workers = [IDPQueue object];
-    
-    return self;
-}
-
-#pragma mark -
 #pragma mark Accessors
 
 - (void)setState:(NSUInteger)state {
     if (_state != state) {
         _state = state;
-        //NSLog(@"state changed: %lu", state);
         [self notifyOfState:state];
-        //[self performSelectorOnMainThread:@selector(notifyOfState:) withObject:(id)state waitUntilDone:NO];
     }
 }
 
@@ -65,13 +46,11 @@
 
 - (void)processObject:(id)object {
     @synchronized (self) {
-        self.state = IDPWorkerBusy;
-        [self takeMoneyFromObject:object];
-        [self performWorkWithObject:object];
-        sleep(1);
-        [self finishedProcessingObject:object];
-        //[self finishedWork];
-        [self performSelectorOnMainThread:@selector(finishedWork) withObject:nil waitUntilDone:NO];
+            self.state = IDPWorkerBusy;
+            [self takeMoneyFromObject:object];
+            [self performWorkWithObject:object];
+            [self finishedProcessingObject:object];
+            [self performSelectorOnMainThread:@selector(finishedWork) withObject:nil waitUntilDone:NO];
     }
 }
 

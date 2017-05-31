@@ -114,7 +114,7 @@ IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
 
 - (void)assignCars {
     IDPCarDispatcher *dispatcher = [IDPCarDispatcher object];
-    [dispatcher generateCarsWithCount:10];
+    [dispatcher generateCarsWithCount:100];
     self.cars = dispatcher.cars;
 }
 
