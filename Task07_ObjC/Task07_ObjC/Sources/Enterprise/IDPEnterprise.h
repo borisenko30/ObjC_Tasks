@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 
 #import "IDPMoneyFlow.h"
-#import "IDPObserver.h"
+#import "IDPWorkerObserver.h"
 
 @class IDPCar;
 
-@interface IDPEnterprise : NSObject <IDPObserver>
+@interface IDPEnterprise : NSObject <IDPWorkerObserver>
 
-- (void)startWorking;
+- (void)processCars;
 
 @end

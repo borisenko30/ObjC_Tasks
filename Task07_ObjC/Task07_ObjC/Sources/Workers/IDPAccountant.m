@@ -8,6 +8,8 @@
 
 #import "IDPAccountant.h"
 
+#import "IDPRandom.h"
+
 @implementation IDPAccountant
 
 #pragma mark -
@@ -18,9 +20,15 @@
 }
 
 - (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
-    //@synchronized (self) {
-        [self countMoney];
-    //}
+    [self countMoney];
 }
+
+//- (void)processObject:(id)object {
+////    if (self.state == IDPWorkerBusy) {
+////        [self.workers pushObject:object];
+////    }
+//    
+//    [super processObject:object];
+//}
 
 @end

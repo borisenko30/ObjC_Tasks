@@ -1,0 +1,49 @@
+//
+//  IDPQueue.m
+//  Task06_Observer_Objc
+//
+//  Created by Student003 on 5/30/17.
+//  Copyright © 2017 Student003. All rights reserved.
+//
+
+#import "IDPQueue.h"
+
+@interface IDPQueue ()
+@property (nonatomic, retain) NSMutableArray *queue;
+
+@end
+
+@implementation IDPQueue
+
+#pragma mark -
+#pragma mark Deallocations and Initializations
+
+- (void)dealloc {
+    self.queue = nil;
+    
+    [super dealloc];
+}
+
+- (instancetype)init {
+    self = [super init];
+    self.queue = [NSMutableArray array];
+    
+    return self;
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (void)pushObject:(id)object {
+    [self.queue addObject:object];
+}
+
+- (id)popObject {
+    NSMutableArray *queue = self.queue;
+    id object = queue.firstObject;
+    [queue removeObject:object];
+    
+    return object;
+}
+
+@end

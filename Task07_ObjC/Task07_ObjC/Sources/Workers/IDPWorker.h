@@ -8,15 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
+#import "IDPObservableObject.h"
+
 #import "IDPMoneyFlow.h"
-#import "IDPObserver.h"
-#import "IDPObservable.h"
+#import "IDPWorkerObserver.h"
 
-@interface IDPWorker : NSObject <IDPMoneyFlow, IDPObserver, IDPObservable>
-@property (nonatomic, readonly)   NSUInteger        salary;
-@property (nonatomic, readonly)   NSUInteger        experience;
-@property (nonatomic, assign)   IDPWorkerState    state;
+typedef NS_ENUM(NSUInteger, IDPWorkerState) {
+    IDPWorkerReadyForWork,
+    IDPWorkerBusy,
+    IDPWorkerReadyForProcessing
+};
 
+@class IDPQueue;
+
+@interface IDPWorker : IDPObservableObject <IDPMoneyFlow, IDPWorkerObserver>
+@property (nonatomic, readonly) NSUInteger    salary;
+@property (nonatomic, readonly) NSUInteger    experience;
+@property (nonatomic, readonly) NSUInteger    cash;
+@property (nonatomic, readonly) IDPQueue      *workers;
+
+- (void)performWorkWithObject:(id<IDPMoneyFlow>)object;
 - (void)processObject:(id<IDPMoneyFlow>)object;
 
 @end

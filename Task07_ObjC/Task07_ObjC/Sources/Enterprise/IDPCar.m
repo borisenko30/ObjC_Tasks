@@ -30,7 +30,7 @@ IDPStaticConstantRange(IDPCashAmountRange, 100, 200)
 - (instancetype)init {
     self = [super init];
     self.state = IDPCarDirty;
-    self.cash = IDPRandomWithRange(IDPCashAmountRange);
+    self.cash = (10);//IDPRandomWithRange(IDPCashAmountRange);
     
     return self;
 }

@@ -15,11 +15,14 @@
 
 #import "NSObject+IDPExtensions.h"
 
+#import "IDPCarWashTests.h"
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        IDPEnterprise *enterprise = [IDPEnterprise object];
-        [enterprise startWorking];
-        sleep(200);
+        IDPCarWashTest();
+
+        NSRunLoop *runLoop = [NSRunLoop mainRunLoop];
+        [runLoop run];
     }
     
     return 0;
