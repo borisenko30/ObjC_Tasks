@@ -39,18 +39,24 @@ IDPStaticConstantRange(IDPCashAmountRange, 100, 200)
 #pragma mark Public
 
 - (NSUInteger)giveMoney {
-    NSUInteger money = self.cash;
-    self.cash = 0;
-    
-    return money;
+    @synchronized (self) {
+        NSUInteger money = self.cash;
+        self.cash = 0;
+        
+        return money;
+    }
 }
 
 - (void)takeMoney:(NSUInteger)money {
-    self.cash += money;
+    @synchronized (self) {
+        self.cash += money;
+    }
 }
 
 - (void)takeMoneyFromObject:(id<IDPMoneyFlow>)object {
-    [self takeMoney:[object giveMoney]];
+    @synchronized (self) {
+        [self takeMoney:[object giveMoney]];
+    }
 }
 
 @end

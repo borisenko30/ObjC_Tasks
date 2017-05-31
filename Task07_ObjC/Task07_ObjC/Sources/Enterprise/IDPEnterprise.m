@@ -24,6 +24,7 @@
 #import "NSArray+IDPExtensions.h"
 
 IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
+IDPStaticConstant(NSUInteger, IDPCarsQuantity, 100)
 
 #pragma mark -
 #pragma mark Private declarations
@@ -101,7 +102,7 @@ IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
 
 - (void)assignWorkers {
     IDPAccountant *accountant = self.accountant;
-    self.washers = [NSArray objectsWithCount:IDPWashersQuantity factoryBlock:^{
+    self.washers = [NSArray objectsWithCount:IDPWashersQuantity*50 factoryBlock:^{
         IDPWasher *washer = [IDPWasher object];
         [washer addObserver:accountant];
         [washer addObserver:self];
@@ -114,7 +115,7 @@ IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
 
 - (void)assignCars {
     IDPCarDispatcher *dispatcher = [IDPCarDispatcher object];
-    [dispatcher generateCarsWithCount:100];
+    [dispatcher generateCarsWithCount:IDPCarsQuantity*100];
     self.cars = dispatcher.cars;
 }
 
