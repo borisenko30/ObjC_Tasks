@@ -8,9 +8,10 @@
 
 #import "IDPCarWashTests.h"
 
-#import "IDPEnterprise.h"
+#import "IDPCarDispatcher.h"
 #import "NSObject+IDPExtensions.h"
 
 void IDPCarWashTest() {
-    [[IDPEnterprise object] processCars];
+    IDPCarDispatcher *dispatcher = [IDPCarDispatcher object];
+    [dispatcher setTimerUp];
 }

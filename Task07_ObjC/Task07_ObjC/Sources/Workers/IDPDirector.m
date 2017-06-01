@@ -8,9 +8,6 @@
 
 #import "IDPDirector.h"
 
-#pragma mark -
-#pragma mark Private declarations
-
 @interface IDPDirector ()
 @property (nonatomic, assign) NSUInteger cash;
 
@@ -24,6 +21,7 @@
 #pragma mark Public
 
 - (void)makeProfit {
+    //usleep(1000 * arc4random_uniform(50));
     NSLog(@"Boss has got some profit: %lu", self.cash);
 }
 

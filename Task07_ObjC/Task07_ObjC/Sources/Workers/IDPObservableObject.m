@@ -8,9 +8,6 @@
 
 #import "IDPObservableObject.h"
 
-#pragma mark -
-#pragma mark Private declarations
-
 @interface IDPObservableObject ()
 @property (nonatomic, retain) NSHashTable *mutableObservers;
 
@@ -39,24 +36,44 @@
 #pragma mark -
 #pragma mark Accessors
 
+- (void)setState:(NSUInteger)state {
+    @synchronized (self) {
+        if (_state != state) {
+            _state = state;
+            [self notifyOfState:state];
+        }
+    }
+}
+
 - (NSSet *)observers {
-    return [[self.mutableObservers copy] autorelease];
+    @synchronized (self) {
+        return [[self.mutableObservers copy] autorelease];
+    }
 }
 
 #pragma mark -
 #pragma mark Public
 
 - (void)addObserver:(id)observer {
-    if (observer) {
+    if (!observer) {
+        return;
+    }
+    
+    @synchronized (self) {
         [self.mutableObservers addObject:observer];
     }
 }
 
 - (void)removeObserver:(id)observer {
-    [self.mutableObservers removeObject:observer];
+    if (!observer) {
+        return;
+    }
+    
+    @synchronized (self) {
+        [self.mutableObservers removeObject:observer];
+    }
 }
 
-// should be overriden in subclasses
 - (SEL)selectorForState:(NSUInteger)state {
     return NULL;
 }

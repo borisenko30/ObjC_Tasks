@@ -35,15 +35,25 @@
 #pragma mark Public
 
 - (void)pushObject:(id)object {
-    [self.queue addObject:object];
+    @synchronized (self) {
+        [self.queue addObject:object];
+    }
 }
 
 - (id)popObject {
-    NSMutableArray *queue = self.queue;
-    id object = queue.firstObject;
-    [queue removeObject:object];
-    
-    return object;
+    @synchronized (self) {
+        NSMutableArray *queue = self.queue;
+        id object = [[queue.firstObject retain] autorelease];
+        [queue removeObject:object];
+        
+        return object;
+    }
+}
+
+- (BOOL)isEmpty {
+    @synchronized (self) {
+        return !self.queue.count;
+    }
 }
 
 @end

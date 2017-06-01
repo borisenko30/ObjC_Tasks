@@ -15,6 +15,7 @@
 - (void)addObserver:(id)observer;
 - (void)removeObserver:(id)observer;
 
+// should be overriden in subclasses
 - (SEL)selectorForState:(NSUInteger)state;
 
 - (void)notifyOfState:(NSUInteger)state;

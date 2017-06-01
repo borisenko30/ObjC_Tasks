@@ -12,30 +12,30 @@
 
 #import "NSObject+IDPExtensions.h"
 
-#pragma mark -
-#pragma mark Private declarations
-
 @interface IDPWorker ()
 @property (nonatomic, assign) NSUInteger  salary;
 @property (nonatomic, assign) NSUInteger  experience;
 @property (nonatomic, assign) NSUInteger  cash;
+@property (nonatomic, retain) IDPQueue    *workers;
 
 @end
 
 @implementation IDPWorker
 
-@synthesize state = _state;
-
 #pragma mark -
-#pragma mark Accessors
+#pragma mark Deallocations and initializations
 
-- (void)setState:(NSUInteger)state {
-    @synchronized (self) {
-        if (_state != state) {
-            _state = state;
-            [self notifyOfState:state];
-        }
-    }
+- (void)dealloc {
+    self.workers = nil;
+    
+    [super dealloc];
+}
+
+- (instancetype)init {
+    self = [super init];
+    self.workers = [IDPQueue object];
+    
+    return self;
 }
 
 #pragma mark -
@@ -46,13 +46,46 @@
     
 }
 
+- (void)performWorkWithObjectInBackground:(id)object {
+    [self takeMoneyFromObject:object];
+    [self performWorkWithObject:object];
+    [self performSelectorOnMainThread:@selector(performWorkWithObjectOnMain:)
+                           withObject:object
+                        waitUntilDone:NO];
+}
+
+- (void)performWorkWithObjectOnMain:(id)object {
+    [self finishedProcessingObject:object];
+    
+    IDPQueue *queue = self.workers;
+    id queueObject = [queue popObject];
+    
+    if (queueObject) {
+        [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:)
+                               withObject:queueObject];
+    } else {
+        [self finishedWork];
+    }
+}
+
 - (void)processObject:(id)object {
     @synchronized (self) {
+        if (self.state == IDPWorkerReadyForWork) {
             self.state = IDPWorkerBusy;
-            [self takeMoneyFromObject:object];
-            [self performWorkWithObject:object];
-            [self finishedProcessingObject:object];
-            [self performSelectorOnMainThread:@selector(finishedWork) withObject:nil waitUntilDone:NO];
+            [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:)
+                                   withObject:object];
+        } else {
+            [self.workers pushObject:object];
+        }
+    }
+}
+
+- (void)checkQueue {
+    @synchronized (self) {
+        IDPQueue *queue = self.workers;
+        if (![queue isEmpty]) {
+            [self processObject:[queue popObject]];
+        }
     }
 }
 
@@ -62,6 +95,7 @@
 
 - (void)finishedProcessingObject:(IDPWorker *)worker {
     worker.state = IDPWorkerReadyForWork;
+    [worker checkQueue];
 }
 
 - (SEL)selectorForState:(NSUInteger)state {
@@ -97,18 +131,14 @@
 }
 
 - (void)takeMoneyFromObject:(id<IDPMoneyFlow>)object {
-    @synchronized (self) {
-        [self takeMoney:[object giveMoney]];
-    }
+    [self takeMoney:[object giveMoney]];
 }
 
 #pragma mark -
 #pragma mark IDPWorkerObserver methods
 
-- (void)workerDidBecomeReadyForProcessing:(IDPWorker *)worker; {
-    if (worker.cash) {
-        [self performSelectorInBackground:@selector(processObject:) withObject:worker];
-    }
+- (void)workerDidBecomeReadyForProcessing:(IDPWorker *)worker {
+    [self processObject:worker];
 }
 
 @end

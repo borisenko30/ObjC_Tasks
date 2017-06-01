@@ -24,10 +24,6 @@
 #import "NSArray+IDPExtensions.h"
 
 IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
-IDPStaticConstant(NSUInteger, IDPCarsQuantity, 100)
-
-#pragma mark -
-#pragma mark Private declarations
 
 @interface IDPEnterprise ()
 @property (nonatomic, retain) NSArray           *washers;
@@ -54,16 +50,22 @@ IDPStaticConstant(NSUInteger, IDPCarsQuantity, 100)
 - (instancetype)init {
     self = [super init];
     self.washers = [NSArray array];
+    self.cars = [IDPQueue object];
     self.accountant = [IDPAccountant object];
     self.director = [IDPDirector object];
     [self assignWorkers];
-    [self assignCars];
     
     return self;
 }
 
 #pragma mark -
 #pragma mark Accessors
+
+- (void)setCars:(IDPQueue *)cars {
+    if (cars != _cars) {
+        _cars = cars;
+    }
+}
 
 - (void)setWashers:(NSArray *)washers {
     for (IDPWasher *washer in _washers) {
@@ -79,19 +81,23 @@ IDPStaticConstant(NSUInteger, IDPCarsQuantity, 100)
 #pragma mark Public
 
 // entry point
-- (void)processCars {
-    for (IDPWasher *washer in self.washers) {
-        [washer performSelectorInBackground:@selector(processObject:) withObject:[self.cars popObject]];
+- (void)washCars:(NSArray *)cars {
+    IDPQueue *carQueue = [self addCarsToQueue:cars];
+    
+    NSArray *washers = [self freeWashers];
+    
+    for (IDPWasher *washer in washers) {
+        [washer processObject:[carQueue popObject]];
     }
+    
+    self.cars = carQueue;
 }
-
-
 
 #pragma mark -
 #pragma mark WorkerObserver methods
-
-- (void)workerDidBecomeReadyForWork:(IDPWasher *)washer {
+- (void)workerDidBecomeReadyForWork:(IDPWorker *)washer {
     IDPCar *car = [self.cars popObject];
+    
     if (car) {
         [washer processObject:car];
     }
@@ -102,7 +108,7 @@ IDPStaticConstant(NSUInteger, IDPCarsQuantity, 100)
 
 - (void)assignWorkers {
     IDPAccountant *accountant = self.accountant;
-    self.washers = [NSArray objectsWithCount:IDPWashersQuantity*50 factoryBlock:^{
+    self.washers = [NSArray objectsWithCount:IDPWashersQuantity factoryBlock:^{
         IDPWasher *washer = [IDPWasher object];
         [washer addObserver:accountant];
         [washer addObserver:self];
@@ -113,10 +119,20 @@ IDPStaticConstant(NSUInteger, IDPCarsQuantity, 100)
     [accountant addObserver:self.director];
 }
 
-- (void)assignCars {
-    IDPCarDispatcher *dispatcher = [IDPCarDispatcher object];
-    [dispatcher generateCarsWithCount:IDPCarsQuantity*100];
-    self.cars = dispatcher.cars;
+- (NSArray *)freeWashers {
+    return [self.washers filteredArrayWithBlock:^BOOL(IDPWorker *washer) {
+        return washer.state == IDPWorkerReadyForWork;
+    }];
+}
+
+- (IDPQueue *)addCarsToQueue:(NSArray *)cars {
+    IDPQueue *result = self.cars;
+    
+    for (IDPCar *car in cars) {
+        [result pushObject:car];
+    }
+    
+    return result;
 }
 
 @end

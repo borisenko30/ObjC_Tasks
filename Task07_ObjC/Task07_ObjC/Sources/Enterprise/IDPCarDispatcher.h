@@ -11,8 +11,7 @@
 @class IDPQueue;
 
 @interface IDPCarDispatcher : NSObject
-@property (nonatomic, readonly) IDPQueue *cars;
 
-- (void)generateCarsWithCount:(NSUInteger)count;
+- (void)setTimerUp;
 
 @end

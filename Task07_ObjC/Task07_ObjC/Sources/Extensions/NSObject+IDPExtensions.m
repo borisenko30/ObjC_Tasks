@@ -18,7 +18,7 @@
 }
 
 + (NSArray *)objectsWithCount:(NSUInteger)count {
-    return [NSArray objectsWithCount:IDPMaxArrayLength
+    return [NSArray objectsWithCount:count
                         factoryBlock:^ {
                             return [self object];
                         }];

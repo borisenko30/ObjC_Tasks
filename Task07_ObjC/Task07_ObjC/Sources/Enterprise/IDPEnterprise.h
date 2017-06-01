@@ -12,9 +12,10 @@
 #import "IDPWorkerObserver.h"
 
 @class IDPCar;
+@class IDPQueue;
 
 @interface IDPEnterprise : NSObject <IDPWorkerObserver>
 
-- (void)processCars;
+- (void)washCars:(NSArray *)cars;
 
 @end

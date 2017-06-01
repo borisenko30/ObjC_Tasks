@@ -12,10 +12,7 @@
 #import "IDPMacros.h"
 #import "IDPRandom.h"
 
-IDPStaticConstantRange(IDPCashAmountRange, 100, 200)
-
-#pragma mark -
-#pragma mark Private declarations
+//IDPStaticConstantRange(IDPCashAmountRange, 100, 200)
 
 @interface IDPCar ()
 @property (nonatomic, assign) NSUInteger cash;
@@ -54,9 +51,7 @@ IDPStaticConstantRange(IDPCashAmountRange, 100, 200)
 }
 
 - (void)takeMoneyFromObject:(id<IDPMoneyFlow>)object {
-    @synchronized (self) {
-        [self takeMoney:[object giveMoney]];
-    }
+    [self takeMoney:[object giveMoney]];
 }
 
 @end

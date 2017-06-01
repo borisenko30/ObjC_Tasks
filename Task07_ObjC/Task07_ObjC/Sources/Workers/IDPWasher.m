@@ -9,9 +9,6 @@
 #import "IDPWasher.h"
 #import "IDPCar.h"
 
-#pragma mark -
-#pragma mark Private declarations
-
 @interface IDPWasher ()
 @property (nonatomic, retain) IDPCar *car;
 
@@ -32,6 +29,7 @@
 #pragma Public
 
 - (void)washCar:(IDPCar *)car {
+    //usleep(1000 * arc4random_uniform(10));
     NSLog(@"Car is clean! %@ -> %@", car, self);
 }
 
