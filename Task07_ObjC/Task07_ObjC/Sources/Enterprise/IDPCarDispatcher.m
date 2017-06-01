@@ -46,6 +46,14 @@ IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
     return self;
 }
 
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setTimer:(NSTimer *)timer {
+    
+}
+
 #pragma mark -
 #pragma mark Public
 

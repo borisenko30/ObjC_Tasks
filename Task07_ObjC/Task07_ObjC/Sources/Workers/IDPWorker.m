@@ -41,6 +41,15 @@
 #pragma mark -
 #pragma mark Public
 
+- (void)setState:(NSUInteger)state {
+    id object = [self.workers popObject];
+    if (object) {
+        [self processObject:object];
+    }
+    
+    [super setState:state];
+}
+
 // should be overriden in subclasses
 - (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
     
@@ -58,13 +67,15 @@
     [self finishedProcessingObject:object];
     
     IDPQueue *queue = self.workers;
-    id queueObject = [queue popObject];
-    
-    if (queueObject) {
-        [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:)
-                               withObject:queueObject];
-    } else {
-        [self finishedWork];
+    @synchronized (self) {
+        id queueObject = [queue popObject];
+        
+        if (queueObject) {
+            [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:)
+                                   withObject:queueObject];
+        } else {
+            [self finishedWork];
+        }
     }
 }
 
@@ -80,22 +91,12 @@
     }
 }
 
-- (void)checkQueue {
-    @synchronized (self) {
-        IDPQueue *queue = self.workers;
-        if (![queue isEmpty]) {
-            [self processObject:[queue popObject]];
-        }
-    }
-}
-
 - (void)finishedWork {
     self.state = IDPWorkerReadyForProcessing;
 }
 
 - (void)finishedProcessingObject:(IDPWorker *)worker {
     worker.state = IDPWorkerReadyForWork;
-    [worker checkQueue];
 }
 
 - (SEL)selectorForState:(NSUInteger)state {
