@@ -21,7 +21,7 @@
 IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
 
 @interface IDPCarDispatcher ()
-@property (nonatomic, assign) NSTimer       *timer;
+@property (nonatomic, retain) NSTimer       *timer;
 @property (nonatomic, retain) IDPEnterprise *enterprise;
 
 @end
@@ -32,7 +32,6 @@ IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
 #pragma mark Deallocations and initializations
 
 - (void)dealloc {
-
     self.timer = nil;
     self.enterprise = nil;
     
@@ -51,14 +50,16 @@ IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
 #pragma mark Accessors
 
 - (void)setTimer:(NSTimer *)timer {
-    [_timer invalidate];
-    _timer = timer;
+    if (_timer != timer) {
+        [_timer invalidate];
+        _timer = timer;
+    }
 }
 
 #pragma mark -
 #pragma mark Public
 
-- (void)setTimerUp {
+- (void)setupTimer {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0f
                                                   target:self
                                                 selector:@selector(addCars)

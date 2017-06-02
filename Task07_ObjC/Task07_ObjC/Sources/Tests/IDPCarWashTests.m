@@ -15,9 +15,6 @@
 #import "IDPCar.h"
 
 void IDPCarWashTest() {
-    /*IDPCarDispatcher *dispatcher = [IDPCarDispatcher object];
-    [dispatcher setTimerUp];*/
-    
-    IDPEnterprise *e = [IDPEnterprise object];
-    [e washCars:[IDPCar objectsWithCount:500]];
+    IDPCarDispatcher *dispatcher = [IDPCarDispatcher object];
+    [dispatcher setupTimer];
 }

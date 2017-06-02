@@ -1,5 +1,5 @@
 //
-//  NSTimer+IDPExtensions.h
+//  IDPTimerObject.h
 //  Task07_ObjC
 //
 //  Created by Student003 on 6/2/17.
@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSTimer (IDPExtensions)
-
+@interface IDPTargetObject : NSObject
+@property (nonatomic, assign) id  target;
+@property (nonatomic, assign) SEL selector;
 
 @end

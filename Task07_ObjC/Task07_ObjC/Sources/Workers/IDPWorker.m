@@ -42,11 +42,13 @@
 #pragma mark Public
 
 - (void)setState:(NSUInteger)state {
-    [super setState:state];
-    
-    id object = [self.workers popObject];
-    if (object) {
-        [self processObject:object];
+    @synchronized (self) {
+        [super setState:state];
+        
+        id object = [self.workers popObject];
+        if (object) {
+            [self processObject:object];
+        }
     }
 }
 
