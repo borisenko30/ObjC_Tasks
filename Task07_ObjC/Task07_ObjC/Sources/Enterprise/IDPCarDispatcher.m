@@ -16,11 +16,12 @@
 
 #import "NSObject+IDPExtensions.h"
 #import "NSArray+IDPExtensions.h"
+#import "NSTimer+IDPExtensions.h"
 
 IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
 
 @interface IDPCarDispatcher ()
-@property (nonatomic, retain) NSTimer       *timer;
+@property (nonatomic, assign) NSTimer       *timer;
 @property (nonatomic, retain) IDPEnterprise *enterprise;
 
 @end
@@ -31,7 +32,7 @@ IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
 #pragma mark Deallocations and initializations
 
 - (void)dealloc {
-    [self.timer invalidate];
+
     self.timer = nil;
     self.enterprise = nil;
     
@@ -46,12 +47,12 @@ IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
     return self;
 }
 
-
 #pragma mark -
 #pragma mark Accessors
 
 - (void)setTimer:(NSTimer *)timer {
-    
+    [_timer invalidate];
+    _timer = timer;
 }
 
 #pragma mark -

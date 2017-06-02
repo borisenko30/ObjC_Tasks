@@ -11,7 +11,13 @@
 #import "IDPCarDispatcher.h"
 #import "NSObject+IDPExtensions.h"
 
+#import "IDPEnterprise.h"
+#import "IDPCar.h"
+
 void IDPCarWashTest() {
-    IDPCarDispatcher *dispatcher = [IDPCarDispatcher object];
-    [dispatcher setTimerUp];
+    /*IDPCarDispatcher *dispatcher = [IDPCarDispatcher object];
+    [dispatcher setTimerUp];*/
+    
+    IDPEnterprise *e = [IDPEnterprise object];
+    [e washCars:[IDPCar objectsWithCount:500]];
 }

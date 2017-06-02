@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5646D7AF1EE1352600A92320 /* NSTimer+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5646D7AE1EE1352600A92320 /* NSTimer+IDPExtensions.m */; };
 		56495AA31EDDB8F800265874 /* IDPCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 56495A7E1EDDB8F800265874 /* IDPCar.m */; };
 		56495AA41EDDB8F800265874 /* IDPCarDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 56495A801EDDB8F800265874 /* IDPCarDispatcher.m */; };
 		56495AA51EDDB8F800265874 /* IDPEnterprise.m in Sources */ = {isa = PBXBuildFile; fileRef = 56495A821EDDB8F800265874 /* IDPEnterprise.m */; };
@@ -38,6 +39,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5646D7AD1EE1352600A92320 /* NSTimer+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+IDPExtensions.h"; sourceTree = "<group>"; };
+		5646D7AE1EE1352600A92320 /* NSTimer+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+IDPExtensions.m"; sourceTree = "<group>"; };
 		56495A7D1EDDB8F800265874 /* IDPCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPCar.h; sourceTree = "<group>"; };
 		56495A7E1EDDB8F800265874 /* IDPCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPCar.m; sourceTree = "<group>"; };
 		56495A7F1EDDB8F800265874 /* IDPCarDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPCarDispatcher.h; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				56495A891EDDB8F800265874 /* NSMutableArray+IDPExtensions.m */,
 				56495A8A1EDDB8F800265874 /* NSObject+IDPExtensions.h */,
 				56495A8B1EDDB8F800265874 /* NSObject+IDPExtensions.m */,
+				5646D7AD1EE1352600A92320 /* NSTimer+IDPExtensions.h */,
+				5646D7AE1EE1352600A92320 /* NSTimer+IDPExtensions.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				56495AB11EDDB8F800265874 /* IDPWasher.m in Sources */,
 				56495AA51EDDB8F800265874 /* IDPEnterprise.m in Sources */,
 				56495AAA1EDDB8F800265874 /* IDPConstants.m in Sources */,
+				5646D7AF1EE1352600A92320 /* NSTimer+IDPExtensions.m in Sources */,
 				56495AA31EDDB8F800265874 /* IDPCar.m in Sources */,
 				56495AA41EDDB8F800265874 /* IDPCarDispatcher.m in Sources */,
 				56495AA61EDDB8F800265874 /* IDPQueue.m in Sources */,
