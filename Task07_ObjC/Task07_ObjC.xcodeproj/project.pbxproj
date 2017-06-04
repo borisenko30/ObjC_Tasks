@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5646D7AF1EE1352600A92320 /* NSTimer+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5646D7AE1EE1352600A92320 /* NSTimer+IDPExtensions.m */; };
-		5646D7B21EE1601300A92320 /* IDPTargetObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5646D7B11EE1601300A92320 /* IDPTargetObject.m */; };
+		5646D7B21EE1601300A92320 /* IDPTimerProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5646D7B11EE1601300A92320 /* IDPTimerProxy.m */; };
 		56495AA31EDDB8F800265874 /* IDPCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 56495A7E1EDDB8F800265874 /* IDPCar.m */; };
 		56495AA41EDDB8F800265874 /* IDPCarDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 56495A801EDDB8F800265874 /* IDPCarDispatcher.m */; };
 		56495AA51EDDB8F800265874 /* IDPEnterprise.m in Sources */ = {isa = PBXBuildFile; fileRef = 56495A821EDDB8F800265874 /* IDPEnterprise.m */; };
@@ -42,8 +42,8 @@
 /* Begin PBXFileReference section */
 		5646D7AD1EE1352600A92320 /* NSTimer+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+IDPExtensions.h"; sourceTree = "<group>"; };
 		5646D7AE1EE1352600A92320 /* NSTimer+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+IDPExtensions.m"; sourceTree = "<group>"; };
-		5646D7B01EE1601300A92320 /* IDPTargetObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPTargetObject.h; sourceTree = "<group>"; };
-		5646D7B11EE1601300A92320 /* IDPTargetObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPTargetObject.m; sourceTree = "<group>"; };
+		5646D7B01EE1601300A92320 /* IDPTimerProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPTimerProxy.h; sourceTree = "<group>"; };
+		5646D7B11EE1601300A92320 /* IDPTimerProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPTimerProxy.m; sourceTree = "<group>"; };
 		56495A7D1EDDB8F800265874 /* IDPCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPCar.h; sourceTree = "<group>"; };
 		56495A7E1EDDB8F800265874 /* IDPCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPCar.m; sourceTree = "<group>"; };
 		56495A7F1EDDB8F800265874 /* IDPCarDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPCarDispatcher.h; sourceTree = "<group>"; };
@@ -112,8 +112,8 @@
 				56495A7E1EDDB8F800265874 /* IDPCar.m */,
 				56495A7F1EDDB8F800265874 /* IDPCarDispatcher.h */,
 				56495A801EDDB8F800265874 /* IDPCarDispatcher.m */,
-				5646D7B01EE1601300A92320 /* IDPTargetObject.h */,
-				5646D7B11EE1601300A92320 /* IDPTargetObject.m */,
+				5646D7B01EE1601300A92320 /* IDPTimerProxy.h */,
+				5646D7B11EE1601300A92320 /* IDPTimerProxy.m */,
 				56495A811EDDB8F800265874 /* IDPEnterprise.h */,
 				56495A821EDDB8F800265874 /* IDPEnterprise.m */,
 				56495A831EDDB8F800265874 /* IDPQueue.h */,
@@ -268,7 +268,7 @@
 				56495AB11EDDB8F800265874 /* IDPWasher.m in Sources */,
 				56495AA51EDDB8F800265874 /* IDPEnterprise.m in Sources */,
 				56495AAA1EDDB8F800265874 /* IDPConstants.m in Sources */,
-				5646D7B21EE1601300A92320 /* IDPTargetObject.m in Sources */,
+				5646D7B21EE1601300A92320 /* IDPTimerProxy.m in Sources */,
 				5646D7AF1EE1352600A92320 /* NSTimer+IDPExtensions.m in Sources */,
 				56495AA31EDDB8F800265874 /* IDPCar.m in Sources */,
 				56495AA41EDDB8F800265874 /* IDPCarDispatcher.m in Sources */,
@@ -372,6 +372,7 @@
 		56ADF7D41ED320C4009703E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -379,6 +380,7 @@
 		56ADF7D51ED320C4009703E6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

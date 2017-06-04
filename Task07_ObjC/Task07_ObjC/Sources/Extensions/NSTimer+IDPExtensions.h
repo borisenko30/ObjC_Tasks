@@ -8,7 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class IDPTimerProxy;
+
 @interface NSTimer (IDPExtensions)
 
-
++ (NSTimer *)scheduledTimerWithInterval:(NSTimeInterval)seconds
+                                 target:(IDPTimerProxy *)proxy
+                               selector:(SEL)selector
+                               userInfo:(id)userInfo
+                                repeats:(BOOL)repeats;
 @end

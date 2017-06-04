@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface IDPTargetObject : NSObject
+@interface IDPTimerProxy : NSObject
 @property (nonatomic, assign) id  target;
 @property (nonatomic, assign) SEL selector;
+
+- (instancetype)initWithTarget:(id)target selector:(SEL)selector;
+
+- (void)onTimer:(NSTimer *)timer;
 
 @end

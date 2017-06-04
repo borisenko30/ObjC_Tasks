@@ -8,8 +8,20 @@
 
 #import "NSTimer+IDPExtensions.h"
 
+#import "IDPTimerProxy.h"
+
 @implementation NSTimer (IDPExtensions)
 
-
++ (NSTimer *)scheduledTimerWithInterval:(NSTimeInterval)seconds
+                                 target:(IDPTimerProxy *)proxy
+                               selector:(SEL)selector
+                               userInfo:(id)userInfo
+                                repeats:(BOOL)repeats {
+    return [self scheduledTimerWithTimeInterval:seconds
+                                         target:proxy
+                                       selector:selector
+                                       userInfo:userInfo
+                                        repeats:repeats];
+}
 
 @end
