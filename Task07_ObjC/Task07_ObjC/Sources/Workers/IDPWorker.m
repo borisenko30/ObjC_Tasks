@@ -16,7 +16,10 @@
 @property (nonatomic, assign) NSUInteger  salary;
 @property (nonatomic, assign) NSUInteger  experience;
 @property (nonatomic, assign) NSUInteger  cash;
-@property (nonatomic, retain) IDPQueue    *worekrsQueue;
+@property (nonatomic, retain) IDPQueue    *workersQueue;
+
+- (void)performSelectorInBackground:(id)object;
+- (void)performSelectorOnMainThread:(id)object;
 
 @end
 
@@ -26,69 +29,84 @@
 #pragma mark Deallocations and initializations
 
 - (void)dealloc {
-    self.worekrsQueue = nil;
+    self.workersQueue = nil;
     
     [super dealloc];
 }
 
 - (instancetype)init {
     self = [super init];
-    self.worekrsQueue = [IDPQueue object];
+    self.workersQueue = [IDPQueue object];
     
     return self;
 }
 
 #pragma mark -
-#pragma mark Public
+#pragma mark Accessors
 
 - (void)setState:(NSUInteger)state {
     @synchronized (self) {
-        [super setState:state];
+        IDPWorker *worker = [self.workersQueue popObject];
         
-        id object = [self.worekrsQueue popObject];
-        if (object) {
-            [self processObject:object];
+        if (worker) {
+            [self performSelectorInBackground:worker];
+            state = IDPWorkerBusy;
         }
+        
+        [super setState:state];
     }
 }
+
+#pragma mark -
+#pragma mark Public
 
 // should be overriden in subclasses
 - (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
     
 }
 
-- (void)performWorkWithObjectInBackground:(id)object {
-    [self takeMoneyFromObject:object];
-    [self performWorkWithObject:object];
+- (void)processObject:(id)object {
+    @synchronized (self) {
+        if (self.state == IDPWorkerReadyForWork) {
+            self.state = IDPWorkerBusy;
+            [self performSelectorInBackground:object];
+        } else {
+            [self.workersQueue pushObject:object];
+        }
+    }
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)performSelectorInBackground:(id)object {
+    [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:)
+                           withObject:object];
+}
+
+- (void)performSelectorOnMainThread:(id)object {
     [self performSelectorOnMainThread:@selector(performWorkWithObjectOnMain:)
                            withObject:object
                         waitUntilDone:NO];
+}
+
+- (void)performWorkWithObjectInBackground:(id)object {
+    [self takeMoneyFromObject:object];
+    [self performWorkWithObject:object];
+    [self performSelectorOnMainThread:object];
 }
 
 - (void)performWorkWithObjectOnMain:(id)object {
     [self finishedProcessingObject:object];
     
     @synchronized (self) {
-        IDPQueue *queue = self.worekrsQueue;
+        IDPQueue *queue = self.workersQueue;
         id queueObject = [queue popObject];
         
         if (queueObject) {
-            [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:)
-                                   withObject:queueObject];
+            [self performSelectorInBackground:queueObject];
         } else {
             [self finishedWork];
-        }
-    }
-}
-
-- (void)processObject:(id)object {
-    @synchronized (self) {
-        if (self.state == IDPWorkerReadyForWork) {
-            self.state = IDPWorkerBusy;
-            [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:)
-                                   withObject:object];
-        } else {
-            [self.worekrsQueue pushObject:object];
         }
     }
 }

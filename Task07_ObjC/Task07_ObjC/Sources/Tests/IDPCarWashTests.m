@@ -16,5 +16,5 @@
 
 void IDPCarWashTest() {
     IDPCarDispatcher *dispatcher = [IDPCarDispatcher object];
-    [dispatcher setupTimer];
+    dispatcher.running = YES;
 }

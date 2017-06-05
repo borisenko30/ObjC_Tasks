@@ -74,6 +74,22 @@
     }
 }
 
+- (void)addObservers:(NSArray *)observers {
+    @synchronized (self) {
+        for (id observer in observers) {
+            [self addObserver:observer];
+        }
+    }
+}
+
+- (void)removeObservers:(NSArray *)observers {
+    @synchronized (self) {
+        for (id observer in observers) {
+            [self removeObserver:observer];
+        }
+    }
+}
+
 - (SEL)selectorForState:(NSUInteger)state {
     return NULL;
 }

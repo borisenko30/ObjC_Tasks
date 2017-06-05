@@ -11,7 +11,6 @@
 @class IDPQueue;
 
 @interface IDPCarDispatcher : NSObject
-
-- (void)setupTimer;
+@property (nonatomic, assign) BOOL running;
 
 @end

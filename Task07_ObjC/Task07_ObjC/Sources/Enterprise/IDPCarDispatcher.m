@@ -59,15 +59,31 @@ IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
     }
 }
 
-#pragma mark -
-#pragma mark Public
+- (void)setRunning:(BOOL)running {
+    if (running == _running) {
+        return;
+    }
+    
+    if (running) {
+        [self start];
+    } else {
+        [self stop];
+    }
+}
 
-- (void)setupTimer {
+#pragma mark -
+#pragma mark Private
+
+- (void)start {
     self.timer = [NSTimer scheduledTimerWithInterval:2.0f
                                               target:self
                                             selector:@selector(addCars)
                                             userInfo:nil
                                              repeats:YES];
+}
+
+- (void)stop {
+    self.timer = nil;
 }
 
 - (void)addCars {
