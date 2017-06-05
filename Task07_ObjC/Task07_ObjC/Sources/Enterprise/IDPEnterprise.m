@@ -124,9 +124,11 @@ IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
 }
 
 - (NSArray *)freeWashers {
-    return [self.washers filteredArrayWithBlock:^BOOL(IDPWorker *washer) {
-        return washer.state == IDPWorkerReadyForWork;
-    }];
+    @synchronized (self) {
+        return [self.washers filteredArrayWithBlock:^BOOL(IDPWorker *washer) {
+            return washer.state == IDPWorkerReadyForWork;
+        }];
+    }
 }
 
 - (IDPQueue *)addCarsToQueue:(NSArray *)cars {
