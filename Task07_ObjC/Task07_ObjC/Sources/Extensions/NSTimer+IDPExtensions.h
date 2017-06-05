@@ -13,7 +13,7 @@
 @interface NSTimer (IDPExtensions)
 
 + (NSTimer *)scheduledTimerWithInterval:(NSTimeInterval)seconds
-                                 target:(IDPTimerProxy *)proxy
+                                 target:(id)target
                                selector:(SEL)selector
                                userInfo:(id)userInfo
                                 repeats:(BOOL)repeats;

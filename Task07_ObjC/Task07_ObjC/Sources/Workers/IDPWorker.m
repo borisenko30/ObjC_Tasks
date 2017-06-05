@@ -68,8 +68,8 @@
 - (void)performWorkWithObjectOnMain:(id)object {
     [self finishedProcessingObject:object];
     
-    IDPQueue *queue = self.workers;
     @synchronized (self) {
+        IDPQueue *queue = self.workers;
         id queueObject = [queue popObject];
         
         if (queueObject) {

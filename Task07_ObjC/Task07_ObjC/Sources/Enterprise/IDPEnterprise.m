@@ -63,7 +63,7 @@ IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
 
 - (void)setCars:(IDPQueue *)cars {
     if (cars != _cars) {
-        _cars = cars;
+        _cars = [cars retain];
     }
 }
 

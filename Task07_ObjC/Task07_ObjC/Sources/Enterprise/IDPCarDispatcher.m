@@ -54,7 +54,8 @@ IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
     if (timer != _timer) {
         [_timer invalidate];
         [_timer release];
-        _timer = timer;
+        
+        _timer = [timer retain];
     }
 }
 
@@ -62,12 +63,9 @@ IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
 #pragma mark Public
 
 - (void)setupTimer {
-    IDPTimerProxy *proxy = [[[IDPTimerProxy alloc] initWithTarget:self
-                                                         selector:@selector(addCars)] autorelease];
-    
     self.timer = [NSTimer scheduledTimerWithInterval:2.0f
-                                              target:proxy
-                                            selector:@selector(onTimer:)
+                                              target:self
+                                            selector:@selector(addCars)
                                             userInfo:nil
                                              repeats:YES];
 }
