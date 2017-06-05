@@ -130,7 +130,6 @@ IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
 }
 
 - (IDPQueue *)addCarsToQueue:(NSArray *)cars {
-    @synchronized (self) {
         IDPQueue *result = self.carsQueue;
         
         for (IDPCar *car in cars) {
@@ -138,7 +137,6 @@ IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
         }
         
         return result;
-    }
 }
 
 @end
