@@ -16,7 +16,7 @@
 @property (nonatomic, assign) NSUInteger  salary;
 @property (nonatomic, assign) NSUInteger  experience;
 @property (nonatomic, assign) NSUInteger  cash;
-@property (nonatomic, retain) IDPQueue    *workers;
+@property (nonatomic, retain) IDPQueue    *worekrsQueue;
 
 @end
 
@@ -26,14 +26,14 @@
 #pragma mark Deallocations and initializations
 
 - (void)dealloc {
-    self.workers = nil;
+    self.worekrsQueue = nil;
     
     [super dealloc];
 }
 
 - (instancetype)init {
     self = [super init];
-    self.workers = [IDPQueue object];
+    self.worekrsQueue = [IDPQueue object];
     
     return self;
 }
@@ -45,7 +45,7 @@
     @synchronized (self) {
         [super setState:state];
         
-        id object = [self.workers popObject];
+        id object = [self.worekrsQueue popObject];
         if (object) {
             [self processObject:object];
         }
@@ -69,7 +69,7 @@
     [self finishedProcessingObject:object];
     
     @synchronized (self) {
-        IDPQueue *queue = self.workers;
+        IDPQueue *queue = self.worekrsQueue;
         id queueObject = [queue popObject];
         
         if (queueObject) {
@@ -88,7 +88,7 @@
             [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:)
                                    withObject:object];
         } else {
-            [self.workers pushObject:object];
+            [self.worekrsQueue pushObject:object];
         }
     }
 }

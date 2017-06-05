@@ -27,7 +27,7 @@ IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
 
 @interface IDPEnterprise ()
 @property (nonatomic, retain) NSArray           *washers;
-@property (nonatomic, retain) IDPQueue          *cars;
+@property (nonatomic, retain) IDPQueue          *carsQueue;
 @property (nonatomic, retain) IDPAccountant     *accountant;
 @property (nonatomic, retain) IDPDirector       *director;
 
@@ -40,7 +40,7 @@ IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
 
 - (void)dealloc {
     self.washers = nil;
-    self.cars = nil;
+    self.carsQueue = nil;
     self.accountant = nil;
     self.director = nil;
     
@@ -50,7 +50,7 @@ IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
 - (instancetype)init {
     self = [super init];
     self.washers = [NSArray array];
-    self.cars = [IDPQueue object];
+    self.carsQueue = [IDPQueue object];
     self.accountant = [IDPAccountant object];
     self.director = [IDPDirector object];
     [self assignWorkers];
@@ -62,19 +62,21 @@ IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
 #pragma mark Accessors
 
 - (void)setCars:(IDPQueue *)cars {
-    if (cars != _cars) {
-        _cars = [cars retain];
+    if (cars != _carsQueue) {
+        _carsQueue = [cars retain];
     }
 }
 
 - (void)setWashers:(NSArray *)washers {
-    for (IDPWasher *washer in _washers) {
-        [washer addObserver:self.accountant];
+    @synchronized (self) {
+        for (IDPWasher *washer in _washers) {
+            [washer addObserver:self.accountant];
+        }
+        
+        [washers retain];
+        [_washers release];
+        _washers = washers;
     }
-    
-    [washers retain];
-    [_washers release];
-    _washers = washers;
 }
 
 #pragma mark -
@@ -90,16 +92,18 @@ IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
         [washer processObject:[carQueue popObject]];
     }
     
-    self.cars = carQueue;
+    self.carsQueue = carQueue;
 }
 
 #pragma mark -
 #pragma mark WorkerObserver methods
 - (void)workerDidBecomeReadyForWork:(IDPWorker *)washer {
-    IDPCar *car = [self.cars popObject];
-    
-    if (car) {
-        [washer processObject:car];
+    @synchronized (self) {
+        IDPCar *car = [self.carsQueue popObject];
+        
+        if (car) {
+            [washer processObject:car];
+        }
     }
 }
 
@@ -126,13 +130,15 @@ IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
 }
 
 - (IDPQueue *)addCarsToQueue:(NSArray *)cars {
-    IDPQueue *result = self.cars;
-    
-    for (IDPCar *car in cars) {
-        [result pushObject:car];
+    @synchronized (self) {
+        IDPQueue *result = self.carsQueue;
+        
+        for (IDPCar *car in cars) {
+            [result pushObject:car];
+        }
+        
+        return result;
     }
-    
-    return result;
 }
 
 @end
