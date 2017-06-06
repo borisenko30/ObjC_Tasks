@@ -29,7 +29,6 @@ IDPStaticConstant(NSUInteger, IDPAccountantsCount, 2)
 
 @interface IDPEnterprise ()
 @property (nonatomic, retain) NSArray           *washers;
-@property (nonatomic, retain) IDPQueue          *carsQueue;
 @property (nonatomic, retain) NSArray           *accountants;
 @property (nonatomic, retain) IDPDirector       *director;
 @property (nonatomic, retain) IDPDispatcher     *washersDispatcher;
@@ -44,7 +43,6 @@ IDPStaticConstant(NSUInteger, IDPAccountantsCount, 2)
 
 - (void)dealloc {
     self.washers = nil;
-    self.carsQueue = nil;
     self.accountants = nil;
     self.director = nil;
     self.washersDispatcher = nil;
@@ -57,7 +55,6 @@ IDPStaticConstant(NSUInteger, IDPAccountantsCount, 2)
     self = [super init];
     self.washersDispatcher = [IDPDispatcher object];
     self.accountantsDispatcher = [IDPDispatcher object];
-    self.carsQueue = [IDPQueue object];
     self.accountants = [NSArray array];
     self.director = [IDPDirector object];
     self.washers = [NSArray array];
@@ -86,13 +83,13 @@ IDPStaticConstant(NSUInteger, IDPAccountantsCount, 2)
 
 // entry point
 - (void)washCars:(NSArray *)cars {
-    @synchronized (self) {
-        IDPQueue *carQueue = [self addCarsToQueue:cars];
-        
-        [self.washersDispatcher processObject:[carQueue popObject]];
-        
-        self.carsQueue = carQueue;
+    for (IDPCar *car in cars) {
+        [self washCar:car];
     }
+}
+
+- (void)washCar:(IDPCar *)car {
+    [self.washersDispatcher processObject:car];
 }
 
 #pragma mark -
@@ -130,16 +127,6 @@ IDPStaticConstant(NSUInteger, IDPAccountantsCount, 2)
             return washer.state == IDPWorkerReadyForWork;
         }];
     }
-}
-
-- (IDPQueue *)addCarsToQueue:(NSArray *)cars {
-    IDPQueue *result = self.carsQueue;
-    
-    for (IDPCar *car in cars) {
-        [result pushObject:car];
-    }
-    
-    return result;
 }
 
 @end
