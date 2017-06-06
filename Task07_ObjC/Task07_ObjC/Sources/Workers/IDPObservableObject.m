@@ -40,6 +40,7 @@
     @synchronized (self) {
         if (_state != state) {
             _state = state;
+            
             [self notifyOfState:state];
         }
     }
@@ -102,10 +103,12 @@
 #pragma mark Private
 
 - (void)notifyOfStateWithSelector:(SEL)selector {
-    NSSet *observers = self.observers;
-    for (id observer in observers) {
-        if ([observer respondsToSelector:selector]) {
-            [observer performSelector:selector withObject:self];
+    @synchronized (self) {
+        NSSet *observers = self.observers;
+        for (id observer in observers) {
+            if ([observer respondsToSelector:selector]) {
+                [observer performSelector:selector withObject:self];
+            }
         }
     }
 }

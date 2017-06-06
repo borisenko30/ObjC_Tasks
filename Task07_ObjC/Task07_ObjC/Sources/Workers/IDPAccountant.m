@@ -16,7 +16,7 @@
 #pragma mark Public
 
 - (void)countMoney {
-    usleep(1000 * arc4random_uniform(5));
+    //usleep(1000 * arc4random_uniform(5));
     NSLog(@"Counted money: %lu", self.cash);
 }
 

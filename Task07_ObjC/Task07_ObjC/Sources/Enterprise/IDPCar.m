@@ -12,7 +12,7 @@
 #import "IDPMacros.h"
 #import "IDPRandom.h"
 
-//IDPStaticConstantRange(IDPCashAmountRange, 100, 200)
+IDPStaticConstantRange(IDPCashAmountRange, 10, 0)
 
 @interface IDPCar ()
 @property (nonatomic, assign) NSUInteger cash;
@@ -27,13 +27,13 @@
 - (instancetype)init {
     self = [super init];
     self.state = IDPCarDirty;
-    self.cash = (10);//IDPRandomWithRange(IDPCashAmountRange);
+    self.cash = IDPRandomWithRange(IDPCashAmountRange);
     
     return self;
 }
 
 #pragma mark -
-#pragma mark Public
+#pragma mark IDPMoneyFlow methods
 
 - (NSUInteger)giveMoney {
     @synchronized (self) {

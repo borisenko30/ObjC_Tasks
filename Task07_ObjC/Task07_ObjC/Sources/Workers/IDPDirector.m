@@ -21,7 +21,7 @@
 #pragma mark Public
 
 - (void)makeProfit {
-    usleep(1000 * arc4random_uniform(1000));
+    //usleep(1000 * arc4random_uniform(1000));
     NSLog(@"Boss has got some profit: %lu", self.cash);
 }
 
