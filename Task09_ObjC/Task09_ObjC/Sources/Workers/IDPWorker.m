@@ -10,7 +10,11 @@
 #import "IDPCar.h"
 #import "IDPQueue.h"
 
+#import "IDPMacros.h"
+
 #import "NSObject+IDPExtensions.h"
+
+IDPStaticConstant(NSString *, IDPQueueName, @"WorkerQueue")
 
 @interface IDPWorker ()
 @property (nonatomic, assign) NSUInteger  salary;
@@ -41,14 +45,27 @@
 #pragma mark Private
 
 - (void)performSelectorInBackground:(id)object {
-    [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:)
-                           withObject:object];
+    //[self performSelectorInBackground:@selector(performWorkWithObjectInBackground:)
+    //                       withObject:object];
+    dispatch_queue_t queue = dispatch_queue_create([IDPQueueName cStringUsingEncoding:NSUTF8StringEncoding],
+                                                   DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(queue, ^{
+        [self performWorkWithObjectInBackground:object];
+    });
+    
+    dispatch_release(queue);
+    
 }
 
 - (void)performSelectorOnMainThread:(id)object {
-    [self performSelectorOnMainThread:@selector(performWorkWithObjectOnMain:)
-                           withObject:object
-                        waitUntilDone:NO];
+//    [self performSelectorOnMainThread:@selector(performWorkWithObjectOnMain:)
+//                           withObject:object
+//                        waitUntilDone:NO];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self performWorkWithObjectOnMain:object];
+    });
+    
 }
 
 - (void)performWorkWithObjectInBackground:(id)object {

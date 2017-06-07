@@ -21,6 +21,7 @@
 
 IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
 IDPStaticConstant(CGFloat, IDPTimerInterval, 2.0f)
+IDPStaticConstant(NSString *, IDPQueueName, @"CarDispatcherQueue")
 
 @interface IDPCarDispatcher ()
 @property (nonatomic, retain) NSTimer       *timer;
@@ -86,7 +87,15 @@ IDPStaticConstant(CGFloat, IDPTimerInterval, 2.0f)
 }
 
 - (void)startInBackground {
-    [self performSelectorInBackground:@selector(addCars) withObject:nil];
+    //[self performSelectorInBackground:@selector(addCars) withObject:nil];
+    dispatch_queue_t queue = dispatch_queue_create([IDPQueueName cStringUsingEncoding:NSUTF8StringEncoding],
+                                                   DISPATCH_QUEUE_CONCURRENT);
+    
+    dispatch_async(queue, ^{
+        [self addCars];
+    });
+    
+    dispatch_release(queue);
 }
 
 - (void)stop {
