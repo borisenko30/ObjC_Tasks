@@ -21,6 +21,7 @@
 }
 
 - (void)performWorkWithObject:(id<IDPMoneyFlow>)object {
+    //NSLog(@"Got money from: %@", object);
     [self countMoney];
 }
 

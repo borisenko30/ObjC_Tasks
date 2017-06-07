@@ -20,6 +20,7 @@
 #import "NSTimer+IDPExtensions.h"
 
 IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
+IDPStaticConstant(CGFloat, IDPTimerInterval, 2.0f)
 
 @interface IDPCarDispatcher ()
 @property (nonatomic, retain) NSTimer       *timer;
@@ -69,13 +70,15 @@ IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
     } else {
         [self stop];
     }
+    
+    _running = running;
 }
 
 #pragma mark -
 #pragma mark Private
 
 - (void)start {
-    self.timer = [NSTimer scheduledTimerWithInterval:2.0f
+    self.timer = [NSTimer scheduledTimerWithInterval:IDPTimerInterval
                                               target:self
                                             selector:@selector(startInBackground)
                                             userInfo:nil

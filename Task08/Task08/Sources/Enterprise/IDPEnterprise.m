@@ -32,9 +32,6 @@ IDPStaticConstant(NSUInteger, IDPDirectorsCount, 1)
 typedef id(^IDPDispatcherFactory)(Class handlerClass, NSUInteger handlerCount, id observer);
 
 @interface IDPEnterprise ()
-@property (nonatomic, retain) NSArray           *washers;
-@property (nonatomic, retain) NSArray           *accountants;
-@property (nonatomic, retain) IDPDirector       *director;
 @property (nonatomic, retain) IDPDispatcher     *washersDispatcher;
 @property (nonatomic, retain) IDPDispatcher     *accountantsDispatcher;
 @property (nonatomic, retain) IDPDispatcher     *directorsDispatcher;
@@ -47,9 +44,6 @@ typedef id(^IDPDispatcherFactory)(Class handlerClass, NSUInteger handlerCount, i
 #pragma mark Deallocations and initializations
 
 - (void)dealloc {
-    self.washers = nil;
-    self.accountants = nil;
-    self.director = nil;
     self.washersDispatcher = nil;
     self.accountantsDispatcher = nil;
     self.directorsDispatcher = nil;
@@ -62,9 +56,6 @@ typedef id(^IDPDispatcherFactory)(Class handlerClass, NSUInteger handlerCount, i
     self.washersDispatcher = [IDPDispatcher object];
     self.accountantsDispatcher = [IDPDispatcher object];
     self.directorsDispatcher = [IDPDispatcher object];
-    self.accountants = [NSArray array];
-    self.director = [IDPDirector object];
-    self.washers = [NSArray array];
     [self assignWorkers];
     
     return self;
@@ -73,20 +64,40 @@ typedef id(^IDPDispatcherFactory)(Class handlerClass, NSUInteger handlerCount, i
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setWashers:(NSArray *)washers {
-    if (washers == _washers) {
+- (void)setWashersDispatcher:(IDPDispatcher *)washersDispatcher {
+    if (washersDispatcher == _washersDispatcher) {
         return;
     }
     
-    NSArray *observers = @[self.washersDispatcher, self.accountantsDispatcher];
+    [_washersDispatcher removeHandlers:_washersDispatcher.handlers];
     
-    for (IDPWorker *washer in _washers) {
-        [washer removeObservers:observers];
+    [washersDispatcher retain];
+    [_washersDispatcher release];
+    _washersDispatcher = washersDispatcher;
+}
+
+- (void)setAccountantsDispatcher:(IDPDispatcher *)accountantsDispatcher {
+    if (accountantsDispatcher == _accountantsDispatcher) {
+        return;
     }
     
-    [washers retain];
-    [_washers release];
-    _washers = washers;
+    [_accountantsDispatcher removeHandlers:_accountantsDispatcher.handlers];
+    
+    [accountantsDispatcher retain];
+    [_accountantsDispatcher release];
+    _accountantsDispatcher = accountantsDispatcher;
+}
+
+- (void)setDirectorsDispatcher:(IDPDispatcher *)directorsDispatcher {
+    if (directorsDispatcher == _directorsDispatcher) {
+        return;
+    }
+    
+    [_directorsDispatcher removeHandlers:_directorsDispatcher.handlers];
+    
+    [directorsDispatcher retain];
+    [_directorsDispatcher release];
+    _directorsDispatcher = directorsDispatcher;
 }
 
 #pragma mark -
@@ -102,13 +113,6 @@ typedef id(^IDPDispatcherFactory)(Class handlerClass, NSUInteger handlerCount, i
 - (void)washCar:(IDPCar *)car {
     [self.washersDispatcher processObject:car];
 }
-
-#pragma mark -
-#pragma mark WorkerObserver methods
-//
-//- (void)workerDidBecomeReadyForProcessing:(id)worker {
-//    [self.accountantsDispatcher processObject:worker];
-//}
 
 #pragma mark -
 #pragma mark Private
@@ -135,31 +139,6 @@ typedef id(^IDPDispatcherFactory)(Class handlerClass, NSUInteger handlerCount, i
     self.accountantsDispatcher = accountantsDispatcher;
     self.washersDispatcher = washersDispatcher;
     
-//    self.accountants = [NSArray objectsWithCount:IDPAccountantsCount factoryBlock:^{
-//        IDPAccountant *accountant = [IDPAccountant object];
-//        [accountant addObservers:@[self.director, self.accountantsDispatcher]];
-//        
-//        return accountant;
-//    }];
-//
-//    self.washers = [NSArray objectsWithCount:IDPWashersCount factoryBlock:^{
-//        IDPWasher *washer = [IDPWasher object];
-//        [washer addObservers:@[self.washersDispatcher, self]];
-//        
-//        return washer;
-//    }];
-//
-    
-//    [self.washersDispatcher initWithHandlers:self.washers];
-//    [self.accountantsDispatcher initWithHandlers:self.accountants];
 }
-//
-//- (NSArray *)freeWashers {
-//    @synchronized (self) {
-//        return [self.washers filteredArrayWithBlock:^BOOL(IDPWorker *washer) {
-//            return washer.state == IDPWorkerReadyForWork;
-//        }];
-//    }
-//}
 
 @end

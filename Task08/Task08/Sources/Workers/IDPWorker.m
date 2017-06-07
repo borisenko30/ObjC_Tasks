@@ -16,7 +16,6 @@
 @property (nonatomic, assign) NSUInteger  salary;
 @property (nonatomic, assign) NSUInteger  experience;
 @property (nonatomic, assign) NSUInteger  cash;
-@property (nonatomic, retain) IDPQueue    *workersQueue;
 
 - (void)performSelectorInBackground:(id)object;
 - (void)performSelectorOnMainThread:(id)object;
@@ -24,38 +23,6 @@
 @end
 
 @implementation IDPWorker
-
-#pragma mark -
-#pragma mark Deallocations and initializations
-
-- (void)dealloc {
-    self.workersQueue = nil;
-    
-    [super dealloc];
-}
-
-- (instancetype)init {
-    self = [super init];
-    self.workersQueue = [IDPQueue object];
-    
-    return self;
-}
-
-#pragma mark -
-#pragma mark Accessors
-
-- (void)setState:(NSUInteger)state {
-    @synchronized (self) {
-        IDPWorker *worker = [self.workersQueue popObject];
-        
-        if (worker) {
-            [self performSelectorInBackground:worker];
-            state = IDPWorkerBusy;
-        }
-        
-        [super setState:state];
-    }
-}
 
 #pragma mark -
 #pragma mark Public
@@ -66,14 +33,8 @@
 }
 
 - (void)processObject:(id)object {
-    @synchronized (self) {
-        if (self.state == IDPWorkerReadyForWork) {
-            self.state = IDPWorkerBusy;
-            [self performSelectorInBackground:object];
-        } else {
-            [self.workersQueue pushObject:object];
-        }
-    }
+    self.state = IDPWorkerBusy;
+    [self performSelectorInBackground:object];
 }
 
 #pragma mark -
@@ -98,17 +59,7 @@
 
 - (void)performWorkWithObjectOnMain:(id)object {
     [self finishedProcessingObject:object];
-    
-    @synchronized (self) {
-        IDPQueue *queue = self.workersQueue;
-        id queueObject = [queue popObject];
-        
-        if (queueObject) {
-            [self performSelectorInBackground:queueObject];
-        } else {
-            [self finishedWork];
-        }
-    }
+    [self finishedWork];
 }
 
 - (void)finishedWork {

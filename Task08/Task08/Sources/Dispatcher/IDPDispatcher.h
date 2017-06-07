@@ -13,11 +13,17 @@
 @class IDPQueue;
 
 @interface IDPDispatcher : NSObject <IDPWorkerObserver>
-@property (nonatomic, readonly) IDPQueue        *objectsQueue;
-@property (nonatomic, readonly) IDPQueue        *handlersQueue;
-@property (nonatomic, readonly) NSArray         *handlers;
+@property (nonatomic, readonly) IDPQueue    *objectsQueue;
+@property (nonatomic, readonly) IDPQueue    *handlersQueue;
+@property (nonatomic, readonly) NSSet       *handlers;
 
 - (instancetype)initWithHandlers:(NSArray *)handlers;
+
+- (void)addHandler:(id)handler;
+- (void)removeHandler:(id)handler;
+
+- (void)addHandlers:(id)handlers;
+- (void)removeHandlers:(id)handlers;
 
 - (void)processObject:(id)object;
 
