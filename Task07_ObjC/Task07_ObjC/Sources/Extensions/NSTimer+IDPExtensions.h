@@ -12,9 +12,9 @@
 
 @interface NSTimer (IDPExtensions)
 
-+ (NSTimer *)scheduledTimerWithInterval:(NSTimeInterval)seconds
-                                 target:(id)target
-                               selector:(SEL)selector
-                               userInfo:(id)userInfo
-                                repeats:(BOOL)repeats;
++ (NSTimer *)weakTargetTimerWithInterval:(NSTimeInterval)seconds
+                                  target:(id)target
+                                selector:(SEL)selector
+                                userInfo:(id)userInfo
+                                 repeats:(BOOL)repeats;
 @end

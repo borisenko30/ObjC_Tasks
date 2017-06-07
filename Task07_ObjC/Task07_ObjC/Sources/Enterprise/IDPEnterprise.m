@@ -62,6 +62,10 @@ IDPStaticConstant(NSUInteger, IDPWashersQuantity, 5)
 #pragma mark Accessors
 
 - (void)setWashers:(NSArray *)washers {
+    if (washers == _washers) {
+        return;
+    }
+    
     NSArray *observers = @[self.accountant, self, self.director];
     
     for (IDPWorker *washer in _washers) {

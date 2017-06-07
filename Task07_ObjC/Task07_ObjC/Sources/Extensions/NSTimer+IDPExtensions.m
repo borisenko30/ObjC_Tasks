@@ -12,13 +12,13 @@
 
 @implementation NSTimer (IDPExtensions)
 
-+ (NSTimer *)scheduledTimerWithInterval:(NSTimeInterval)seconds
-                                 target:(id)target
-                               selector:(SEL)selector
-                               userInfo:(id)userInfo
-                                repeats:(BOOL)repeats {
-    IDPTimerProxy *proxy = [[[IDPTimerProxy alloc] initWithTarget:target
-                                                         selector:selector] autorelease];
++ (NSTimer *)weakTargetTimerWithInterval:(NSTimeInterval)seconds
+                                  target:(id)target
+                                selector:(SEL)selector
+                                userInfo:(id)userInfo
+                                 repeats:(BOOL)repeats {
+    
+    IDPTimerProxy *proxy = [[[IDPTimerProxy alloc] initWithTarget:target selector:selector] autorelease];
     
     return [self scheduledTimerWithTimeInterval:seconds
                                          target:proxy

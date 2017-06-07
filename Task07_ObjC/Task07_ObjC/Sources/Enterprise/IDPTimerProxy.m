@@ -9,6 +9,12 @@
 #import "IDPTimerProxy.h"
 #import "NSTimer+IDPExtensions.h"
 
+@interface IDPTimerProxy ()
+@property (nonatomic, assign) id  target;
+@property (nonatomic, assign) SEL selector;
+
+@end
+
 @implementation IDPTimerProxy
 
 #pragma mark -

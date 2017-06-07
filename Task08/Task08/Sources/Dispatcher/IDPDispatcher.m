@@ -13,8 +13,9 @@
 #import "NSObject+IDPExtensions.h"
 
 @interface IDPDispatcher ()
-@property (nonatomic, retain) IDPQueue    *objectsQueue;
-@property (nonatomic, retain) IDPQueue    *handlersQueue;
+@property (nonatomic, retain) IDPQueue          *objectsQueue;
+@property (nonatomic, retain) IDPQueue          *handlersQueue;
+@property (nonatomic, retain) NSMutableArray    *mutableHandlers;
 
 @end
 
@@ -26,20 +27,22 @@
 - (void)dealloc {
     self.objectsQueue = nil;
     self.handlersQueue = nil;
+    self.mutableHandlers = nil;
     
     [super dealloc];
 }
 
 - (instancetype)init {
     self = [self initWithHandlers:nil];
-    self.objectsQueue = [IDPQueue object];
     
     return self;
 }
 
 - (instancetype)initWithHandlers:(NSArray *)handlers {
     self = [super init];
+    self.objectsQueue = [IDPQueue object];
     self.handlersQueue = [IDPQueue queueWithArray:handlers];
+    self.mutableHandlers = [NSMutableArray arrayWithArray:handlers];
     
     return self;
 }
