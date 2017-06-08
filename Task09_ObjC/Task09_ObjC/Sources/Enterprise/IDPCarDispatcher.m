@@ -13,6 +13,7 @@
 #import "IDPQueue.h"
 #import "IDPTimerProxy.h"
 
+#import "IDPDispatchQueue.h"
 #import "IDPMacros.h"
 
 #import "NSObject+IDPExtensions.h"
@@ -20,12 +21,13 @@
 #import "NSTimer+IDPExtensions.h"
 
 IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
-IDPStaticConstant(CGFloat, IDPTimerInterval, 2.0f)
-IDPStaticConstant(NSString *, IDPQueueName, @"CarDispatcherQueue")
+IDPStaticConstant(size_t, IDPTimerIterationCount, 10)
+IDPStaticConstant(NSString *, IDPTimerQueue, @"IDPTimerQueue")
 
 @interface IDPCarDispatcher ()
-@property (nonatomic, retain) NSTimer       *timer;
-@property (nonatomic, retain) IDPEnterprise *enterprise;
+@property (nonatomic, retain) NSTimer           *timer;
+@property (nonatomic, retain) IDPEnterprise     *enterprise;
+@property (nonatomic, retain) dispatch_queue_t  queue;
 
 @end
 
@@ -37,6 +39,7 @@ IDPStaticConstant(NSString *, IDPQueueName, @"CarDispatcherQueue")
 - (void)dealloc {
     self.timer = nil;
     self.enterprise = nil;
+    self.queue = nil;
     
     [super dealloc];
 }
@@ -61,6 +64,22 @@ IDPStaticConstant(NSString *, IDPQueueName, @"CarDispatcherQueue")
     }
 }
 
+- (void)setQueue:(dispatch_queue_t)queue {
+    if (queue == _queue) {
+        return;
+    }
+    
+    if (queue) {
+        dispatch_retain(queue);
+    }
+    
+    if (_queue) {
+        dispatch_release(_queue);
+    }
+    
+    _queue = queue;
+}
+
 - (void)setRunning:(BOOL)running {
     if (running == _running) {
         return;
@@ -79,27 +98,23 @@ IDPStaticConstant(NSString *, IDPQueueName, @"CarDispatcherQueue")
 #pragma mark Private
 
 - (void)start {
-    self.timer = [NSTimer scheduledTimerWithInterval:IDPTimerInterval
-                                              target:self
-                                            selector:@selector(startInBackground)
-                                            userInfo:nil
-                                             repeats:YES];
+    self.queue = dispatch_queue_create([IDPTimerQueue cStringUsingEncoding:NSUTF8StringEncoding],
+                                       DISPATCH_QUEUE_CONCURRENT);
+    dispatch_queue_t queue = self.queue;
+    
+    dispatch_apply(IDPTimerIterationCount, queue, ^(size_t count) {
+        [self startInBackground];
+    });
 }
 
 - (void)startInBackground {
-    //[self performSelectorInBackground:@selector(addCars) withObject:nil];
-    dispatch_queue_t queue = dispatch_queue_create([IDPQueueName cStringUsingEncoding:NSUTF8StringEncoding],
-                                                   DISPATCH_QUEUE_CONCURRENT);
-    
-    dispatch_async(queue, ^{
+    IDPDispatchQueueInBackgroundWithBlock(^{
         [self addCars];
     });
-    
-    dispatch_release(queue);
 }
 
 - (void)stop {
-    self.timer = nil;
+    self.queue = nil;
 }
 
 - (void)addCars {

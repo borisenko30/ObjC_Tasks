@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		564BD5F41EE9291E00B8A21F /* IDPDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 564BD5F31EE9291E00B8A21F /* IDPDispatchQueue.m */; };
 		565184011EE823DD007EEA53 /* IDPDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183D51EE823DD007EEA53 /* IDPDispatcher.m */; };
 		565184021EE823DD007EEA53 /* IDPCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183D81EE823DD007EEA53 /* IDPCar.m */; };
 		565184031EE823DD007EEA53 /* IDPCarDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183DA1EE823DD007EEA53 /* IDPCarDispatcher.m */; };
@@ -41,6 +42,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		564BD5F21EE9291E00B8A21F /* IDPDispatchQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPDispatchQueue.h; sourceTree = "<group>"; };
+		564BD5F31EE9291E00B8A21F /* IDPDispatchQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPDispatchQueue.m; sourceTree = "<group>"; };
 		565183C81EE823A9007EEA53 /* Task09_ObjC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Task09_ObjC; sourceTree = BUILT_PRODUCTS_DIR; };
 		565183D41EE823DD007EEA53 /* IDPDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPDispatcher.h; sourceTree = "<group>"; };
 		565183D51EE823DD007EEA53 /* IDPDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPDispatcher.m; sourceTree = "<group>"; };
@@ -182,6 +185,8 @@
 				565183ED1EE823DD007EEA53 /* IDPMacros.h */,
 				565183EE1EE823DD007EEA53 /* IDPRandom.h */,
 				565183EF1EE823DD007EEA53 /* IDPRandom.m */,
+				564BD5F21EE9291E00B8A21F /* IDPDispatchQueue.h */,
+				564BD5F31EE9291E00B8A21F /* IDPDispatchQueue.m */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 				5651840A1EE823DD007EEA53 /* NSTimer+IDPExtensions.m in Sources */,
 				565184011EE823DD007EEA53 /* IDPDispatcher.m in Sources */,
 				5651840C1EE823DD007EEA53 /* IDPRandom.m in Sources */,
+				564BD5F41EE9291E00B8A21F /* IDPDispatchQueue.m in Sources */,
 				5651840B1EE823DD007EEA53 /* IDPConstants.m in Sources */,
 				565184071EE823DD007EEA53 /* NSArray+IDPExtensions.m in Sources */,
 				565184031EE823DD007EEA53 /* IDPCarDispatcher.m in Sources */,
@@ -416,6 +422,7 @@
 				565183D11EE823A9007EEA53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
