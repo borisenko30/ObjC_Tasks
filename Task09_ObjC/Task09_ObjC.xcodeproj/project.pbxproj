@@ -1,0 +1,430 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		564BD5F41EE9291E00B8A21F /* IDPDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 564BD5F31EE9291E00B8A21F /* IDPDispatchQueue.m */; };
+		565184011EE823DD007EEA53 /* IDPDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183D51EE823DD007EEA53 /* IDPDispatcher.m */; };
+		565184021EE823DD007EEA53 /* IDPCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183D81EE823DD007EEA53 /* IDPCar.m */; };
+		565184031EE823DD007EEA53 /* IDPCarDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183DA1EE823DD007EEA53 /* IDPCarDispatcher.m */; };
+		565184041EE823DD007EEA53 /* IDPEnterprise.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183DC1EE823DD007EEA53 /* IDPEnterprise.m */; };
+		565184051EE823DD007EEA53 /* IDPQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183DE1EE823DD007EEA53 /* IDPQueue.m */; };
+		565184061EE823DD007EEA53 /* IDPTimerProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183E01EE823DD007EEA53 /* IDPTimerProxy.m */; };
+		565184071EE823DD007EEA53 /* NSArray+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183E31EE823DD007EEA53 /* NSArray+IDPExtensions.m */; };
+		565184081EE823DD007EEA53 /* NSMutableArray+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183E51EE823DD007EEA53 /* NSMutableArray+IDPExtensions.m */; };
+		565184091EE823DD007EEA53 /* NSObject+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183E71EE823DD007EEA53 /* NSObject+IDPExtensions.m */; };
+		5651840A1EE823DD007EEA53 /* NSTimer+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183E91EE823DD007EEA53 /* NSTimer+IDPExtensions.m */; };
+		5651840B1EE823DD007EEA53 /* IDPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183EC1EE823DD007EEA53 /* IDPConstants.m */; };
+		5651840C1EE823DD007EEA53 /* IDPRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183EF1EE823DD007EEA53 /* IDPRandom.m */; };
+		5651840D1EE823DD007EEA53 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183F01EE823DD007EEA53 /* main.m */; };
+		5651840E1EE823DD007EEA53 /* IDPCarWashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183F31EE823DD007EEA53 /* IDPCarWashTests.m */; };
+		5651840F1EE823DD007EEA53 /* IDPAccountant.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183F61EE823DD007EEA53 /* IDPAccountant.m */; };
+		565184101EE823DD007EEA53 /* IDPDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183F81EE823DD007EEA53 /* IDPDirector.m */; };
+		565184111EE823DD007EEA53 /* IDPObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183FB1EE823DD007EEA53 /* IDPObservableObject.m */; };
+		565184121EE823DD007EEA53 /* IDPWasher.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183FD1EE823DD007EEA53 /* IDPWasher.m */; };
+		565184131EE823DD007EEA53 /* IDPWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183FF1EE823DD007EEA53 /* IDPWorker.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		565183C61EE823A9007EEA53 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		564BD5F21EE9291E00B8A21F /* IDPDispatchQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPDispatchQueue.h; sourceTree = "<group>"; };
+		564BD5F31EE9291E00B8A21F /* IDPDispatchQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPDispatchQueue.m; sourceTree = "<group>"; };
+		565183C81EE823A9007EEA53 /* Task09_ObjC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Task09_ObjC; sourceTree = BUILT_PRODUCTS_DIR; };
+		565183D41EE823DD007EEA53 /* IDPDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPDispatcher.h; sourceTree = "<group>"; };
+		565183D51EE823DD007EEA53 /* IDPDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPDispatcher.m; sourceTree = "<group>"; };
+		565183D71EE823DD007EEA53 /* IDPCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPCar.h; sourceTree = "<group>"; };
+		565183D81EE823DD007EEA53 /* IDPCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPCar.m; sourceTree = "<group>"; };
+		565183D91EE823DD007EEA53 /* IDPCarDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPCarDispatcher.h; sourceTree = "<group>"; };
+		565183DA1EE823DD007EEA53 /* IDPCarDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPCarDispatcher.m; sourceTree = "<group>"; };
+		565183DB1EE823DD007EEA53 /* IDPEnterprise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPEnterprise.h; sourceTree = "<group>"; };
+		565183DC1EE823DD007EEA53 /* IDPEnterprise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPEnterprise.m; sourceTree = "<group>"; };
+		565183DD1EE823DD007EEA53 /* IDPQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPQueue.h; sourceTree = "<group>"; };
+		565183DE1EE823DD007EEA53 /* IDPQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPQueue.m; sourceTree = "<group>"; };
+		565183DF1EE823DD007EEA53 /* IDPTimerProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPTimerProxy.h; sourceTree = "<group>"; };
+		565183E01EE823DD007EEA53 /* IDPTimerProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPTimerProxy.m; sourceTree = "<group>"; };
+		565183E21EE823DD007EEA53 /* NSArray+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+IDPExtensions.h"; sourceTree = "<group>"; };
+		565183E31EE823DD007EEA53 /* NSArray+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+IDPExtensions.m"; sourceTree = "<group>"; };
+		565183E41EE823DD007EEA53 /* NSMutableArray+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+IDPExtensions.h"; sourceTree = "<group>"; };
+		565183E51EE823DD007EEA53 /* NSMutableArray+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+IDPExtensions.m"; sourceTree = "<group>"; };
+		565183E61EE823DD007EEA53 /* NSObject+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+IDPExtensions.h"; sourceTree = "<group>"; };
+		565183E71EE823DD007EEA53 /* NSObject+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+IDPExtensions.m"; sourceTree = "<group>"; };
+		565183E81EE823DD007EEA53 /* NSTimer+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+IDPExtensions.h"; sourceTree = "<group>"; };
+		565183E91EE823DD007EEA53 /* NSTimer+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+IDPExtensions.m"; sourceTree = "<group>"; };
+		565183EB1EE823DD007EEA53 /* IDPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPConstants.h; sourceTree = "<group>"; };
+		565183EC1EE823DD007EEA53 /* IDPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPConstants.m; sourceTree = "<group>"; };
+		565183ED1EE823DD007EEA53 /* IDPMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPMacros.h; sourceTree = "<group>"; };
+		565183EE1EE823DD007EEA53 /* IDPRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPRandom.h; sourceTree = "<group>"; };
+		565183EF1EE823DD007EEA53 /* IDPRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPRandom.m; sourceTree = "<group>"; };
+		565183F01EE823DD007EEA53 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		565183F21EE823DD007EEA53 /* IDPCarWashTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPCarWashTests.h; sourceTree = "<group>"; };
+		565183F31EE823DD007EEA53 /* IDPCarWashTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPCarWashTests.m; sourceTree = "<group>"; };
+		565183F51EE823DD007EEA53 /* IDPAccountant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPAccountant.h; sourceTree = "<group>"; };
+		565183F61EE823DD007EEA53 /* IDPAccountant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPAccountant.m; sourceTree = "<group>"; };
+		565183F71EE823DD007EEA53 /* IDPDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPDirector.h; sourceTree = "<group>"; };
+		565183F81EE823DD007EEA53 /* IDPDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPDirector.m; sourceTree = "<group>"; };
+		565183F91EE823DD007EEA53 /* IDPMoneyFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPMoneyFlow.h; sourceTree = "<group>"; };
+		565183FA1EE823DD007EEA53 /* IDPObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPObservableObject.h; sourceTree = "<group>"; };
+		565183FB1EE823DD007EEA53 /* IDPObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPObservableObject.m; sourceTree = "<group>"; };
+		565183FC1EE823DD007EEA53 /* IDPWasher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPWasher.h; sourceTree = "<group>"; };
+		565183FD1EE823DD007EEA53 /* IDPWasher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPWasher.m; sourceTree = "<group>"; };
+		565183FE1EE823DD007EEA53 /* IDPWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPWorker.h; sourceTree = "<group>"; };
+		565183FF1EE823DD007EEA53 /* IDPWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPWorker.m; sourceTree = "<group>"; };
+		565184001EE823DD007EEA53 /* IDPWorkerObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPWorkerObserver.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		565183C51EE823A9007EEA53 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		565183BF1EE823A9007EEA53 = {
+			isa = PBXGroup;
+			children = (
+				565183CA1EE823A9007EEA53 /* Task09_ObjC */,
+				565183C91EE823A9007EEA53 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		565183C91EE823A9007EEA53 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				565183C81EE823A9007EEA53 /* Task09_ObjC */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		565183CA1EE823A9007EEA53 /* Task09_ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				565183D21EE823DD007EEA53 /* Sources */,
+			);
+			path = Task09_ObjC;
+			sourceTree = "<group>";
+		};
+		565183D21EE823DD007EEA53 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				565183D31EE823DD007EEA53 /* Dispatcher */,
+				565183D61EE823DD007EEA53 /* Enterprise */,
+				565183E11EE823DD007EEA53 /* Extensions */,
+				565183EA1EE823DD007EEA53 /* Library */,
+				565183F01EE823DD007EEA53 /* main.m */,
+				565183F11EE823DD007EEA53 /* Tests */,
+				565183F41EE823DD007EEA53 /* Workers */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		565183D31EE823DD007EEA53 /* Dispatcher */ = {
+			isa = PBXGroup;
+			children = (
+				565183D41EE823DD007EEA53 /* IDPDispatcher.h */,
+				565183D51EE823DD007EEA53 /* IDPDispatcher.m */,
+			);
+			path = Dispatcher;
+			sourceTree = "<group>";
+		};
+		565183D61EE823DD007EEA53 /* Enterprise */ = {
+			isa = PBXGroup;
+			children = (
+				565183D71EE823DD007EEA53 /* IDPCar.h */,
+				565183D81EE823DD007EEA53 /* IDPCar.m */,
+				565183D91EE823DD007EEA53 /* IDPCarDispatcher.h */,
+				565183DA1EE823DD007EEA53 /* IDPCarDispatcher.m */,
+				565183DB1EE823DD007EEA53 /* IDPEnterprise.h */,
+				565183DC1EE823DD007EEA53 /* IDPEnterprise.m */,
+				565183DD1EE823DD007EEA53 /* IDPQueue.h */,
+				565183DE1EE823DD007EEA53 /* IDPQueue.m */,
+				565183DF1EE823DD007EEA53 /* IDPTimerProxy.h */,
+				565183E01EE823DD007EEA53 /* IDPTimerProxy.m */,
+			);
+			path = Enterprise;
+			sourceTree = "<group>";
+		};
+		565183E11EE823DD007EEA53 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				565183E21EE823DD007EEA53 /* NSArray+IDPExtensions.h */,
+				565183E31EE823DD007EEA53 /* NSArray+IDPExtensions.m */,
+				565183E41EE823DD007EEA53 /* NSMutableArray+IDPExtensions.h */,
+				565183E51EE823DD007EEA53 /* NSMutableArray+IDPExtensions.m */,
+				565183E61EE823DD007EEA53 /* NSObject+IDPExtensions.h */,
+				565183E71EE823DD007EEA53 /* NSObject+IDPExtensions.m */,
+				565183E81EE823DD007EEA53 /* NSTimer+IDPExtensions.h */,
+				565183E91EE823DD007EEA53 /* NSTimer+IDPExtensions.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		565183EA1EE823DD007EEA53 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				565183EB1EE823DD007EEA53 /* IDPConstants.h */,
+				565183EC1EE823DD007EEA53 /* IDPConstants.m */,
+				565183ED1EE823DD007EEA53 /* IDPMacros.h */,
+				565183EE1EE823DD007EEA53 /* IDPRandom.h */,
+				565183EF1EE823DD007EEA53 /* IDPRandom.m */,
+				564BD5F21EE9291E00B8A21F /* IDPDispatchQueue.h */,
+				564BD5F31EE9291E00B8A21F /* IDPDispatchQueue.m */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		565183F11EE823DD007EEA53 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				565183F21EE823DD007EEA53 /* IDPCarWashTests.h */,
+				565183F31EE823DD007EEA53 /* IDPCarWashTests.m */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		565183F41EE823DD007EEA53 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				565183F51EE823DD007EEA53 /* IDPAccountant.h */,
+				565183F61EE823DD007EEA53 /* IDPAccountant.m */,
+				565183F71EE823DD007EEA53 /* IDPDirector.h */,
+				565183F81EE823DD007EEA53 /* IDPDirector.m */,
+				565183F91EE823DD007EEA53 /* IDPMoneyFlow.h */,
+				565183FA1EE823DD007EEA53 /* IDPObservableObject.h */,
+				565183FB1EE823DD007EEA53 /* IDPObservableObject.m */,
+				565183FC1EE823DD007EEA53 /* IDPWasher.h */,
+				565183FD1EE823DD007EEA53 /* IDPWasher.m */,
+				565183FE1EE823DD007EEA53 /* IDPWorker.h */,
+				565183FF1EE823DD007EEA53 /* IDPWorker.m */,
+				565184001EE823DD007EEA53 /* IDPWorkerObserver.h */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		565183C71EE823A9007EEA53 /* Task09_ObjC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 565183CF1EE823A9007EEA53 /* Build configuration list for PBXNativeTarget "Task09_ObjC" */;
+			buildPhases = (
+				565183C41EE823A9007EEA53 /* Sources */,
+				565183C51EE823A9007EEA53 /* Frameworks */,
+				565183C61EE823A9007EEA53 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Task09_ObjC;
+			productName = Task09_ObjC;
+			productReference = 565183C81EE823A9007EEA53 /* Task09_ObjC */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		565183C01EE823A9007EEA53 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Student003;
+				TargetAttributes = {
+					565183C71EE823A9007EEA53 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 565183C31EE823A9007EEA53 /* Build configuration list for PBXProject "Task09_ObjC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 565183BF1EE823A9007EEA53;
+			productRefGroup = 565183C91EE823A9007EEA53 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				565183C71EE823A9007EEA53 /* Task09_ObjC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		565183C41EE823A9007EEA53 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5651840D1EE823DD007EEA53 /* main.m in Sources */,
+				565184131EE823DD007EEA53 /* IDPWorker.m in Sources */,
+				565184101EE823DD007EEA53 /* IDPDirector.m in Sources */,
+				5651840E1EE823DD007EEA53 /* IDPCarWashTests.m in Sources */,
+				5651840F1EE823DD007EEA53 /* IDPAccountant.m in Sources */,
+				565184041EE823DD007EEA53 /* IDPEnterprise.m in Sources */,
+				565184021EE823DD007EEA53 /* IDPCar.m in Sources */,
+				565184091EE823DD007EEA53 /* NSObject+IDPExtensions.m in Sources */,
+				565184121EE823DD007EEA53 /* IDPWasher.m in Sources */,
+				565184061EE823DD007EEA53 /* IDPTimerProxy.m in Sources */,
+				565184111EE823DD007EEA53 /* IDPObservableObject.m in Sources */,
+				565184081EE823DD007EEA53 /* NSMutableArray+IDPExtensions.m in Sources */,
+				565184051EE823DD007EEA53 /* IDPQueue.m in Sources */,
+				5651840A1EE823DD007EEA53 /* NSTimer+IDPExtensions.m in Sources */,
+				565184011EE823DD007EEA53 /* IDPDispatcher.m in Sources */,
+				5651840C1EE823DD007EEA53 /* IDPRandom.m in Sources */,
+				564BD5F41EE9291E00B8A21F /* IDPDispatchQueue.m in Sources */,
+				5651840B1EE823DD007EEA53 /* IDPConstants.m in Sources */,
+				565184071EE823DD007EEA53 /* NSArray+IDPExtensions.m in Sources */,
+				565184031EE823DD007EEA53 /* IDPCarDispatcher.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		565183CD1EE823A9007EEA53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		565183CE1EE823A9007EEA53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		565183D01EE823A9007EEA53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		565183D11EE823A9007EEA53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		565183C31EE823A9007EEA53 /* Build configuration list for PBXProject "Task09_ObjC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				565183CD1EE823A9007EEA53 /* Debug */,
+				565183CE1EE823A9007EEA53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		565183CF1EE823A9007EEA53 /* Build configuration list for PBXNativeTarget "Task09_ObjC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				565183D01EE823A9007EEA53 /* Debug */,
+				565183D11EE823A9007EEA53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 565183C01EE823A9007EEA53 /* Project object */;
+}
