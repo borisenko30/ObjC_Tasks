@@ -43,7 +43,6 @@ IDPStaticConstant(CGFloat, IDPTimerInterval, 2.0f)
 - (instancetype)init {
     self = [super init];
     self.enterprise = [IDPEnterprise object];
-    self.timer = [[NSTimer new] autorelease];
     
     return self;
 }
@@ -80,12 +79,12 @@ IDPStaticConstant(CGFloat, IDPTimerInterval, 2.0f)
 - (void)start {
     self.timer = [NSTimer scheduledTimerWithInterval:IDPTimerInterval
                                               target:self
-                                            selector:@selector(startInBackground)
+                                            selector:@selector(startInBackground:)
                                             userInfo:nil
                                              repeats:YES];
 }
 
-- (void)startInBackground {
+- (void)startInBackground:(NSTimer *)timer {
     [self performSelectorInBackground:@selector(addCars) withObject:nil];
 }
 

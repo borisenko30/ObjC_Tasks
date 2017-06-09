@@ -64,42 +64,17 @@ typedef id(^IDPDispatcherFactory)(Class handlerClass, NSUInteger handlerCount, i
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setWashersDispatcher:(IDPDispatcher *)washersDispatcher {
-    if (washersDispatcher == _washersDispatcher) {
-        return;
-    }
-    
-    [_washersDispatcher removeHandlers:_washersDispatcher.handlers];
-    
-    [washersDispatcher retain];
-    [_washersDispatcher release];
-    _washersDispatcher = washersDispatcher;
+- (void)setDirectorsDispatcher:(IDPDispatcher *)directorsDispatcher {
+    [self replaceDispatcher:&_directorsDispatcher withDispatcher:directorsDispatcher];
 }
 
 - (void)setAccountantsDispatcher:(IDPDispatcher *)accountantsDispatcher {
-    if (accountantsDispatcher == _accountantsDispatcher) {
-        return;
-    }
-    
-    [_accountantsDispatcher removeHandlers:_accountantsDispatcher.handlers];
-    
-    [accountantsDispatcher retain];
-    [_accountantsDispatcher release];
-    _accountantsDispatcher = accountantsDispatcher;
+    [self replaceDispatcher:&_accountantsDispatcher withDispatcher:accountantsDispatcher];
 }
 
-- (void)setDirectorsDispatcher:(IDPDispatcher *)directorsDispatcher {
-    if (directorsDispatcher == _directorsDispatcher) {
-        return;
-    }
-    
-    [_directorsDispatcher removeHandlers:_directorsDispatcher.handlers];
-    
-    [directorsDispatcher retain];
-    [_directorsDispatcher release];
-    _directorsDispatcher = directorsDispatcher;
+- (void)setWashersDispatcher:(IDPDispatcher *)washersDispatcher {
+    [self replaceDispatcher:&_washersDispatcher withDispatcher:washersDispatcher];
 }
-
 #pragma mark -
 #pragma mark Public
 
@@ -139,6 +114,16 @@ typedef id(^IDPDispatcherFactory)(Class handlerClass, NSUInteger handlerCount, i
     self.accountantsDispatcher = accountantsDispatcher;
     self.washersDispatcher = washersDispatcher;
     
+}
+
+- (void)replaceDispatcher:(IDPDispatcher **)oldDispatcher withDispatcher:(IDPDispatcher *)newDispatcher {
+    if (newDispatcher != *oldDispatcher) {
+        [*oldDispatcher removeSelfFromObservers];
+        [newDispatcher retain];
+        [*oldDispatcher release];
+        
+        *oldDispatcher = newDispatcher;
+    }
 }
 
 @end

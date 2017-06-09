@@ -16,7 +16,8 @@
                                  target:(id)target
                                selector:(SEL)selector
                                userInfo:(id)userInfo
-                                repeats:(BOOL)repeats {
+                                repeats:(BOOL)repeats
+{
     IDPTimerProxy *proxy = [[[IDPTimerProxy alloc] initWithTarget:target
                                                          selector:selector] autorelease];
     

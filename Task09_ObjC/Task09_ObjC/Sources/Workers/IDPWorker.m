@@ -10,7 +10,7 @@
 #import "IDPCar.h"
 #import "IDPQueue.h"
 
-#import "IDPDispatchQueue.h"
+#import "IDPGCD.h"
 #import "IDPMacros.h"
 
 #import "NSObject+IDPExtensions.h"
@@ -19,9 +19,6 @@
 @property (nonatomic, assign) NSUInteger  salary;
 @property (nonatomic, assign) NSUInteger  experience;
 @property (nonatomic, assign) NSUInteger  cash;
-
-- (void)performSelectorInBackground:(id)object;
-- (void)performSelectorOnMainThread:(id)object;
 
 @end
 
@@ -37,33 +34,22 @@
 
 - (void)processObject:(id)object {
     self.state = IDPWorkerBusy;
-    [self performSelectorInBackground:object];
+    [self processObjectWithGCD:object];
 }
 
 #pragma mark -
 #pragma mark Private
 
-- (void)performSelectorInBackground:(id)object {
-    IDPDispatchQueueInBackgroundWithBlock(^{
-        [self performWorkWithObjectInBackground:object];
+- (void)processObjectWithGCD:(id)object {
+    IDPDispatchAsyncInBackground(^{
+        [self takeMoneyFromObject:object];
+        [self performWorkWithObject:object];
+        
+        IDPDispatchAsyncOnMainQueue(^{
+            [self finishedProcessingObject:object];
+            [self finishedWork];
+        });
     });
-}
-
-- (void)performSelectorOnMainThread:(id)object {
-    IDPDispatchQueueOnMainThreadWithBlock(^{
-        [self performWorkWithObjectOnMain:object];
-    });
-}
-
-- (void)performWorkWithObjectInBackground:(id)object {
-    [self takeMoneyFromObject:object];
-    [self performWorkWithObject:object];
-    [self performSelectorOnMainThread:object];
-}
-
-- (void)performWorkWithObjectOnMain:(id)object {
-    [self finishedProcessingObject:object];
-    [self finishedWork];
 }
 
 - (void)finishedWork {
@@ -108,13 +94,6 @@
 
 - (void)takeMoneyFromObject:(id<IDPMoneyFlow>)object {
     [self takeMoney:[object giveMoney]];
-}
-
-#pragma mark -
-#pragma mark IDPWorkerObserver methods
-
-- (void)workerDidBecomeReadyForProcessing:(IDPWorker *)worker {
-    [self processObject:worker];
 }
 
 @end

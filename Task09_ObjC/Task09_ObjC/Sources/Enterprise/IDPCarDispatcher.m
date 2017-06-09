@@ -13,19 +13,16 @@
 #import "IDPQueue.h"
 #import "IDPTimerProxy.h"
 
-#import "IDPDispatchQueue.h"
+#import "IDPGCD.h"
 #import "IDPMacros.h"
 
 #import "NSObject+IDPExtensions.h"
 #import "NSArray+IDPExtensions.h"
-#import "NSTimer+IDPExtensions.h"
 
 IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
-IDPStaticConstant(size_t, IDPTimerIterationCount, 10)
 IDPStaticConstant(NSString *, IDPTimerQueue, @"IDPTimerQueue")
 
 @interface IDPCarDispatcher ()
-@property (nonatomic, retain) NSTimer           *timer;
 @property (nonatomic, retain) IDPEnterprise     *enterprise;
 @property (nonatomic, retain) dispatch_queue_t  queue;
 
@@ -37,7 +34,6 @@ IDPStaticConstant(NSString *, IDPTimerQueue, @"IDPTimerQueue")
 #pragma mark Deallocations and initializations
 
 - (void)dealloc {
-    self.timer = nil;
     self.enterprise = nil;
     self.queue = nil;
     
@@ -47,22 +43,12 @@ IDPStaticConstant(NSString *, IDPTimerQueue, @"IDPTimerQueue")
 - (instancetype)init {
     self = [super init];
     self.enterprise = [IDPEnterprise object];
-    self.timer = [[NSTimer new] autorelease];
     
     return self;
 }
 
 #pragma mark -
 #pragma mark Accessors
-
-- (void)setTimer:(NSTimer *)timer {
-    if (timer != _timer) {
-        [_timer invalidate];
-        [_timer release];
-        
-        _timer = [timer retain];
-    }
-}
 
 - (void)setQueue:(dispatch_queue_t)queue {
     if (queue == _queue) {
@@ -101,14 +87,24 @@ IDPStaticConstant(NSString *, IDPTimerQueue, @"IDPTimerQueue")
     self.queue = dispatch_queue_create([IDPTimerQueue cStringUsingEncoding:NSUTF8StringEncoding],
                                        DISPATCH_QUEUE_CONCURRENT);
     dispatch_queue_t queue = self.queue;
+//    
+//    dispatch_apply(IDPTimerIterationCount, queue, ^(size_t count) {
+//        [self startInBackground];
+//    });
     
-    dispatch_apply(IDPTimerIterationCount, queue, ^(size_t count) {
-        [self startInBackground];
-    });
+//    NSDate *now = [NSDate date];
+//    NSTimeInterval time = [now timeIntervalSinceNow];
+//    int i = 0;
+//    
+//    while(i < 10) {
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, ((i + time) + 1) * NSEC_PER_SEC), queue, ^{
+//            [self addCars];
+//        });
+//    }
 }
 
 - (void)startInBackground {
-    IDPDispatchQueueInBackgroundWithBlock(^{
+    IDPDispatchAsyncInBackground(^{
         [self addCars];
     });
 }

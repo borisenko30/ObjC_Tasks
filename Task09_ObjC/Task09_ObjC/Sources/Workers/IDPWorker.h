@@ -27,7 +27,6 @@ typedef NS_ENUM(NSUInteger, IDPWorkerState) {
 @property (nonatomic, readonly) NSUInteger    cash;
 @property (nonatomic, readonly) IDPQueue      *workers;
 
-- (void)performWorkWithObject:(id<IDPMoneyFlow>)object;
 - (void)processObject:(id<IDPMoneyFlow>)object;
 
 @end

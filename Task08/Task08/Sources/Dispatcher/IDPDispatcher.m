@@ -61,37 +61,43 @@
 #pragma mark Public
 
 - (void)addHandler:(id)handler {
-    [self.handlersQueue pushObject:handler];
-    [self.mutableHandlers addObject:handler];
-    [handler addObserver:self];
+    @synchronized (self) {
+        [self.handlersQueue pushObject:handler];
+        [self.mutableHandlers addObject:handler];
+        [handler addObserver:self];
+    }
 }
 
 - (void)removeHandler:(id)handler {
-    [self.mutableHandlers removeObject:handler];
-    [handler removeObserver:self];
+    @synchronized (self) {
+        [handler removeObserver:self];
+        [self.mutableHandlers removeObject:handler];
+    }
 }
 
 - (void)addHandlers:(id)handlers {
-    for (id handler in handlers) {
-        [self addHandler:handler];
+    @synchronized (self) {
+        for (id handler in handlers) {
+            [self addHandler:handler];
+        }
     }
 }
 
 - (void)removeHandlers:(id)handlers {
-    for (id handler in handlers) {
-        [self removeHandler:handler];
+    @synchronized (self) {
+        for (id handler in handlers) {
+            [self removeHandler:handler];
+        }
     }
 }
 
 - (void)processObject:(id)object {
-    @synchronized (self) {
-        id handler = [self.handlersQueue popObject];
-        
-        if (handler) {
-            [handler processObject:object];
-        } else {
-            [self.objectsQueue pushObject:object];
-        }
+    id handler = [self.handlersQueue popObject];
+    
+    if (handler) {
+        [handler processObject:object];
+    } else {
+        [self.objectsQueue pushObject:object];
     }
 }
 
@@ -99,19 +105,32 @@
 #pragma mark IDPWorkerObserver methods
 
 - (void)workerDidBecomeReadyForWork:(id)worker {
-    if ([self.mutableHandlers containsObject:worker]) {
-        [self.handlersQueue pushObject:worker];
-        id object = [self.objectsQueue popObject];
-        
-        if (object) {
-            [self processObject:object];
+    @synchronized (self) {
+        if ([self.mutableHandlers containsObject:worker]) {
+            [self.handlersQueue pushObject:worker];
+            id object = [self.objectsQueue popObject];
+            
+            if (object) {
+                [self processObject:object];
+            }
         }
     }
 }
 
 - (void)workerDidBecomeReadyForProcessing:(id)worker {
-    if (![self.mutableHandlers containsObject:worker]) {
-        [self processObject:worker];
+    @synchronized (self) {
+        if (![self.mutableHandlers containsObject:worker]) {
+            [self processObject:worker];
+        }
+    }
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)removeSelfFromObservers {
+    for (id handler in self.mutableHandlers) {
+        [handler removeObserver:self];
     }
 }
 
