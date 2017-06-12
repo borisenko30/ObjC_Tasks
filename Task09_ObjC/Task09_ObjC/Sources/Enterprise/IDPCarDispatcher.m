@@ -21,6 +21,7 @@
 
 IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
 IDPStaticConstant(NSString *, IDPTimerQueue, @"IDPTimerQueue")
+IDPStaticConstant(CGFloat, IDPTimerInterval, 1.0f)
 
 @interface IDPCarDispatcher ()
 @property (nonatomic, retain) IDPEnterprise     *enterprise;
@@ -84,23 +85,13 @@ IDPStaticConstant(NSString *, IDPTimerQueue, @"IDPTimerQueue")
 #pragma mark Private
 
 - (void)start {
-    self.queue = dispatch_queue_create([IDPTimerQueue cStringUsingEncoding:NSUTF8StringEncoding],
-                                       DISPATCH_QUEUE_CONCURRENT);
-    dispatch_queue_t queue = self.queue;
-//    
-//    dispatch_apply(IDPTimerIterationCount, queue, ^(size_t count) {
-//        [self startInBackground];
-//    });
-    
-//    NSDate *now = [NSDate date];
-//    NSTimeInterval time = [now timeIntervalSinceNow];
-//    int i = 0;
-//    
-//    while(i < 10) {
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, ((i + time) + 1) * NSEC_PER_SEC), queue, ^{
-//            [self addCars];
-//        });
-//    }
+    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, IDPTimerInterval * NSEC_PER_SEC);
+    dispatch_after(time, dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^(void){
+        [self startInBackground];
+        if (self.running) {
+            [self start];
+        }
+    });
 }
 
 - (void)startInBackground {
