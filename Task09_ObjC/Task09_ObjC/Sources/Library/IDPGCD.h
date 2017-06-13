@@ -12,7 +12,8 @@ typedef void(^IDPBlock)();
 
 extern void IDPDispatchOnMainQueue(IDPBlock block);
 
-extern void IDPDispatchAsyncInBackgroundOnTimer(IDPBlock block);
+// dipatch async queue on time interval
+extern void IDPDispatchAsyncInBackgroundOnInterval(NSTimeInterval interval, IDPBlock block);
 
 // dispatch asynchronous queues
 extern void IDPDispatchAsyncInBackground(IDPBlock block);

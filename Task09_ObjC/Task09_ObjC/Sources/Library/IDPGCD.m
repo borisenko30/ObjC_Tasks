@@ -11,13 +11,13 @@
 #import "IDPMacros.h"
 
 IDPStaticConstant(NSString *, IDPQueueName, @"IDPTimerQueue")
-IDPStaticConstant(CGFloat, IDPTimerInterval, 1.0f)
 
-static void IDPDispatchQueue(dispatch_time_t time, dispatch_queue_t queue, IDPBlock block) {
-    dispatch_after(time, queue, block);
+
+static void IDPDispatchQueue(dispatch_queue_t queue, IDPBlock block) {
+    dispatch_after(0, queue, block);
 }
 
-static void IDPDispatchPriorityQueue(BOOL async, qos_class_t priority, dispatch_time_t time, IDPBlock block) {
+static void IDPDispatchQueueWithType(BOOL async, qos_class_t priority, IDPBlock block) {
     dispatch_queue_t queue;
     if (async) {
         queue = dispatch_get_global_queue(priority, 0);
@@ -27,61 +27,61 @@ static void IDPDispatchPriorityQueue(BOOL async, qos_class_t priority, dispatch_
                                                        DISPATCH_QUEUE_SERIAL);
     }
 
-    IDPDispatchQueue(time, queue, block);
+    IDPDispatchQueue(queue, block);
 }
 
 void IDPDispatchOnMainQueue(IDPBlock block) {
     if ([NSThread isMainThread]) {
         block();
     } else {
-        IDPDispatchQueue(0, dispatch_get_main_queue(), block);
+        IDPDispatchQueue(dispatch_get_main_queue(), block);
     }
 }
 
-// dipatch async queue on time
-void IDPDispatchAsyncInBackgroundOnTimer(IDPBlock block) {
-    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, IDPTimerInterval * NSEC_PER_SEC);
-    IDPDispatchPriorityQueue(YES, QOS_CLASS_BACKGROUND, time, block);
+// dipatch async queue on time interval
+void IDPDispatchAsyncInBackgroundOnInterval(NSTimeInterval interval, IDPBlock block) {
+    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, interval * NSEC_PER_SEC);
+    dispatch_after(time, dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), block);
 }
 
 // dispatch asynchronous queues
 void IDPDispatchAsyncInBackground(IDPBlock block) {
-    IDPDispatchPriorityQueue(YES, QOS_CLASS_BACKGROUND, 0, block);
+    IDPDispatchQueueWithType(YES, QOS_CLASS_BACKGROUND, block);
 }
 
 void IDPDispatchAsyncWithUtilityPriority(IDPBlock block) {
-    IDPDispatchPriorityQueue(YES, QOS_CLASS_UTILITY, 0, block);
+    IDPDispatchQueueWithType(YES, QOS_CLASS_UTILITY, block);
 }
 
 void IDPDispatchAsyncWithInitiatedPriority(IDPBlock block) {
-    IDPDispatchPriorityQueue(YES, QOS_CLASS_USER_INITIATED, 0, block);
+    IDPDispatchQueueWithType(YES, QOS_CLASS_USER_INITIATED, block);
 }
 
 void IDPDispatchAsyncWithInteractivePriority(IDPBlock block) {
-    IDPDispatchPriorityQueue(YES, QOS_CLASS_USER_INTERACTIVE, 0, block);
+    IDPDispatchQueueWithType(YES, QOS_CLASS_USER_INTERACTIVE, block);
 }
 
 void IDPDispatchAsyncWithDefaultPriority(IDPBlock block) {
-    IDPDispatchPriorityQueue(YES, QOS_CLASS_DEFAULT, 0, block);
+    IDPDispatchQueueWithType(YES, QOS_CLASS_DEFAULT, block);
 }
 
 // dispatch synchronous queues
 void IDPDispatchSyncInBackground(IDPBlock block) {
-    IDPDispatchPriorityQueue(NO, QOS_CLASS_BACKGROUND, 0, block);
+    IDPDispatchQueueWithType(NO, QOS_CLASS_BACKGROUND, block);
 }
 
 void IDPDispatchSyncWithUtilityPriority(IDPBlock block) {
-    IDPDispatchPriorityQueue(NO, QOS_CLASS_UTILITY, 0, block);
+    IDPDispatchQueueWithType(NO, QOS_CLASS_UTILITY, block);
 }
 
 void IDPDispatchSyncWithInitiatedPriority(IDPBlock block) {
-    IDPDispatchPriorityQueue(NO, QOS_CLASS_USER_INITIATED, 0, block);
+    IDPDispatchQueueWithType(NO, QOS_CLASS_USER_INITIATED, block);
 }
 
 void IDPDispatchSyncWithInteractivePriority(IDPBlock block) {
-    IDPDispatchPriorityQueue(NO, QOS_CLASS_USER_INTERACTIVE, 0, block);
+    IDPDispatchQueueWithType(NO, QOS_CLASS_USER_INTERACTIVE, block);
 }
 
 void IDPDispatchSyncWithDefaultPriority(IDPBlock block) {
-    IDPDispatchPriorityQueue(NO, QOS_CLASS_DEFAULT, 0, block);
+    IDPDispatchQueueWithType(NO, QOS_CLASS_DEFAULT, block);
 }
