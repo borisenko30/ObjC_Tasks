@@ -20,8 +20,6 @@
 #import "NSArray+IDPExtensions.h"
 
 IDPStaticConstant(NSUInteger, IDPCarsQuantity, 10)
-IDPStaticConstant(NSString *, IDPTimerQueue, @"IDPTimerQueue")
-IDPStaticConstant(CGFloat, IDPTimerInterval, 1.0f)
 
 @interface IDPCarDispatcher ()
 @property (nonatomic, retain) IDPEnterprise     *enterprise;
@@ -85,8 +83,7 @@ IDPStaticConstant(CGFloat, IDPTimerInterval, 1.0f)
 #pragma mark Private
 
 - (void)start {
-    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, IDPTimerInterval * NSEC_PER_SEC);
-    dispatch_after(time, dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^(void){
+    IDPDispatchAsyncInBackgroundOnTimer(^(void){
         [self startInBackground];
         if (self.running) {
             [self start];

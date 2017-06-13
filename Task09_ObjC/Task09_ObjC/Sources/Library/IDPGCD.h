@@ -10,8 +10,11 @@
 
 typedef void(^IDPBlock)();
 
+extern void IDPDispatchOnMainQueue(IDPBlock block);
+
+extern void IDPDispatchAsyncInBackgroundOnTimer(IDPBlock block);
+
 // dispatch asynchronous queues
-extern void IDPDispatchAsyncOnMainQueue(IDPBlock block);
 extern void IDPDispatchAsyncInBackground(IDPBlock block);
 extern void IDPDispatchAsyncWithUtilityPriority(IDPBlock block);
 extern void IDPDispatchAsyncWithInitiatedPriority(IDPBlock block);
@@ -19,7 +22,6 @@ extern void IDPDispatchAsyncWithInteractivePriority(IDPBlock block);
 extern void IDPDispatchAsyncWithDefaultPriority(IDPBlock block);
 
 // dispatch synchronous queues
-extern void IDPDispatchSyncOnMainQueue(IDPBlock block);
 extern void IDPDispatchSyncInBackground(IDPBlock block);
 extern void IDPDispatchSyncWithUtilityPriority(IDPBlock block);
 extern void IDPDispatchSyncWithInitiatedPriority(IDPBlock block);

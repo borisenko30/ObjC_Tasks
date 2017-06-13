@@ -45,7 +45,7 @@
         [self takeMoneyFromObject:object];
         [self performWorkWithObject:object];
         
-        IDPDispatchAsyncOnMainQueue(^{
+        IDPDispatchOnMainQueue(^{
             [self finishedProcessingObject:object];
             [self finishedWork];
         });
