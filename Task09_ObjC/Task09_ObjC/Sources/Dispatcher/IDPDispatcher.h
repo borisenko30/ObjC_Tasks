@@ -25,6 +25,8 @@
 - (void)addHandlers:(id)handlers;
 - (void)removeHandlers:(id)handlers;
 
+- (void)removeSelfFromObservers;
+
 - (void)processObject:(id)object;
 
 @end

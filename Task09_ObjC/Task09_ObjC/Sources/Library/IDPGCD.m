@@ -10,7 +10,7 @@
 
 #import "IDPMacros.h"
 
-IDPStaticConstant(NSString *, IDPQueueName, @"IDPTimerQueue")
+IDPStaticConstant(NSString *, IDPQueueName, @"IDPSerialQueue")
 
 
 static void IDPDispatchQueue(dispatch_queue_t queue, IDPBlock block) {

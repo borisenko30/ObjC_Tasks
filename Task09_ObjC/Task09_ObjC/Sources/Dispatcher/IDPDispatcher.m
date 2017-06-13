@@ -91,6 +91,12 @@
     }
 }
 
+- (void)removeSelfFromObservers {
+    for (id handler in self.mutableHandlers) {
+        [handler removeObserver:self];
+    }
+}
+
 - (void)processObject:(id)object {
     id handler = [self.handlersQueue popObject];
     
@@ -122,15 +128,6 @@
         if (![self.mutableHandlers containsObject:worker]) {
             [self processObject:worker];
         }
-    }
-}
-
-#pragma mark -
-#pragma mark Private
-
-- (void)removeSelfFromObservers {
-    for (id handler in self.mutableHandlers) {
-        [handler removeObserver:self];
     }
 }
 

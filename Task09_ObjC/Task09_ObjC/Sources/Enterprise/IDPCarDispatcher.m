@@ -10,8 +10,6 @@
 
 #import "IDPEnterprise.h"
 #import "IDPCar.h"
-#import "IDPQueue.h"
-#import "IDPTimerProxy.h"
 
 #import "IDPGCD.h"
 #import "IDPMacros.h"
@@ -24,7 +22,6 @@ IDPStaticConstant(NSTimeInterval, IDPTimerInterval, 1.0f)
 
 @interface IDPCarDispatcher ()
 @property (nonatomic, retain) IDPEnterprise     *enterprise;
-@property (nonatomic, retain) dispatch_queue_t  queue;
 
 @end
 
@@ -35,7 +32,6 @@ IDPStaticConstant(NSTimeInterval, IDPTimerInterval, 1.0f)
 
 - (void)dealloc {
     self.enterprise = nil;
-    self.queue = nil;
     
     [super dealloc];
 }
@@ -50,34 +46,16 @@ IDPStaticConstant(NSTimeInterval, IDPTimerInterval, 1.0f)
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setQueue:(dispatch_queue_t)queue {
-    if (queue == _queue) {
-        return;
-    }
-    
-    if (queue) {
-        dispatch_retain(queue);
-    }
-    
-    if (_queue) {
-        dispatch_release(_queue);
-    }
-    
-    _queue = queue;
-}
-
 - (void)setRunning:(BOOL)running {
     if (running == _running) {
         return;
     }
     
+    _running = running;
+    
     if (running) {
         [self start];
-    } else {
-        [self stop];
     }
-    
-    _running = running;
 }
 
 #pragma mark -
@@ -99,7 +77,7 @@ IDPStaticConstant(NSTimeInterval, IDPTimerInterval, 1.0f)
 }
 
 - (void)stop {
-    self.queue = nil;
+    self.running = NO;
 }
 
 - (void)addCars {
