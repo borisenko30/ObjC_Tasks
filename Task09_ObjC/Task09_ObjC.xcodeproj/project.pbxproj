@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		564BD5F41EE9291E00B8A21F /* IDPGCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 564BD5F31EE9291E00B8A21F /* IDPGCD.m */; };
-		565184011EE823DD007EEA53 /* IDPDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183D51EE823DD007EEA53 /* IDPDispatcher.m */; };
-		565184021EE823DD007EEA53 /* IDPCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183D81EE823DD007EEA53 /* IDPCar.m */; };
-		565184031EE823DD007EEA53 /* IDPCarDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183DA1EE823DD007EEA53 /* IDPCarDispatcher.m */; };
-		565184041EE823DD007EEA53 /* IDPEnterprise.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183DC1EE823DD007EEA53 /* IDPEnterprise.m */; };
-		565184051EE823DD007EEA53 /* IDPQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183DE1EE823DD007EEA53 /* IDPQueue.m */; };
-		565184061EE823DD007EEA53 /* IDPTimerProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183E01EE823DD007EEA53 /* IDPTimerProxy.m */; };
-		565184071EE823DD007EEA53 /* NSArray+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183E31EE823DD007EEA53 /* NSArray+IDPExtensions.m */; };
-		565184081EE823DD007EEA53 /* NSMutableArray+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183E51EE823DD007EEA53 /* NSMutableArray+IDPExtensions.m */; };
-		565184091EE823DD007EEA53 /* NSObject+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183E71EE823DD007EEA53 /* NSObject+IDPExtensions.m */; };
-		5651840A1EE823DD007EEA53 /* NSTimer+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183E91EE823DD007EEA53 /* NSTimer+IDPExtensions.m */; };
-		5651840B1EE823DD007EEA53 /* IDPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183EC1EE823DD007EEA53 /* IDPConstants.m */; };
-		5651840C1EE823DD007EEA53 /* IDPRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183EF1EE823DD007EEA53 /* IDPRandom.m */; };
-		5651840D1EE823DD007EEA53 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183F01EE823DD007EEA53 /* main.m */; };
-		5651840E1EE823DD007EEA53 /* IDPCarWashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183F31EE823DD007EEA53 /* IDPCarWashTests.m */; };
-		5651840F1EE823DD007EEA53 /* IDPAccountant.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183F61EE823DD007EEA53 /* IDPAccountant.m */; };
-		565184101EE823DD007EEA53 /* IDPDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183F81EE823DD007EEA53 /* IDPDirector.m */; };
-		565184111EE823DD007EEA53 /* IDPObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183FB1EE823DD007EEA53 /* IDPObservableObject.m */; };
-		565184121EE823DD007EEA53 /* IDPWasher.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183FD1EE823DD007EEA53 /* IDPWasher.m */; };
-		565184131EE823DD007EEA53 /* IDPWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = 565183FF1EE823DD007EEA53 /* IDPWorker.m */; };
+		5655102C1EF109FC001098B7 /* IDPCarDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 56550FFE1EF109FC001098B7 /* IDPCarDispatcher.m */; };
+		5655102D1EF109FC001098B7 /* IDPDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 565510001EF109FC001098B7 /* IDPDispatcher.m */; };
+		5655102E1EF109FC001098B7 /* IDPGCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 565510021EF109FC001098B7 /* IDPGCD.m */; };
+		5655102F1EF109FC001098B7 /* IDPCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 565510051EF109FC001098B7 /* IDPCar.m */; };
+		565510301EF109FC001098B7 /* IDPEnterprise.m in Sources */ = {isa = PBXBuildFile; fileRef = 565510071EF109FC001098B7 /* IDPEnterprise.m */; };
+		565510311EF109FC001098B7 /* IDPQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 565510091EF109FC001098B7 /* IDPQueue.m */; };
+		565510321EF109FC001098B7 /* IDPTimerProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5655100B1EF109FC001098B7 /* IDPTimerProxy.m */; };
+		565510331EF109FC001098B7 /* NSArray+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5655100E1EF109FC001098B7 /* NSArray+IDPExtensions.m */; };
+		565510341EF109FC001098B7 /* NSMutableArray+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 565510101EF109FC001098B7 /* NSMutableArray+IDPExtensions.m */; };
+		565510351EF109FC001098B7 /* NSObject+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 565510121EF109FC001098B7 /* NSObject+IDPExtensions.m */; };
+		565510361EF109FC001098B7 /* NSTimer+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 565510141EF109FC001098B7 /* NSTimer+IDPExtensions.m */; };
+		565510371EF109FC001098B7 /* IDPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 565510171EF109FC001098B7 /* IDPConstants.m */; };
+		565510381EF109FC001098B7 /* IDPRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 5655101A1EF109FC001098B7 /* IDPRandom.m */; };
+		565510391EF109FC001098B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5655101B1EF109FC001098B7 /* main.m */; };
+		5655103A1EF109FC001098B7 /* IDPCarWashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5655101E1EF109FC001098B7 /* IDPCarWashTests.m */; };
+		5655103B1EF109FC001098B7 /* IDPAccountant.m in Sources */ = {isa = PBXBuildFile; fileRef = 565510211EF109FC001098B7 /* IDPAccountant.m */; };
+		5655103C1EF109FC001098B7 /* IDPDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = 565510231EF109FC001098B7 /* IDPDirector.m */; };
+		5655103D1EF109FC001098B7 /* IDPObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 565510261EF109FC001098B7 /* IDPObservableObject.m */; };
+		5655103E1EF109FC001098B7 /* IDPWasher.m in Sources */ = {isa = PBXBuildFile; fileRef = 565510281EF109FC001098B7 /* IDPWasher.m */; };
+		5655103F1EF109FC001098B7 /* IDPWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5655102A1EF109FC001098B7 /* IDPWorker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,49 +42,49 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		564BD5F21EE9291E00B8A21F /* IDPGCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPGCD.h; sourceTree = "<group>"; };
-		564BD5F31EE9291E00B8A21F /* IDPGCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPGCD.m; sourceTree = "<group>"; };
 		565183C81EE823A9007EEA53 /* Task09_ObjC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Task09_ObjC; sourceTree = BUILT_PRODUCTS_DIR; };
-		565183D41EE823DD007EEA53 /* IDPDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPDispatcher.h; sourceTree = "<group>"; };
-		565183D51EE823DD007EEA53 /* IDPDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPDispatcher.m; sourceTree = "<group>"; };
-		565183D71EE823DD007EEA53 /* IDPCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPCar.h; sourceTree = "<group>"; };
-		565183D81EE823DD007EEA53 /* IDPCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPCar.m; sourceTree = "<group>"; };
-		565183D91EE823DD007EEA53 /* IDPCarDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPCarDispatcher.h; sourceTree = "<group>"; };
-		565183DA1EE823DD007EEA53 /* IDPCarDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPCarDispatcher.m; sourceTree = "<group>"; };
-		565183DB1EE823DD007EEA53 /* IDPEnterprise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPEnterprise.h; sourceTree = "<group>"; };
-		565183DC1EE823DD007EEA53 /* IDPEnterprise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPEnterprise.m; sourceTree = "<group>"; };
-		565183DD1EE823DD007EEA53 /* IDPQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPQueue.h; sourceTree = "<group>"; };
-		565183DE1EE823DD007EEA53 /* IDPQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPQueue.m; sourceTree = "<group>"; };
-		565183DF1EE823DD007EEA53 /* IDPTimerProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPTimerProxy.h; sourceTree = "<group>"; };
-		565183E01EE823DD007EEA53 /* IDPTimerProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPTimerProxy.m; sourceTree = "<group>"; };
-		565183E21EE823DD007EEA53 /* NSArray+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+IDPExtensions.h"; sourceTree = "<group>"; };
-		565183E31EE823DD007EEA53 /* NSArray+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+IDPExtensions.m"; sourceTree = "<group>"; };
-		565183E41EE823DD007EEA53 /* NSMutableArray+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+IDPExtensions.h"; sourceTree = "<group>"; };
-		565183E51EE823DD007EEA53 /* NSMutableArray+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+IDPExtensions.m"; sourceTree = "<group>"; };
-		565183E61EE823DD007EEA53 /* NSObject+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+IDPExtensions.h"; sourceTree = "<group>"; };
-		565183E71EE823DD007EEA53 /* NSObject+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+IDPExtensions.m"; sourceTree = "<group>"; };
-		565183E81EE823DD007EEA53 /* NSTimer+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+IDPExtensions.h"; sourceTree = "<group>"; };
-		565183E91EE823DD007EEA53 /* NSTimer+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+IDPExtensions.m"; sourceTree = "<group>"; };
-		565183EB1EE823DD007EEA53 /* IDPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPConstants.h; sourceTree = "<group>"; };
-		565183EC1EE823DD007EEA53 /* IDPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPConstants.m; sourceTree = "<group>"; };
-		565183ED1EE823DD007EEA53 /* IDPMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPMacros.h; sourceTree = "<group>"; };
-		565183EE1EE823DD007EEA53 /* IDPRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPRandom.h; sourceTree = "<group>"; };
-		565183EF1EE823DD007EEA53 /* IDPRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPRandom.m; sourceTree = "<group>"; };
-		565183F01EE823DD007EEA53 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		565183F21EE823DD007EEA53 /* IDPCarWashTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPCarWashTests.h; sourceTree = "<group>"; };
-		565183F31EE823DD007EEA53 /* IDPCarWashTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPCarWashTests.m; sourceTree = "<group>"; };
-		565183F51EE823DD007EEA53 /* IDPAccountant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPAccountant.h; sourceTree = "<group>"; };
-		565183F61EE823DD007EEA53 /* IDPAccountant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPAccountant.m; sourceTree = "<group>"; };
-		565183F71EE823DD007EEA53 /* IDPDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPDirector.h; sourceTree = "<group>"; };
-		565183F81EE823DD007EEA53 /* IDPDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPDirector.m; sourceTree = "<group>"; };
-		565183F91EE823DD007EEA53 /* IDPMoneyFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPMoneyFlow.h; sourceTree = "<group>"; };
-		565183FA1EE823DD007EEA53 /* IDPObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPObservableObject.h; sourceTree = "<group>"; };
-		565183FB1EE823DD007EEA53 /* IDPObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPObservableObject.m; sourceTree = "<group>"; };
-		565183FC1EE823DD007EEA53 /* IDPWasher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPWasher.h; sourceTree = "<group>"; };
-		565183FD1EE823DD007EEA53 /* IDPWasher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPWasher.m; sourceTree = "<group>"; };
-		565183FE1EE823DD007EEA53 /* IDPWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPWorker.h; sourceTree = "<group>"; };
-		565183FF1EE823DD007EEA53 /* IDPWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPWorker.m; sourceTree = "<group>"; };
-		565184001EE823DD007EEA53 /* IDPWorkerObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPWorkerObserver.h; sourceTree = "<group>"; };
+		56550FFD1EF109FC001098B7 /* IDPCarDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPCarDispatcher.h; sourceTree = "<group>"; };
+		56550FFE1EF109FC001098B7 /* IDPCarDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPCarDispatcher.m; sourceTree = "<group>"; };
+		56550FFF1EF109FC001098B7 /* IDPDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPDispatcher.h; sourceTree = "<group>"; };
+		565510001EF109FC001098B7 /* IDPDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPDispatcher.m; sourceTree = "<group>"; };
+		565510011EF109FC001098B7 /* IDPGCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPGCD.h; sourceTree = "<group>"; };
+		565510021EF109FC001098B7 /* IDPGCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPGCD.m; sourceTree = "<group>"; };
+		565510041EF109FC001098B7 /* IDPCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPCar.h; sourceTree = "<group>"; };
+		565510051EF109FC001098B7 /* IDPCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPCar.m; sourceTree = "<group>"; };
+		565510061EF109FC001098B7 /* IDPEnterprise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPEnterprise.h; sourceTree = "<group>"; };
+		565510071EF109FC001098B7 /* IDPEnterprise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPEnterprise.m; sourceTree = "<group>"; };
+		565510081EF109FC001098B7 /* IDPQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPQueue.h; sourceTree = "<group>"; };
+		565510091EF109FC001098B7 /* IDPQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPQueue.m; sourceTree = "<group>"; };
+		5655100A1EF109FC001098B7 /* IDPTimerProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPTimerProxy.h; sourceTree = "<group>"; };
+		5655100B1EF109FC001098B7 /* IDPTimerProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPTimerProxy.m; sourceTree = "<group>"; };
+		5655100D1EF109FC001098B7 /* NSArray+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+IDPExtensions.h"; sourceTree = "<group>"; };
+		5655100E1EF109FC001098B7 /* NSArray+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+IDPExtensions.m"; sourceTree = "<group>"; };
+		5655100F1EF109FC001098B7 /* NSMutableArray+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+IDPExtensions.h"; sourceTree = "<group>"; };
+		565510101EF109FC001098B7 /* NSMutableArray+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+IDPExtensions.m"; sourceTree = "<group>"; };
+		565510111EF109FC001098B7 /* NSObject+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+IDPExtensions.h"; sourceTree = "<group>"; };
+		565510121EF109FC001098B7 /* NSObject+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+IDPExtensions.m"; sourceTree = "<group>"; };
+		565510131EF109FC001098B7 /* NSTimer+IDPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+IDPExtensions.h"; sourceTree = "<group>"; };
+		565510141EF109FC001098B7 /* NSTimer+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+IDPExtensions.m"; sourceTree = "<group>"; };
+		565510161EF109FC001098B7 /* IDPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPConstants.h; sourceTree = "<group>"; };
+		565510171EF109FC001098B7 /* IDPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPConstants.m; sourceTree = "<group>"; };
+		565510181EF109FC001098B7 /* IDPMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPMacros.h; sourceTree = "<group>"; };
+		565510191EF109FC001098B7 /* IDPRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPRandom.h; sourceTree = "<group>"; };
+		5655101A1EF109FC001098B7 /* IDPRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPRandom.m; sourceTree = "<group>"; };
+		5655101B1EF109FC001098B7 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5655101D1EF109FC001098B7 /* IDPCarWashTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPCarWashTests.h; sourceTree = "<group>"; };
+		5655101E1EF109FC001098B7 /* IDPCarWashTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPCarWashTests.m; sourceTree = "<group>"; };
+		565510201EF109FC001098B7 /* IDPAccountant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPAccountant.h; sourceTree = "<group>"; };
+		565510211EF109FC001098B7 /* IDPAccountant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPAccountant.m; sourceTree = "<group>"; };
+		565510221EF109FC001098B7 /* IDPDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPDirector.h; sourceTree = "<group>"; };
+		565510231EF109FC001098B7 /* IDPDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPDirector.m; sourceTree = "<group>"; };
+		565510241EF109FC001098B7 /* IDPMoneyFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPMoneyFlow.h; sourceTree = "<group>"; };
+		565510251EF109FC001098B7 /* IDPObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPObservableObject.h; sourceTree = "<group>"; };
+		565510261EF109FC001098B7 /* IDPObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPObservableObject.m; sourceTree = "<group>"; };
+		565510271EF109FC001098B7 /* IDPWasher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPWasher.h; sourceTree = "<group>"; };
+		565510281EF109FC001098B7 /* IDPWasher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPWasher.m; sourceTree = "<group>"; };
+		565510291EF109FC001098B7 /* IDPWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPWorker.h; sourceTree = "<group>"; };
+		5655102A1EF109FC001098B7 /* IDPWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPWorker.m; sourceTree = "<group>"; };
+		5655102B1EF109FC001098B7 /* IDPWorkerObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPWorkerObserver.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,104 +117,104 @@
 		565183CA1EE823A9007EEA53 /* Task09_ObjC */ = {
 			isa = PBXGroup;
 			children = (
-				565183D21EE823DD007EEA53 /* Sources */,
+				56550FFB1EF109FC001098B7 /* Sources */,
 			);
 			path = Task09_ObjC;
 			sourceTree = "<group>";
 		};
-		565183D21EE823DD007EEA53 /* Sources */ = {
+		56550FFB1EF109FC001098B7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				565183D31EE823DD007EEA53 /* Dispatcher */,
-				565183D61EE823DD007EEA53 /* Enterprise */,
-				565183E11EE823DD007EEA53 /* Extensions */,
-				565183EA1EE823DD007EEA53 /* Library */,
-				565183F01EE823DD007EEA53 /* main.m */,
-				565183F11EE823DD007EEA53 /* Tests */,
-				565183F41EE823DD007EEA53 /* Workers */,
+				56550FFC1EF109FC001098B7 /* Dispatcher */,
+				565510031EF109FC001098B7 /* Enterprise */,
+				5655100C1EF109FC001098B7 /* Extensions */,
+				565510151EF109FC001098B7 /* Library */,
+				5655101B1EF109FC001098B7 /* main.m */,
+				5655101C1EF109FC001098B7 /* Tests */,
+				5655101F1EF109FC001098B7 /* Workers */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		565183D31EE823DD007EEA53 /* Dispatcher */ = {
+		56550FFC1EF109FC001098B7 /* Dispatcher */ = {
 			isa = PBXGroup;
 			children = (
-				565183D41EE823DD007EEA53 /* IDPDispatcher.h */,
-				565183D51EE823DD007EEA53 /* IDPDispatcher.m */,
+				56550FFD1EF109FC001098B7 /* IDPCarDispatcher.h */,
+				56550FFE1EF109FC001098B7 /* IDPCarDispatcher.m */,
+				56550FFF1EF109FC001098B7 /* IDPDispatcher.h */,
+				565510001EF109FC001098B7 /* IDPDispatcher.m */,
+				565510011EF109FC001098B7 /* IDPGCD.h */,
+				565510021EF109FC001098B7 /* IDPGCD.m */,
 			);
 			path = Dispatcher;
 			sourceTree = "<group>";
 		};
-		565183D61EE823DD007EEA53 /* Enterprise */ = {
+		565510031EF109FC001098B7 /* Enterprise */ = {
 			isa = PBXGroup;
 			children = (
-				565183D71EE823DD007EEA53 /* IDPCar.h */,
-				565183D81EE823DD007EEA53 /* IDPCar.m */,
-				565183D91EE823DD007EEA53 /* IDPCarDispatcher.h */,
-				565183DA1EE823DD007EEA53 /* IDPCarDispatcher.m */,
-				565183DB1EE823DD007EEA53 /* IDPEnterprise.h */,
-				565183DC1EE823DD007EEA53 /* IDPEnterprise.m */,
-				565183DD1EE823DD007EEA53 /* IDPQueue.h */,
-				565183DE1EE823DD007EEA53 /* IDPQueue.m */,
-				565183DF1EE823DD007EEA53 /* IDPTimerProxy.h */,
-				565183E01EE823DD007EEA53 /* IDPTimerProxy.m */,
+				565510041EF109FC001098B7 /* IDPCar.h */,
+				565510051EF109FC001098B7 /* IDPCar.m */,
+				565510061EF109FC001098B7 /* IDPEnterprise.h */,
+				565510071EF109FC001098B7 /* IDPEnterprise.m */,
+				565510081EF109FC001098B7 /* IDPQueue.h */,
+				565510091EF109FC001098B7 /* IDPQueue.m */,
+				5655100A1EF109FC001098B7 /* IDPTimerProxy.h */,
+				5655100B1EF109FC001098B7 /* IDPTimerProxy.m */,
 			);
 			path = Enterprise;
 			sourceTree = "<group>";
 		};
-		565183E11EE823DD007EEA53 /* Extensions */ = {
+		5655100C1EF109FC001098B7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				565183E21EE823DD007EEA53 /* NSArray+IDPExtensions.h */,
-				565183E31EE823DD007EEA53 /* NSArray+IDPExtensions.m */,
-				565183E41EE823DD007EEA53 /* NSMutableArray+IDPExtensions.h */,
-				565183E51EE823DD007EEA53 /* NSMutableArray+IDPExtensions.m */,
-				565183E61EE823DD007EEA53 /* NSObject+IDPExtensions.h */,
-				565183E71EE823DD007EEA53 /* NSObject+IDPExtensions.m */,
-				565183E81EE823DD007EEA53 /* NSTimer+IDPExtensions.h */,
-				565183E91EE823DD007EEA53 /* NSTimer+IDPExtensions.m */,
+				5655100D1EF109FC001098B7 /* NSArray+IDPExtensions.h */,
+				5655100E1EF109FC001098B7 /* NSArray+IDPExtensions.m */,
+				5655100F1EF109FC001098B7 /* NSMutableArray+IDPExtensions.h */,
+				565510101EF109FC001098B7 /* NSMutableArray+IDPExtensions.m */,
+				565510111EF109FC001098B7 /* NSObject+IDPExtensions.h */,
+				565510121EF109FC001098B7 /* NSObject+IDPExtensions.m */,
+				565510131EF109FC001098B7 /* NSTimer+IDPExtensions.h */,
+				565510141EF109FC001098B7 /* NSTimer+IDPExtensions.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		565183EA1EE823DD007EEA53 /* Library */ = {
+		565510151EF109FC001098B7 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				565183EB1EE823DD007EEA53 /* IDPConstants.h */,
-				565183EC1EE823DD007EEA53 /* IDPConstants.m */,
-				565183ED1EE823DD007EEA53 /* IDPMacros.h */,
-				565183EE1EE823DD007EEA53 /* IDPRandom.h */,
-				565183EF1EE823DD007EEA53 /* IDPRandom.m */,
-				564BD5F21EE9291E00B8A21F /* IDPGCD.h */,
-				564BD5F31EE9291E00B8A21F /* IDPGCD.m */,
+				565510161EF109FC001098B7 /* IDPConstants.h */,
+				565510171EF109FC001098B7 /* IDPConstants.m */,
+				565510181EF109FC001098B7 /* IDPMacros.h */,
+				565510191EF109FC001098B7 /* IDPRandom.h */,
+				5655101A1EF109FC001098B7 /* IDPRandom.m */,
 			);
 			path = Library;
 			sourceTree = "<group>";
 		};
-		565183F11EE823DD007EEA53 /* Tests */ = {
+		5655101C1EF109FC001098B7 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				565183F21EE823DD007EEA53 /* IDPCarWashTests.h */,
-				565183F31EE823DD007EEA53 /* IDPCarWashTests.m */,
+				5655101D1EF109FC001098B7 /* IDPCarWashTests.h */,
+				5655101E1EF109FC001098B7 /* IDPCarWashTests.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		565183F41EE823DD007EEA53 /* Workers */ = {
+		5655101F1EF109FC001098B7 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
-				565183F51EE823DD007EEA53 /* IDPAccountant.h */,
-				565183F61EE823DD007EEA53 /* IDPAccountant.m */,
-				565183F71EE823DD007EEA53 /* IDPDirector.h */,
-				565183F81EE823DD007EEA53 /* IDPDirector.m */,
-				565183F91EE823DD007EEA53 /* IDPMoneyFlow.h */,
-				565183FA1EE823DD007EEA53 /* IDPObservableObject.h */,
-				565183FB1EE823DD007EEA53 /* IDPObservableObject.m */,
-				565183FC1EE823DD007EEA53 /* IDPWasher.h */,
-				565183FD1EE823DD007EEA53 /* IDPWasher.m */,
-				565183FE1EE823DD007EEA53 /* IDPWorker.h */,
-				565183FF1EE823DD007EEA53 /* IDPWorker.m */,
-				565184001EE823DD007EEA53 /* IDPWorkerObserver.h */,
+				565510201EF109FC001098B7 /* IDPAccountant.h */,
+				565510211EF109FC001098B7 /* IDPAccountant.m */,
+				565510221EF109FC001098B7 /* IDPDirector.h */,
+				565510231EF109FC001098B7 /* IDPDirector.m */,
+				565510241EF109FC001098B7 /* IDPMoneyFlow.h */,
+				565510251EF109FC001098B7 /* IDPObservableObject.h */,
+				565510261EF109FC001098B7 /* IDPObservableObject.m */,
+				565510271EF109FC001098B7 /* IDPWasher.h */,
+				565510281EF109FC001098B7 /* IDPWasher.m */,
+				565510291EF109FC001098B7 /* IDPWorker.h */,
+				5655102A1EF109FC001098B7 /* IDPWorker.m */,
+				5655102B1EF109FC001098B7 /* IDPWorkerObserver.h */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -276,26 +276,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5651840D1EE823DD007EEA53 /* main.m in Sources */,
-				565184131EE823DD007EEA53 /* IDPWorker.m in Sources */,
-				565184101EE823DD007EEA53 /* IDPDirector.m in Sources */,
-				5651840E1EE823DD007EEA53 /* IDPCarWashTests.m in Sources */,
-				5651840F1EE823DD007EEA53 /* IDPAccountant.m in Sources */,
-				565184041EE823DD007EEA53 /* IDPEnterprise.m in Sources */,
-				565184021EE823DD007EEA53 /* IDPCar.m in Sources */,
-				565184091EE823DD007EEA53 /* NSObject+IDPExtensions.m in Sources */,
-				565184121EE823DD007EEA53 /* IDPWasher.m in Sources */,
-				565184061EE823DD007EEA53 /* IDPTimerProxy.m in Sources */,
-				565184111EE823DD007EEA53 /* IDPObservableObject.m in Sources */,
-				565184081EE823DD007EEA53 /* NSMutableArray+IDPExtensions.m in Sources */,
-				565184051EE823DD007EEA53 /* IDPQueue.m in Sources */,
-				5651840A1EE823DD007EEA53 /* NSTimer+IDPExtensions.m in Sources */,
-				565184011EE823DD007EEA53 /* IDPDispatcher.m in Sources */,
-				5651840C1EE823DD007EEA53 /* IDPRandom.m in Sources */,
-				564BD5F41EE9291E00B8A21F /* IDPGCD.m in Sources */,
-				5651840B1EE823DD007EEA53 /* IDPConstants.m in Sources */,
-				565184071EE823DD007EEA53 /* NSArray+IDPExtensions.m in Sources */,
-				565184031EE823DD007EEA53 /* IDPCarDispatcher.m in Sources */,
+				5655103A1EF109FC001098B7 /* IDPCarWashTests.m in Sources */,
+				5655102D1EF109FC001098B7 /* IDPDispatcher.m in Sources */,
+				565510341EF109FC001098B7 /* NSMutableArray+IDPExtensions.m in Sources */,
+				565510381EF109FC001098B7 /* IDPRandom.m in Sources */,
+				565510311EF109FC001098B7 /* IDPQueue.m in Sources */,
+				5655103F1EF109FC001098B7 /* IDPWorker.m in Sources */,
+				5655103D1EF109FC001098B7 /* IDPObservableObject.m in Sources */,
+				565510371EF109FC001098B7 /* IDPConstants.m in Sources */,
+				565510361EF109FC001098B7 /* NSTimer+IDPExtensions.m in Sources */,
+				5655103B1EF109FC001098B7 /* IDPAccountant.m in Sources */,
+				565510331EF109FC001098B7 /* NSArray+IDPExtensions.m in Sources */,
+				565510301EF109FC001098B7 /* IDPEnterprise.m in Sources */,
+				5655102E1EF109FC001098B7 /* IDPGCD.m in Sources */,
+				565510321EF109FC001098B7 /* IDPTimerProxy.m in Sources */,
+				565510351EF109FC001098B7 /* NSObject+IDPExtensions.m in Sources */,
+				5655103E1EF109FC001098B7 /* IDPWasher.m in Sources */,
+				5655102F1EF109FC001098B7 /* IDPCar.m in Sources */,
+				5655103C1EF109FC001098B7 /* IDPDirector.m in Sources */,
+				565510391EF109FC001098B7 /* main.m in Sources */,
+				5655102C1EF109FC001098B7 /* IDPCarDispatcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
